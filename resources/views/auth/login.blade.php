@@ -79,7 +79,7 @@
   <title>Login | BLKM</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="{{asset('style/images/LogoJabar.jpg')}}">
+  <link rel="icon" href="{{asset('style/images/LogoJabar.png')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('style/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
@@ -95,7 +95,7 @@
 <div class="login-box">
     <div class="text-center">
         
-    <img src="{{asset('style/images/LogoJabar.jpg')}}"  class="brand-image img-circle elevation-3" style="width: 20%;">
+    <img src="{{asset('style/images/LogoJabar.png')}}"  class="brand-image img-circle elevation-3" style="width: 20%;">
     </div>
   <div class="login-logo">
     <a href="../../index2.html">Sistem Pendaftaran Peserta BLKM</a>
@@ -128,7 +128,7 @@
             <button type="submit" class="btn btn-primary btn-block">Login</button>
           </div>
           <div class="text-center mt-2">
-              <a href="" class="btn btn-success btn-block" title="">Register</a>
+              <a href="{{ route('register') }}" class="btn btn-success btn-block" title="">Register</a>
           </div>
           <!-- /.col -->
         </div>

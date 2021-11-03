@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormulirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,8 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/catchAPI', [HomeController::class, 'catch'])->name('catch');
+Route::post('/catchAPI', [HomeController::class, 'catchRequest'])->name('catch');
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'role:1']], function() {
@@ -26,3 +28,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::resource('KelolaAkun', UserController::class);
 });
 
+Route::group(['middleware' => ['auth', 'role:2']], function() {
+    Route::get('/user', [HomeController::class, 'user'])->name('user');
+    Route::resource('Formulir', FormulirController::class);
+});

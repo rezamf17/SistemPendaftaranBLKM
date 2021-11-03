@@ -7,7 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="icon" href="{{asset('style/images/LogoJabar.jpg')}}">
+  <link rel="icon" href="{{asset('style/images/LogoJabar.png')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{url('style/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
@@ -161,7 +161,24 @@
             </a>
           </li>
             @endif
-           
+           @if(auth()->user()->role == 2)
+           <li class="nav-item has-treeview">
+            <a href="{{url('user')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Formulir')}}" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Formulir
+              </p>
+            </a>
+          </li>
+            @endif
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

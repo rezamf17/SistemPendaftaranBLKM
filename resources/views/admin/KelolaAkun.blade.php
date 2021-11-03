@@ -53,15 +53,15 @@ Kelola Akun
             <td>@if ($item->role == 1)
               Admin
               @elseif($item->role == 2)
-              Peserta
+              User
               @else
               -
               @endif
             </td>
             <th>
-              <a href="{{url('admin/editAdmin/'.$item->id)}}" title="" class="btn btn-success"> 
+              <a href="{{url('KelolaAkun/'.$item->id.'/edit')}}" title="" class="btn btn-success"> 
                 <i class="fa fa-edit"></i>Edit</a>
-                <form action="{{url('admin', $item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                <form action="{{url('KelolaAkun', $item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                   @method('delete')
                   @csrf
                   <button type="submit" class="btn btn-danger">
@@ -114,7 +114,7 @@ Kelola Akun
                 <select name="role" class="form-control" id="main_menu" required>
                   <option value="">--Pilih Level--</option>
                   <option value="1">Admin</option>
-                  <option value="2">Calon Peserta</option>
+                  <option value="2">User</option>
                 </select>
                 @error('jumlah')
                 <div class="invalid-feedback">
@@ -151,5 +151,5 @@ Kelola Akun
         </div>
         <!-- /.modal-content -->
       </div>
-
+      @include('sweetalert::alert')
       @endsection

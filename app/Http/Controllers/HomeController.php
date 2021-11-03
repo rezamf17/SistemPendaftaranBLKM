@@ -25,4 +25,21 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function user()
+    {
+        return view ('user.DashboardUser');
+    }
+    public function catch()
+    {
+        return view ('user.catchAPI');
+    }
+    public function catchRequest(Request $request)
+    {
+        // $request->provinsi;
+        // $request->kabupaten;
+        // $request->provinsi;
+        // $request->provinsi;
+        return $request;
+    }
 }
