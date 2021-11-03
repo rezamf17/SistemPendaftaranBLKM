@@ -120,4 +120,5 @@ fetch(url_kota).then(
     )
   }
 )
-  </script
+  </script>
+      @endsection

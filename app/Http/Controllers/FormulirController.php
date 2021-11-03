@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Formulir;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FormulirController extends Controller
 {
@@ -37,25 +38,43 @@ class FormulirController extends Controller
      */
     public function store(Request $request)
     {
-
-        $formulir = new Formulir;
-        $formulir->id_user = Auth::user()->id;
-        $formulir->nama = $request->nama;
-        $formulir->ttl = $request->ttl;
-        $formulir->alamat = $request->alamat;
-        $formulir->kota = $request->kota;
-        $formulir->no_kk = $request->no_kk;
-        $formulir->no_ktp = $request->no_ktp;
-        $formulir->jenis_kelamin = $request->jenis_kelamin;
-        $formulir->pekerjaan = $request->pekerjaan;
-        $formulir->no_hp = $request->no_hp;
-        $formulir->no_rek = $request->no_rek;
-        $formulir->bank = $request->bank;
-        $formulir->peminatan = $request->peminatan;
+        // $formulir = new Formulir;
+        // $formulir->id_user = Auth::user()->id;
+        // $formulir->nama = $request->nama;
+        // $formulir->ttl = $request->ttl;
+        // $formulir->alamat = $request->alamat;
+        // $formulir->kota = $request->kota;
+        // $formulir->no_kk = $request->no_kk;
+        // $formulir->no_ktp = $request->no_ktp;
+        // $formulir->jenis_kelamin = $request->jenis_kelamin;
+        // $formulir->pekerjaan = $request->pekerjaan;
+        // $formulir->no_hp = $request->no_hp;
+        // $formulir->no_rek = $request->no_rek;
+        // $formulir->bank = $request->bank;
+        // $formulir->peminatan = $request->peminatan;
         // $formulir->save();
 
-        dd($request);
-        // return redirect('user')->with('success', 'Pengisian Formulir Berhasil!');
+        DB::table('formulir')->insert([
+            'id_user' => Auth::user()->id,
+            'nama' => $request->nama,
+            'ttl' => $request->ttl,
+            'alamat' => $request->alamat,
+            'kota' => $request->kota,
+            'no_kk' => $request->no_kk,
+            'no_ktp' => $request->no_ktp,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'pekerjaan' => $request->pekerjaan,
+            'no_hp' => $request->no_hp,
+            'no_rek' => $request->no_rek,
+            'bank' => $request->bank,
+            'peminatan' => $request->peminatan,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // dd($request->all());
+        // print_r($request->all());
+        return redirect('user')->with('success', 'Pengisian Formulir Berhasil!');
     }
 
     /**
