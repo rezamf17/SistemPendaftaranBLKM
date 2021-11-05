@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Formulir extends Model
 {
     use HasFactory;
-    protected $table = ['formulir'];
+    protected $table = 'formulir';
     // protected $guarded = [];
     protected $fillable = [
         'id_user',

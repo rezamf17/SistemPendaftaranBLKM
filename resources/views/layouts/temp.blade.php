@@ -160,6 +160,14 @@
               </p>
             </a>
           </li>
+           <li class="nav-item has-treeview">
+            <a href="{{url('Formulir')}}" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Data User
+              </p>
+            </a>
+          </li>
             @endif
            @if(auth()->user()->role == 2)
            <li class="nav-item has-treeview">
@@ -171,7 +179,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Formulir')}}" class="nav-link">
+            <a href="{{url('Formulir/create')}}" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Formulir

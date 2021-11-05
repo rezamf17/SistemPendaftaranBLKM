@@ -28,6 +28,7 @@ class CreateFormulirsTable extends Migration
             $table->string('no_rek')->nullable();
             $table->string('bank')->nullable();
             $table->string('peminatan');
+            $table->string('status');
             $table->timestamps();
         });
     }
