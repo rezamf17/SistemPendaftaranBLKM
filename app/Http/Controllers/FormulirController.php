@@ -98,8 +98,8 @@ class FormulirController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $formulir = Formulir::where('id', $id)->first();
+        return view ('admin.EditUser', compact('formulir'));    }
 
     /**
      * Update the specified resource in storage.
@@ -121,7 +121,10 @@ class FormulirController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $formulir = Formulir::find($id);
+        $formulir->delete();
+
+        return redirect('Formulir')->with('success', 'Data User Berhasil Dihapus!');
     }
 
     public function gantiStatus(Request $request, $id)

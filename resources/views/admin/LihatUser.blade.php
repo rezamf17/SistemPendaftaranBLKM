@@ -83,8 +83,12 @@ Lihat User
         </table>
         </div>
         <div class="card-footer">
-          <a href="" class="btn btn-success"><i class="fa fa-edit"></i>Edit</a>
-          <a href="" class="btn btn-danger"><i class="fa fa-trash"></i>Hapus</a>
+          <a href="{{ url('Formulir/'.$formulir->id.'/edit') }}" class="btn btn-success"><i class="fa fa-edit"></i>Edit</a>
+          <form action="{{ url('Formulir/'.$formulir->id) }}" method="post" class="d-inline" accept-charset="utf-8">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Hapus</button>
+          </form>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
                   <i class="fa fa-random"></i>Ganti Status
                 </button>
