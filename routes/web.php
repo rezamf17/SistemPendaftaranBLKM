@@ -31,4 +31,5 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
 Route::group(['middleware' => ['auth', 'role:1,2']], function() {
     Route::get('/user', [HomeController::class, 'user'])->name('user');
     Route::resource('Formulir', FormulirController::class);
+    Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']); 
 });

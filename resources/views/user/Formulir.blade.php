@@ -41,7 +41,7 @@ Isi Formulir
                 <label>Alamat</label>
                 <textarea name="alamat" class="form-control" ></textarea>
                 <label>Kabupaten/Kota</label>
-                <select name="kota" class="form-control" id="data">
+                <select name="kota" class="form-control" id="data" required>
                 </select>
             </div>
             <div class="form-group">
@@ -66,7 +66,7 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Nomor Handphone</label>
-                <input type="text" class="form-control" name="no_hp"> 
+                <input type="text" class="form-control" name="no_hp" value="{{Auth::user()->phone}}"> 
             </div>
             <div class="form-group">
                 <label>Nomor Rekening</label>
@@ -76,7 +76,7 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Peminatan</label>
-                <select name="peminatan" class="form-control">
+                <select name="peminatan" class="form-control" required>
                   <option value="">-Silahkan Pilih Peminatan-</option>
                   <option value="Tata Boga">Tata Boga</option>
                   <option value="Las Listrik">Las Listrik</option>
@@ -110,7 +110,7 @@ fetch(url_kota).then(
         if (data.kota_kabupaten.length > 0) {
 
           var temp = "";
-          temp += '<option>Pilih Kota</option>'
+          temp += '<option value="">Pilih Kota</option>'
           data.kota_kabupaten.forEach((itemData) => {
             temp += '<option value="'+itemData.nama+'">'+itemData.nama+'</option>'
           });

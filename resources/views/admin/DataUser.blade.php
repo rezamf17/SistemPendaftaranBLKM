@@ -68,7 +68,7 @@ Data User
             {{-- <td>{{$item->bank}}</td> --}}
             <td>{{$item->peminatan}}</td>
             <th>
-              <a href="{{url('KelolaAkun/'.$item->id.'/edit')}}" title="" class="btn btn-success"> 
+             {{--  <a href="{{url('KelolaAkun/'.$item->id.'/edit')}}" title="" class="btn btn-success"> 
                 <i class="fa fa-edit"></i>Edit</a>
                 <form action="{{url('KelolaAkun', $item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                   @method('delete')
@@ -76,8 +76,8 @@ Data User
                   <button type="submit" class="btn btn-danger">
                     <i class="fa fa-trash"></i>Hapus
                   </button>
-                </form>
-                <a href="{{ url('Formulir/'.$item->id.'/edit') }}" class="btn btn-primary"><i class="fa fa-eye"></i>Lihat</a>
+                </form> --}}
+                <a href="{{ url('Formulir/'.$item->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i>Lihat</a>
               </th>     
             </tr>
             @endforeach

@@ -86,7 +86,8 @@ class FormulirController extends Controller
      */
     public function show($id)
     {
-        //
+        $formulir = Formulir::where('id', $id)->first();
+        return view ('admin.LihatUser', compact('formulir'));
     }
 
     /**
@@ -121,5 +122,14 @@ class FormulirController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function gantiStatus(Request $request, $id)
+    {
+        $status = Formulir::find($id);
+        $status->status = $request->status;
+        $status->save();
+
+        return redirect('Formulir/'.$id)->with('success', 'Status Berhasil Di Ganti!');
     }
 }

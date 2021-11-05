@@ -25,4 +25,9 @@ class Formulir extends Model
         'bank',
         'peminatan'
     ];
+
+    public function form()
+    {
+        return $this->belongsTo('App\Models\Formulir', 'id_user');
+    }
 }
