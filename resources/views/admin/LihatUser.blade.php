@@ -41,8 +41,20 @@ Lihat User
               <td>{{$formulir->alamat}}</td>
             </tr>
             <tr>
+              <th>Provinsi</th>
+              <td>{{$formulir->provinces->name}}</td>
+            </tr>
+            <tr>
               <th>Kota/Kabupaten</th>
-              <td>{{$formulir->kota}}</td>
+              <td>{{$formulir->cities->name}}</td>
+            </tr>
+            <tr>
+              <th>Kecamatan</th>
+              <td>{{$formulir->districts->name}}</td>
+            </tr>
+            <tr>
+              <th>Kelurahan</th>
+              <td>{{$formulir->villages->name}}</td>
             </tr>
             <tr>
               <th>No Kartu Keluarga</th>
@@ -71,6 +83,10 @@ Lihat User
             <tr>
               <th>Bank</th>
               <td>{{$formulir->bank}}</td>
+            </tr>
+            <tr>
+              <th>Atas Nama</th>
+              <td>{{$formulir->atas_nama}}</td>
             </tr>
             <tr>
               <th>Peminatan</th>

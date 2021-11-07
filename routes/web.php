@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormulirController;
+use App\Http\Controllers\DependentDropdownController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +35,8 @@ Route::group(['middleware' => ['auth', 'role:1,2']], function() {
     Route::resource('Formulir', FormulirController::class);
     Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']); 
 });
+Route::get('/dropdown', [HomeController::class,'render_dropdown']);
+Route::get('provinces', [DependentDropdownController::class, 'provinces'])->name('provinces');
+Route::get('cities', [DependentDropdownController::class, 'cities'])->name('cities');
+Route::get('districts', [DependentDropdownController::class, 'districts'])->name('districts');
+Route::get('villages', [DependentDropdownController::class, 'villages'])->name('villages');

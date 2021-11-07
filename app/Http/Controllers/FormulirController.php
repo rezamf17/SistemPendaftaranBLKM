@@ -28,7 +28,7 @@ class FormulirController extends Controller
      */
     public function create()
     {
-        return view ('user.Formulir');
+        return view ('user.FormulirUser');
     }
 
     /**
@@ -41,6 +41,10 @@ class FormulirController extends Controller
     {
         $formulir = new Formulir;
         $formulir->id_user = Auth::user()->id;
+        $formulir->id_provinces = $request->provinsi;
+        $formulir->id_cities = $request->kota;
+        $formulir->id_districts = $request->kecamatan;
+        $formulir->id_villages = $request->desa;
         $formulir->nama = $request->nama;
         $formulir->ttl = $request->ttl;
         $formulir->alamat = $request->alamat;
@@ -50,8 +54,6 @@ class FormulirController extends Controller
         $formulir->jenis_kelamin = $request->jenis_kelamin;
         $formulir->pekerjaan = $request->pekerjaan;
         $formulir->no_hp = $request->no_hp;
-        $formulir->no_rek = $request->no_rek;
-        $formulir->bank = $request->bank;
         $formulir->peminatan = $request->peminatan;
         $formulir->status = "Calon Peserta";
         $formulir->save();

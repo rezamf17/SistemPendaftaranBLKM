@@ -16,6 +16,10 @@ class CreateFormulirsTable extends Migration
         Schema::create('formulir', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_provinces')->constrained('indonesia_provinces')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_cities')->constrained('indonesia_cities')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_districts')->constrained('indonesia_districts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_villages')->constrained('indonesia_villages')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
             $table->string('ttl');
             $table->text('alamat');
@@ -27,6 +31,7 @@ class CreateFormulirsTable extends Migration
             $table->string('no_hp');
             $table->string('no_rek')->nullable();
             $table->string('bank')->nullable();
+            $table->string('atas_nama')->nullable();
             $table->string('peminatan');
             $table->string('status');
             $table->timestamps();

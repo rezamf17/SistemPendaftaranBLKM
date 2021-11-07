@@ -40,8 +40,28 @@ Isi Formulir
             <div class="form-group">
                 <label>Alamat</label>
                 <textarea name="alamat" class="form-control" ></textarea>
-                <label>Kabupaten/Kota</label>
-                <select name="kota" class="form-control" id="data" required>
+                <label>Provinsi</label>
+                @php
+                    $provinces = new App\Http\Controllers\DependentDropdownController;
+                    $provinces= $provinces->provinces();
+                @endphp
+                <select class="form-control" name="provinsi" id="provinsi" required>
+                    <option>Pilih Provinsi</option>
+                    @foreach ($provinces as $item)
+                        <option value="{{ $item->id ?? '' }}">{{ $item->name ?? '' }}</option>
+                    @endforeach
+                </select>
+                <label>Kota/Kabupaten</label>
+                <select class="form-control" name="kota" id="kota" required>
+                    <option>Pilih Kota/Kabupaten</option>
+                </select>
+                <label>Kecamatan</label>
+                <select class="form-control" name="kecamatan" id="kecamatan" required>
+                    <option>Pilih Kecamatan</option>
+                </select>
+                <label>Desa/Keluharan</label>
+                <select class="form-control" name="desa" id="desa" required>
+                    <option>Pilih Desa/Kelurahan</option>
                 </select>
             </div>
             <div class="form-group">
@@ -70,9 +90,12 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Nomor Rekening</label>
-                <input type="text" class="form-control" name="no_rek">
+                <input type="text" class="form-control" name="no_rek" disabled>
+                <i>*Nomor Rekening dan Nama Bank Diisi Pada Saat Sudah Menjadi Peserta</i><br>
                 <label>Nama Bank</label>
-                <input type="text" class="form-control" name="bank"> 
+                <input type="text" class="form-control" name="bank" disabled>
+                <label>Atas Nama</label>
+                 <input type="text" name="atas_nama" class="form-control" disabled=""> 
             </div>
             <div class="form-group">
                 <label>Peminatan</label>
@@ -100,25 +123,36 @@ Isi Formulir
     </div>
   </div>
 </div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>
-    const url_kota = 'https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=32';
-fetch(url_kota).then(
-  res => {
-    res.json().then(
-      data => {
-        console.log(data.kota_kabupaten);
-        if (data.kota_kabupaten.length > 0) {
+        function onChangeSelect(url, id, name) {
+            // send ajax request to get the cities of the selected province and append to the select tag
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    $('#' + name).empty();
+                    $('#' + name).append('<option>==Pilih Salah Satu==</option>');
 
-          var temp = "";
-          temp += '<option value="">Pilih Kota</option>'
-          data.kota_kabupaten.forEach((itemData) => {
-            temp += '<option value="'+itemData.nama+'">'+itemData.nama+'</option>'
-          });
-          document.getElementById('data').innerHTML = temp;
+                    $.each(data, function (key, value) {
+                        $('#' + name).append('<option value="' + key + '">' + value + '</option>');
+                    });
+                }
+            });
         }
-      }
-    )
-  }
-)
-  </script>
+        $(function () {
+            $('#provinsi').on('change', function () {
+                onChangeSelect('{{ route("cities") }}', $(this).val(), 'kota');
+            });
+            $('#kota').on('change', function () {
+                onChangeSelect('{{ route("districts") }}', $(this).val(), 'kecamatan');
+            })
+            $('#kecamatan').on('change', function () {
+                onChangeSelect('{{ route("villages") }}', $(this).val(), 'desa');
+            })
+        });
+    </script>
       @endsection

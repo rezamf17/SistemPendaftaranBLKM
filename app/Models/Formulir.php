@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Formulir extends Model
 {
@@ -28,6 +29,26 @@ class Formulir extends Model
 
     public function form()
     {
-        return $this->belongsTo('App\Models\Formulir', 'id_user');
+        return $this->belongsTo(User::class, 'id_user');
+    }
+    public function provinces()
+    {
+         return $this->belongsTo('Laravolt\Indonesia\Models\Province', 'id_provinces', 'code');
+    }
+    public function cities()
+    {
+         return $this->belongsTo('Laravolt\Indonesia\Models\Kabupaten', 'id_cities');
+    }
+    public function districts()
+    {
+         return $this->belongsTo('Laravolt\Indonesia\Models\Kecamatan', 'id_districts');
+    }
+    public function villages()
+    {
+         return $this->belongsTo('Laravolt\Indonesia\Models\Kelurahan', 'id_villages');
+    }
+    public function formulir()
+    {
+        return $this->belongsTo(Formulir::class);
     }
 }

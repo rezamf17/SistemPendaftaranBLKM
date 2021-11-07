@@ -42,4 +42,8 @@ class HomeController extends Controller
         // $request->provinsi;
         return $request;
     }
+    public function render_dropdown()
+    {
+      return view('dd'); 
+    }
 }
