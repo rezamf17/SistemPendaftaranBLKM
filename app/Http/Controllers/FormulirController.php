@@ -49,8 +49,6 @@ class FormulirController extends Controller
         $formulir->ttl = $request->ttl;
         $formulir->alamat = $request->alamat;
         $formulir->kota = $request->kota;
-        $formulir->no_kk = $request->no_kk;
-        $formulir->no_ktp = $request->no_ktp;
         $formulir->jenis_kelamin = $request->jenis_kelamin;
         $formulir->pekerjaan = $request->pekerjaan;
         $formulir->no_hp = $request->no_hp;
@@ -112,7 +110,29 @@ class FormulirController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $formulir = Formulir::find($id);
+        $formulir->id_user = Auth::user()->id;
+        $formulir->id_provinces = $request->provinsi;
+        $formulir->id_cities = $request->kota;
+        $formulir->id_districts = $request->kecamatan;
+        $formulir->id_villages = $request->desa;
+        $formulir->nama = $request->nama;
+        $formulir->ttl = $request->ttl;
+        $formulir->alamat = $request->alamat;
+        $formulir->kota = $request->kota;
+        $formulir->no_kk = $request->no_kk;
+        $formulir->no_ktp = $request->no_ktp;
+        $formulir->jenis_kelamin = $request->jenis_kelamin;
+        $formulir->pekerjaan = $request->pekerjaan;
+        $formulir->no_hp = $request->no_hp;
+        $formulir->no_rek = $request->no_rek;
+        $formulir->bank = $request->bank;
+        $formulir->atas_nama = $request->atas_nama;
+        $formulir->peminatan = $request->peminatan;
+        $formulir->status = $request->status;
+        $formulir->save();
+        // dd($request->all());
+        return redirect('Formulir/'.$id)->with('success', 'Data Formulir User Berhasil Di Update!');
     }
 
     /**
