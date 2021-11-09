@@ -30,14 +30,18 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h4>Formulir</h4>
 
-                <p>Data Akun</p>
+                @if (DB::table('formulir')->where('id_user', Auth::user()->id)->exists())
+                  <p>Terimakasih, Kamu Sudah Isi Formulir</p>
+                @else
+                <p>Maaf, Kamu Belum Isi Formulir. Silahkan Isi Terlebih Dahulu</p>
+                @endif
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('Formulir/create') }}" class="small-box-footer">Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -45,14 +49,17 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Data Pengumuman</p>
+                <h4>Lengkapi Data</h4>
+                @if (DB::table('formulir')->where('status'=='Peserta'))
+                <p>Lengkapi Data Jika Sudah Menjadi Peserta</p>
+                @else
+                Kamu Sudah Melengkapi Data
+                @endif
               </div>
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('LengkapiData/'.Auth::user()->id) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

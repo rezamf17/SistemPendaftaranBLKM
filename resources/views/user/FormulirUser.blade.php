@@ -66,11 +66,11 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Nomor Kartu Keluarga</label>
-                <input type="text" class="form-control" name="no_kk" required> 
+                <input type="text" class="form-control" name="no_kk" disabled> 
             </div>
             <div class="form-group">
                 <label>Nomor KTP</label>
-                <input type="text" class="form-control" name="no_ktp" required> 
+                <input type="text" class="form-control" name="no_ktp" disabled> 
             </div>
             <div class="form-group">
                 <label>Jenis Kelamin</label>

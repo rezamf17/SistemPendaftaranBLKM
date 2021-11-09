@@ -25,7 +25,7 @@ class CreateFormulirsTable extends Migration
             $table->text('alamat');
             $table->string('kota');
             $table->string('no_kk')->nullable();
-            $table->string('no_ktp');
+            $table->string('no_ktp')->nullable();
             $table->string('jenis_kelamin');
             $table->string('pekerjaan');
             $table->string('no_hp');

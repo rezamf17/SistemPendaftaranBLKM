@@ -157,4 +157,10 @@ class FormulirController extends Controller
 
         return redirect('Formulir/'.$id)->with('success', 'Status Berhasil Di Ganti!');
     }
+
+    public function viewLengkapiData($id)
+    {
+        $formulir = Formulir::where('id_user', $id)->first();
+        return view('user.LengkapiData', compact('formulir'));
+    }
 }
