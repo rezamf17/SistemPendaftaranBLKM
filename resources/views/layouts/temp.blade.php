@@ -179,7 +179,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Formulir/create')}}" class="nav-link">
+            <a href="{{url('UserFormulir')}}" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Formulir

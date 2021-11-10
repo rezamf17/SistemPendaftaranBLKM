@@ -26,8 +26,9 @@ Lengkapi Data
   <div class="card">
     <div class="card-header">Lengkapi Data</div>
     <div class="card-body">
-      <form action="{{ url('Formulir') }}" method="POST">
+      <form action="{{ url('UserFormulir/'.$formulir->id) }}" method="POST">
           @csrf
+          @method('put')
           <div class="form-group">
             <label>Nama</label>
             <input type="text" class="form-control" value="{{$formulir->nama}}" name="nama" disabled> 
@@ -86,7 +87,7 @@ Lengkapi Data
     </div>
     <div class="form-group">
         <label>Nomor Handphone</label>
-        <input type="text" class="form-control" name="no_hp" value="{{$formulir->no_hp}}"> 
+        <input type="text" class="form-control" name="no_hp" value="{{$formulir->no_hp}}" disabled> 
     </div>
     <div class="form-group">
         <label>Nomor Rekening</label>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormulirController;
+use App\Http\Controllers\UserFormulirController;
 use App\Http\Controllers\DependentDropdownController;
 
 
@@ -28,13 +29,13 @@ Auth::routes();
 Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('KelolaAkun', UserController::class);
-});
-
-Route::group(['middleware' => ['auth', 'role:1,2']], function() {
-    Route::get('/user', [HomeController::class, 'user'])->name('user');
     Route::resource('Formulir', FormulirController::class);
     Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']);
-    Route::get('/LengkapiData/{id}', [FormulirController::class, 'viewLengkapiData'])->name('LengkapiData');
+});
+
+Route::group(['middleware' => ['auth', 'role:2']], function() {
+    Route::get('/user', [HomeController::class, 'user'])->name('user');
+    Route::resource('UserFormulir', UserFormulirController::class);
 });
 Route::get('/dropdown', [HomeController::class,'render_dropdown']);
 Route::get('provinces', [DependentDropdownController::class, 'provinces'])->name('provinces');

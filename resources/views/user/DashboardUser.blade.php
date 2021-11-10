@@ -41,7 +41,7 @@ Dashboard Admin
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="{{ url('Formulir/create') }}" class="small-box-footer">Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('UserFormulir') }}" class="small-box-footer">Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -60,7 +60,7 @@ Dashboard Admin
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>
               </div>
-              <a href="{{ url('LengkapiData/'.Auth::user()->id) }}" class="small-box-footer">Lengkapi Data <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('UserFormulir/'.Auth::user()->id.'/edit') }}" class="small-box-footer">Lengkapi Data <i class="fas fa-arrow-circle-right"></i></a>
               @else
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>
@@ -74,14 +74,14 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>Lihat Data Formulir</h3>
+                <h4>Lihat Formulir</h4>
 
-                <p>Lihat Data Formulir Anda</p>
+                <p>Lihat Formulir Anda, Yang Sebelumnya Sudah Diisi</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Lihat Formulir <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
