@@ -33,7 +33,7 @@ class Formulir extends Model
     }
     public function provinces()
     {
-         return $this->belongsTo('Laravolt\Indonesia\Models\Province', 'id_provinces', 'code');
+         return $this->belongsTo('Laravolt\Indonesia\Models\Province', 'id_provinces',);
     }
     public function cities()
     {

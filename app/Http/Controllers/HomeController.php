@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Formulir;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,7 +31,8 @@ class HomeController extends Controller
 
     public function user()
     {
-        return view ('user.DashboardUser');
+        $user = User::where('id', Auth::user()->id);
+        return view ('user.DashboardUser', compact('user'));
     }
     public function catch()
     {

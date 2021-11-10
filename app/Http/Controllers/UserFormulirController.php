@@ -17,7 +17,8 @@ class UserFormulirController extends Controller
      */
     public function index()
     {
-        return view ('user.FormulirUser');    }
+        return view ('user.FormulirUser');    
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +66,8 @@ class UserFormulirController extends Controller
      */
     public function show($id)
     {
-        //
+        $formulir = Formulir::where('id_user', $id)->first();
+        return view('user.LihatFormulir', compact('formulir'));
     }
 
     /**
