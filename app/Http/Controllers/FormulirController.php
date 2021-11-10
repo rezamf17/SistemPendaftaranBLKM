@@ -53,7 +53,6 @@ class FormulirController extends Controller
         $formulir->pekerjaan = $request->pekerjaan;
         $formulir->no_hp = $request->no_hp;
         $formulir->peminatan = $request->peminatan;
-        $formulir->status = "Calon Peserta";
         $formulir->save();
 
         // DB::table('formulir')->insert([

@@ -66,7 +66,8 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Nomor Kartu Keluarga</label>
-                <input type="text" class="form-control" name="no_kk" disabled> 
+                <input type="text" class="form-control" name="no_kk" disabled>
+                <i>*Nomor Kartu Keluarga dan Nomor KTP diisi saat sudah jadi peserta</i> 
             </div>
             <div class="form-group">
                 <label>Nomor KTP</label>
@@ -82,7 +83,7 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Pekerjaan/Unit Usaha Saat Ini</label>
-                <input type="text" class="form-control" name="pekerjaan"> 
+                <input type="text" class="form-control" name="pekerjaan" required> 
             </div>
             <div class="form-group">
                 <label>Nomor Handphone</label>

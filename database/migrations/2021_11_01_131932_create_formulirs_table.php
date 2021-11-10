@@ -33,7 +33,6 @@ class CreateFormulirsTable extends Migration
             $table->string('bank')->nullable();
             $table->string('atas_nama')->nullable();
             $table->string('peminatan');
-            $table->string('status');
             $table->timestamps();
         });
     }

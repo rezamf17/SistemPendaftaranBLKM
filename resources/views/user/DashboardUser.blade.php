@@ -50,16 +50,23 @@ Dashboard Admin
             <div class="small-box bg-success">
               <div class="inner">
                 <h4>Lengkapi Data</h4>
-                @if (DB::table('formulir')->where('status'=='Peserta'))
+                @if (Auth::user()->status != "Peserta")
                 <p>Lengkapi Data Jika Sudah Menjadi Peserta</p>
-                @else
-                Kamu Sudah Melengkapi Data
+                @elseif (Auth::user()->status == "Peserta")
+                <p>Anda Sudah Jadi Peserta, Silahkan Lengkapi data</p>
                 @endif
               </div>
+              @if (Auth::user()->status == "Peserta")
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>
               </div>
-              <a href="{{ url('LengkapiData/'.Auth::user()->id) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('LengkapiData/'.Auth::user()->id) }}" class="small-box-footer">Lengkapi Data <i class="fas fa-arrow-circle-right"></i></a>
+              @else
+              <div class="icon">
+                <i class="ion ion-speakerphone"></i>
+              </div>
+             <a class="small-box-footer">Maaf, Anda Belum Menjadi Peserta<i class="fas fa-arrow-circle-right"></i></a>
+              @endif
             </div>
           </div>
           <!-- ./col -->
@@ -67,9 +74,9 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>Lihat Data Formulir</h3>
 
-                <p>User Registrations</p>
+                <p>Lihat Data Formulir Anda</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -94,6 +101,7 @@ Dashboard Admin
           </div>
           <!-- ./col -->
         </div>
+        Status : {{ Auth::user()->status }}
 </div>
 @include('sweetalert::alert')
 @endsection
