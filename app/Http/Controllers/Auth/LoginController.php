@@ -40,7 +40,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-     public function login(Request $request, $id){
+     public function login(Request $request){
         $input = $request->all();
 
         $this->validate($request, [
@@ -59,7 +59,7 @@ class LoginController extends Controller
                 return redirect()->route('home');
 
             }else if (auth()->user()->role == 2){
-                return redirect()->route('user/'.$id);
+                return redirect()->route('user');
             }
 
         }else{

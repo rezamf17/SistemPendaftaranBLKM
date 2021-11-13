@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\UserFormulirController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\DependentDropdownController;
 
 
@@ -30,6 +31,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('KelolaAkun', UserController::class);
     Route::resource('Formulir', FormulirController::class);
+    Route::resource('Pengumuman', PengumumanController::class);
     Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']);
 });
 

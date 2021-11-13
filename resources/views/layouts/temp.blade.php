@@ -168,6 +168,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Pengumuman')}}" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Pengumuman
+              </p>
+            </a>
+          </li>
             @endif
            @if(auth()->user()->role == 2)
            <li class="nav-item has-treeview">
