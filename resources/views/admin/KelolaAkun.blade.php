@@ -41,6 +41,7 @@ Kelola Akun
             <th>Nama</th>
             <th>Nomor HP</th>
             <th>Level</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -58,6 +59,7 @@ Kelola Akun
               -
               @endif
             </td>
+            <td>{{$item->status}}</td>
             <th>
               <a href="{{url('KelolaAkun/'.$item->id.'/edit')}}" title="" class="btn btn-success"> 
                 <i class="fa fa-edit"></i>Edit</a>

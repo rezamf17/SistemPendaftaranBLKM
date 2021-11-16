@@ -138,6 +138,7 @@
     <!-- /.login-card-body -->
   </div>
 </div>
+@include('sweetalert::alert')
 <!-- /.login-box -->
 
 <!-- jQuery -->

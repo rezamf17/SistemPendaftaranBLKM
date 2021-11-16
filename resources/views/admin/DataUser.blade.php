@@ -25,10 +25,7 @@ Data User
   <div class="card">
     <div class="card-header">
       Data User
-      {{-- <div class="float-right">
-        <a href="{{ url('cetakDataAkun') }}" class="btn btn-danger"><i class="fa fa-print"></i>Print PDF</a>
-        <a href="{{ url('exportDataAkun') }}" class="btn btn-success"><i class="fa fa-print"></i>Print Excel</a></div>
-      </div> --}}
+      <div class="float-right"><a href="" title=""></a></div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

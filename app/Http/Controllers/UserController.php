@@ -49,12 +49,24 @@ class UserController extends Controller
         return back()->with('errors', $validator->messages()->all()[0])->withInput();
         }
 
-        $user = new User;
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
-        $user->save();
+        if ($request->role == 1) {
+            $user = new User;
+            $user->name = $request->name;
+            $user->phone = $request->phone;
+            $user->password = Hash::make($request->password);
+            $user->role = $request->role;
+            $user->status = '';
+            $user->save();
+        }else{
+            $user = new User;
+            $user->name = $request->name;
+            $user->phone = $request->phone;
+            $user->password = Hash::make($request->password);
+            $user->role = $request->role;
+            $user->status = 'Calon Peserta';
+            $user->save();
+        }
+        
 
         return redirect('KelolaAkun')->with('success', 'Data Akun Berhasil Ditambahkan!');
         // dd($request);
@@ -92,11 +104,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $users = User::find($id);
-        $users->name = $request->name;
-        $users->phone = $request->phone;
-        $users->password = Hash::make($request->password);
-        $users->role = $request->role;
+        if ($request->password == null) {
+            $users = User::find($id);
+            $users->name = $request->name;
+            $users->phone = $request->phone;
+            $users->role = $request->role;
+            $users->status = $request->status;
+
+        }else {
+            $users = User::find($id);
+            $users->name = $request->name;
+            $users->phone = $request->phone;
+            $users->role = $request->role;
+            $users->status = $request->status;
+            $users->password = Hash::make($request->password);
+        }
         $users->save();
 
         return redirect('KelolaAkun')->with('success', 'Data Akun Berhasil Update!');

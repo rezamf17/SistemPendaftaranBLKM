@@ -24,7 +24,9 @@ Lihat User
   @section('content')
   <div class="container">
   <div class="card">
-    <div class="card-header">Data User : {{$formulir->nama}}</div>
+    <div class="card-header">Data User : {{$formulir->nama}}
+      
+    </div>
       <div class="card-body">
         <table class="table table-bordered">
           <thead>

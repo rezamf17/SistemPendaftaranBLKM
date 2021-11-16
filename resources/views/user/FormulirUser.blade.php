@@ -26,7 +26,7 @@ Isi Formulir
   <div class="card">
     <div class="card-header">Isi Formulir</div>
     <div class="card-body">
-      <form action="{{ url('Formulir') }}" method="POST">
+      <form action="{{ url('UserFormulir') }}" method="POST">
       @csrf
             <div class="form-group">
                 <label>Nama</label>
