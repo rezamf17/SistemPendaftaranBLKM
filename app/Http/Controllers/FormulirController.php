@@ -93,7 +93,6 @@ class FormulirController extends Controller
         $formulir->bank = $request->bank;
         $formulir->atas_nama = $request->atas_nama;
         $formulir->peminatan = $request->peminatan;
-        $formulir->status = $request->status;
         $formulir->save();
         // dd($request->all());
         return redirect('Formulir/'.$id)->with('success', 'Data Formulir User Berhasil Di Update!');
@@ -115,7 +114,7 @@ class FormulirController extends Controller
 
     public function gantiStatus(Request $request, $id)
     {
-        $status = Formulir::find($id);
+        $status = User::find($id);
         $status->status = $request->status;
         $status->save();
 

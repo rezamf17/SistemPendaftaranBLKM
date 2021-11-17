@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::resource('Formulir', FormulirController::class);
     Route::resource('Pengumuman', PengumumanController::class);
     Route::resource('Seleksi', SeleksiController::class);
+    Route::post('SeleksiData', [SeleksiController::class, 'seleksi']);
     Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']);
 });
 

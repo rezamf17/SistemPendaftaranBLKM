@@ -67,11 +67,11 @@ Edit User
           </div>
           <div class="form-group">
             <label>Nomor Kartu Keluarga</label>
-            <input type="text" class="form-control" name="no_kk" value="{{$formulir->no_kk}}" required> 
+            <input type="text" class="form-control" name="no_kk" value="{{$formulir->no_kk}}" > 
           </div>
           <div class="form-group">
             <label>Nomor KTP</label>
-            <input type="text" class="form-control" name="no_ktp" value="{{$formulir->no_ktp}}" required> 
+            <input type="text" class="form-control" name="no_ktp" value="{{$formulir->no_ktp}}" > 
           </div>
           <div class="form-group">
             <label>Jenis Kelamin</label>
@@ -111,15 +111,6 @@ Edit User
               <option value="Bakery" {{$formulir->peminatan == 'Bakery'? 'selected' : ''}}>Bakery</option>
               <option value="Start Up" {{$formulir->peminatan == 'Start Up'? 'selected' : ''}}>Start Up</option>
               <option value="Teknik Cukur Dasar" {{$formulir->peminatan == 'Teknik Cukur Dasar'? 'selected' : ''}}>Teknik Cukur Dasar</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Status</label>
-            <select name="status" class="form-control">
-              <option value="">-Pilih Status-</option>
-              <option value="Calon Peserta" {{$formulir->status == 'Calon Peserta'? 'selected' : ''}}>Calon Peserta</option>
-              <option value="Peserta" {{$formulir->status == 'Peserta'? 'selected' : ''}}>Peserta</option>
-              <option value="Alumni" {{$formulir->status == 'Alumni'? 'selected' : ''}}>Alumni</option>
             </select>
           </div>
           <div class="card-footer">
