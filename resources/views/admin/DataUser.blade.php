@@ -55,7 +55,7 @@ Data User
             <td>{{$item->nama}}</td>
             <td>{{$item->ttl}}</td>
             <td>{{$item->alamat}}</td>
-            <td>{{$item->kota}}</td>
+            <td>{{$item->cities->name}}</td>
             {{-- <td>{{$item->no_kk}}</td> --}}
             {{-- <td>{{$item->no_ktp}}</td> --}}
             <td>{{$item->jenis_kelamin}}</td>

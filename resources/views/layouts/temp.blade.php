@@ -54,7 +54,7 @@
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-              <!-- Message Start -->
+               Message Start -->
               <div class="media">
                 <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
@@ -184,6 +184,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Survey')}}" class="nav-link">
+              <i class="nav-icon fas fa-question"></i>
+              <p>
+                Hasil Survey
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Survey')}}" class="nav-link">
+              <i class="nav-icon fas fa-doc"></i>
+              <p>
+                Laporan
+              </p>
+            </a>
+          </li>
             @endif
            @if(auth()->user()->role == 2)
            <li class="nav-item has-treeview">
@@ -199,6 +215,22 @@
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Formulir
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('UserFormulir/'.Auth::user()->id)}}" class="nav-link">
+              <i class="nav-icon fas fa-eye"></i>
+              <p>
+                Lihat Formulir
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Kuesioner')}}" class="nav-link">
+              <i class="nav-icon fas fa-question"></i>
+              <p>
+                Survey Kepuasan
               </p>
             </a>
           </li>
@@ -461,6 +493,8 @@
     $('.textarea').summernote()
   })
 </script>
+@yield('script')
+ 
 </body>
 </html>
 

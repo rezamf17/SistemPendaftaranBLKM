@@ -31,17 +31,16 @@ Dashboard Admin
             <div class="small-box bg-info">
               <div class="inner">
                 <h4>Formulir</h4>
-
-                @if (DB::table('formulir')->where('id_user', Auth::user()->id)->exists())
-                  <p>Terimakasih, Kamu Sudah Isi Formulir</p>
-                @else
-                <p>Maaf, Kamu Belum Isi Formulir. Silahkan Isi Terlebih Dahulu</p>
-                @endif
+                <p>Isi Formulir Data Peserta Pelatihan Disini</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
+              @if (DB::table('formulir')->where('id_user', Auth::user()->id)->exists())
+                <a href="#" class="small-box-footer">Kamu Sudah Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @else
               <a href="{{ url('UserFormulir') }}" class="small-box-footer">Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @endif
             </div>
           </div>
           <!-- ./col -->
@@ -89,14 +88,19 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h4>Survey</h4>
 
-                <p>Unique Visitors</p>
+                <p>Survey Kepuasan Pengguna Kepada Alumni</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              @if (Auth::user()->status == "Alumni")
+              <a href="{{ url('Kuesioner') }}" class="small-box-footer">Isi Survey <i class="fas fa-arrow-circle-right"></i></a>
+              @else
+              <a href="#" class="small-box-footer">Maaf, Kamu Bukan Alumni <i class="fas fa-arrow-circle-right"></i></a>
+              @endif
+
             </div>
           </div>
           <!-- ./col -->

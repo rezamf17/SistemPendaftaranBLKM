@@ -23,7 +23,6 @@ class CreateFormulirsTable extends Migration
             $table->string('nama');
             $table->string('ttl');
             $table->text('alamat');
-            $table->string('kota');
             $table->string('no_kk')->nullable();
             $table->string('no_ktp')->nullable();
             $table->string('jenis_kelamin');

@@ -47,7 +47,6 @@ class UserFormulirController extends Controller
         $formulir->nama = $request->nama;
         $formulir->ttl = $request->ttl;
         $formulir->alamat = $request->alamat;
-        $formulir->kota = $request->kota;
         $formulir->jenis_kelamin = $request->jenis_kelamin;
         $formulir->pekerjaan = $request->pekerjaan;
         $formulir->no_hp = $request->no_hp;

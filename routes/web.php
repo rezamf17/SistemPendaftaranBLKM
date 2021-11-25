@@ -7,6 +7,8 @@ use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\UserFormulirController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SeleksiController;
+use App\Http\Controllers\KuesionerController;
+use App\Http\Controllers\HasilSurveyController;
 use App\Http\Controllers\DependentDropdownController;
 
 
@@ -34,6 +36,8 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::resource('Formulir', FormulirController::class);
     Route::resource('Pengumuman', PengumumanController::class);
     Route::resource('Seleksi', SeleksiController::class);
+    Route::get('Survey', [HasilSurveyController::class, 'index']);
+    Route::get('JawabanSurvey/{id}', [HasilSurveyController::class, 'jawabanSurvey']);
     Route::post('SeleksiData', [SeleksiController::class, 'seleksi']);
     Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']);
 });
@@ -41,6 +45,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
 Route::group(['middleware' => ['auth', 'role:2']], function() {
     Route::get('/user', [HomeController::class, 'user'])->name('user');
     Route::resource('UserFormulir', UserFormulirController::class);
+    Route::resource('Kuesioner', KuesionerController::class);
 });
 Route::get('/dropdown', [HomeController::class,'render_dropdown']);
 Route::get('provinces', [DependentDropdownController::class, 'provinces'])->name('provinces');
