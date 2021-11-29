@@ -35,6 +35,10 @@ Lihat User
               <td>{{$formulir->nama}}</td>
             </tr>
             <tr>
+              <th>Umur</th>
+              <td>{{$formulir->umur}}</td>
+            </tr>
+            <tr>
               <th>Tempat, Tanggal Lahir</th>
               <td>{{$formulir->ttl}}</td>
             </tr>
@@ -75,6 +79,14 @@ Lihat User
               <td>{{$formulir->pekerjaan}}</td>
             </tr>
             <tr>
+              <th>Pendidikan</th>
+              <td>{{$formulir->pendidikan}}</td>
+            </tr>
+            <tr>
+              <th>Angkatan</th>
+              <td>{{$formulir->angkatan}}</td>
+            </tr>
+            <tr>
               <th>No HP</th>
               <td>{{$formulir->no_hp}}</td>
             </tr>
@@ -95,8 +107,8 @@ Lihat User
               <td>{{$formulir->peminatan}}</td>
             </tr>
             <tr>
-              <th>Status</th>
-              <td>{{$formulir->status}}</td>
+              <th>Foto KTP</th>
+              <td>{{$formulir->foto_ktp}}</td>
             </tr>
         </table>
         </div>
@@ -110,8 +122,8 @@ Lihat User
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
                   <i class="fa fa-random"></i>Ganti Status
                 </button>
-          <a href="{{ url('Formulir') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
           <a href="{{ url('Formulir/exports/'.$formulir->id) }}" class="btn btn-danger"><i class="fa fa-print"></i>Buat Laporan</a>
+          <a href="{{ url('Formulir') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
 
         </div>
       </div>

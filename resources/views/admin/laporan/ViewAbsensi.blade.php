@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 @section('title')
-Laporan Absensi
+View Absensi
 @endsection
 @section('breadcrumb')
 <div class="content-wrapper">
@@ -9,12 +9,12 @@ Laporan Absensi
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Laporan Absensi</h1>
+          <h1 class="m-0 text-dark">View Absensi</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Laporan Absensi</li>
+            <li class="breadcrumb-item active">View Absensi</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,8 +23,14 @@ Laporan Absensi
   @endsection
   @section('content')
   <div class="card">
-    <div class="card-header">Laporan Absensi</div>
+    <div class="card-header">View Absensi</div>
     <div class="card-body">
+      <div class="form-group">
+        <label>Hari :</label> {{}}
+        <label></label>
+        <label></label>
+        <label></label>
+      </div>
       <table>
         <thead>
           <tr>

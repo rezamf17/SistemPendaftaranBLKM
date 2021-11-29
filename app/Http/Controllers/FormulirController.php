@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Exports\UserFormulirExport;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Dompdf\Dompdf;
+use PDF;
 
 class FormulirController extends Controller
 {
@@ -127,7 +128,9 @@ class FormulirController extends Controller
     public function DataUserReport($id)
     {
         $formulir = Formulir::where('id', $id)->first();
+        $pdf = PDF::loadview('admin.laporan.LaporanBiodata', compact('formulir'));
+        return $pdf->download('Biodata-'.$formulir->nama.'-'.$formulir->peminatan.'-'.$formulir->angkatan.'.pdf');
         // return (new UserFormulirExport($id, $formulir ))->download('invoices.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-        return view('admin.laporan.LaporanBiodata', compact('formulir'));
+        // return view('admin.laporan.LaporanBiodata', compact('formulir'));
     }
 }

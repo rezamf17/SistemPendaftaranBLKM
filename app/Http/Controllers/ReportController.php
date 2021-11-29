@@ -19,6 +19,8 @@ class ReportController extends Controller
     {
         $cities = $request->cities;
         $peminatan = $request->peminatan;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
         $formulir = Formulir::where('id_cities', $cities)
         ->where('peminatan', $peminatan)->get();
         return view ('admin.laporan.LaporanAbsensi', compact('formulir'));

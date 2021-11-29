@@ -160,6 +160,11 @@ Laporan
           <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
             @csrf
             <div class="modal-body">
+              <label>Hari/Tanggal</label>
+              <input type="text" name="hari" class="form-control d-inline">
+              <input type="date" name="tanggal" class="form-control d-inline">
+              <label>Tahun</label>
+              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control">
               <label>Peminatan</label>
               <select name="peminatan" class="form-control" required>
                   <option value="">-Silahkan Pilih Peminatan-</option>
