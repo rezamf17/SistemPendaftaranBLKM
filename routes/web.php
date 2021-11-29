@@ -9,6 +9,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\SeleksiController;
 use App\Http\Controllers\KuesionerController;
 use App\Http\Controllers\HasilSurveyController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\DependentDropdownController;
 
 
@@ -36,8 +37,12 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::resource('Formulir', FormulirController::class);
     Route::resource('Pengumuman', PengumumanController::class);
     Route::resource('Seleksi', SeleksiController::class);
+    Route::get('Formulir/exports/{id}', [FormulirController::class, 'DataUserReport']);
+    Route::post('LaporanAbsensi', [ReportController::class, 'LaporanAbsensi']);
+    Route::get('LaporanAbsensi', [ReportController::class, 'LaporanAbsensiReport']);
     Route::get('Survey', [HasilSurveyController::class, 'index']);
     Route::get('JawabanSurvey/{id}', [HasilSurveyController::class, 'jawabanSurvey']);
+    Route::get('Laporan', [ReportController::class, 'index']);
     Route::post('SeleksiData', [SeleksiController::class, 'seleksi']);
     Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']);
 });

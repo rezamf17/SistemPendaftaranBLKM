@@ -111,6 +111,8 @@ Lihat User
                   <i class="fa fa-random"></i>Ganti Status
                 </button>
           <a href="{{ url('Formulir') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
+          <a href="{{ url('Formulir/exports/'.$formulir->id) }}" class="btn btn-danger"><i class="fa fa-print"></i>Buat Laporan</a>
+
         </div>
       </div>
     </div>

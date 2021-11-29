@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Database\Seeders\UserFormulirSeeder;
+use Database\Seeders\SurveySeeder;
 use Laravolt\Indonesia\Seeds\CitiesSeeder;
 use Laravolt\Indonesia\Seeds\VillagesSeeder;
 use Laravolt\Indonesia\Seeds\DistrictsSeeder;
@@ -85,13 +86,21 @@ class DatabaseSeeder extends Seeder
                'password' => Hash::make('123456'),
                'status' => "Calon Peserta"
             ],
+            [
+               'name' => 'hidayat',
+               'phone' => '08328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
      ]);
         $this->call([
             ProvincesSeeder::class,
             CitiesSeeder::class,
             DistrictsSeeder::class,
             VillagesSeeder::class,
-            UserFormulirSeeder::class
+            UserFormulirSeeder::class,
+            SurveySeeder::class
         ]);
     }
 }

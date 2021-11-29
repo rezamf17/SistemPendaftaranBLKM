@@ -7,6 +7,9 @@ use App\Models\Formulir;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Exports\UserFormulirExport;
+use PhpOffice\PhpWord\TemplateProcessor;
+use Dompdf\Dompdf;
 
 class FormulirController extends Controller
 {
@@ -121,4 +124,10 @@ class FormulirController extends Controller
         return redirect('Formulir/'.$id)->with('success', 'Status Berhasil Di Ganti!');
     }
 
+    public function DataUserReport($id)
+    {
+        $formulir = Formulir::where('id', $id)->first();
+        // return (new UserFormulirExport($id, $formulir ))->download('invoices.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+        return view('admin.laporan.LaporanBiodata', compact('formulir'));
+    }
 }

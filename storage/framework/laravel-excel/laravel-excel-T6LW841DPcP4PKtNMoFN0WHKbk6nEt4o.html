@@ -3,35 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title') | BLKM</title>
+  <title>Data User
+ | BLKM</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="icon" href="{{asset('style/images/LogoJabar.png')}}">
+  <link rel="icon" href="http://127.0.0.1:8000/style/images/LogoJabar.png">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{url('style/plugins/fontawesome-free/css/all.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="{{url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="{{url('style/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="{{url('style/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="{{url('style/plugins/jqvmap/jqvmap.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{url('style/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{url('style/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{url('style/plugins/daterangepicker/daterangepicker.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="{{url('style/plugins/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="{{url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}" rel="stylesheet">
-  <link rel="stylesheet" href="{{asset('style/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{asset('style/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="{{url('style/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+  <link rel="stylesheet" href="http://127.0.0.1:8000/style/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -90,19 +91,18 @@
         </li>
         <li class="nav-item dropdown">
           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }}
+            Reza
           </a>
 
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
+            <a class="dropdown-item" href="http://127.0.0.1:8000/logout"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
+            Logout
           </a>
 
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-            <!-- <button type="submit">Logout</button> -->
+          <form id="logout-form" action="http://127.0.0.1:8000/logout" method="POST" class="d-none">
+            <input type="hidden" name="_token" value="a5cKenGHsEpgaGpKGkNffnI6lpK7rdos0rQAinmK">            <!-- <button type="submit">Logout</button> -->
           </form>
         </div>
       </li>
@@ -121,7 +121,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="{{asset('style/images/LogoJabar.jpg')}}"  class="brand-image img-circle elevation-3"
+      <img src="http://127.0.0.1:8000/style/images/LogoJabar.jpg"  class="brand-image img-circle elevation-3"
       style="opacity: .8">
       <span class="brand-text font-weight-light">BLKM</span>
     </a>
@@ -131,10 +131,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('style/dist/img/user.png')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="http://127.0.0.1:8000/style/dist/img/user.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block">Reza</a>
         </div>
       </div>
 
@@ -143,9 +143,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-           @if(auth()->user()->role == 1)
-           <li class="nav-item has-treeview">
-            <a href="{{route('home')}}" class="nav-link">
+                      <li class="nav-item has-treeview">
+            <a href="http://127.0.0.1:8000/home" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -153,7 +152,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('KelolaAkun')}}" class="nav-link">
+            <a href="http://127.0.0.1:8000/KelolaAkun" class="nav-link">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
                 Kelola Akun
@@ -161,7 +160,7 @@
             </a>
           </li>
            <li class="nav-item has-treeview">
-            <a href="{{url('Formulir')}}" class="nav-link">
+            <a href="http://127.0.0.1:8000/Formulir" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Data User
@@ -169,7 +168,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Pengumuman')}}" class="nav-link">
+            <a href="http://127.0.0.1:8000/Pengumuman" class="nav-link">
               <i class="nav-icon fas fa-bullhorn"></i>
               <p>
                 Pengumuman
@@ -177,7 +176,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Seleksi')}}" class="nav-link">
+            <a href="http://127.0.0.1:8000/Seleksi" class="nav-link">
               <i class="nav-icon fas fa-filter"></i>
               <p>
                 Seleksi
@@ -185,7 +184,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Survey')}}" class="nav-link">
+            <a href="http://127.0.0.1:8000/Survey" class="nav-link">
               <i class="nav-icon fas fa-question"></i>
               <p>
                 Hasil Survey
@@ -193,49 +192,14 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Laporan')}}" class="nav-link">
+            <a href="http://127.0.0.1:8000/Laporan" class="nav-link">
               <i class="nav-icon fas fa-print"></i>
               <p>
                 Laporan
               </p>
             </a>
           </li>
-            @endif
-           @if(auth()->user()->role == 2)
-           <li class="nav-item has-treeview">
-            <a href="{{url('user')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="{{url('UserFormulir')}}" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Formulir
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="{{url('UserFormulir/'.Auth::user()->id)}}" class="nav-link">
-              <i class="nav-icon fas fa-eye"></i>
-              <p>
-                Lihat Formulir
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="{{url('Kuesioner')}}" class="nav-link">
-              <i class="nav-icon fas fa-question"></i>
-              <p>
-                Survey Kepuasan
-              </p>
-            </a>
-          </li>
-            @endif
-          </ul>
+                                 </ul>
         </nav>
         <!-- /.sidebar-menu -->
       </div>
@@ -243,14 +207,64 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    @yield('breadcrumb')
-
+    <div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Data User</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Data User</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  
     <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
-     @yield('content')
-
+       <div class="card">
+    <div class="card-header">
+      Data User
+      <div class="float-right"><a href="" title=""></a></div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Tempat, Tanggal Lahir</th>
+            <th>Alamat</th>
+            <th>Kota</th>
+            
+            
+            <th>Jenis Kelamin</th>
+            
+            <th>No HP</th>
+            
+            
+            <th>Peminatan</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+        <!-- /.modal-content -->
+      </div>
+            
    </section>
    <!-- /.content -->
  </div>
@@ -272,47 +286,47 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{url('style/plugins/jquery/jquery.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{url('style/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="{{url('style/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="{{url('style/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="{{url('style/plugins/sparklines/sparkline.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="{{url('style/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{url('style/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="http://127.0.0.1:8000/style/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="{{url('style/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<script src="{{url('style/plugins/moment/moment.min.js')}}"></script>
-<script src="{{url('style/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/moment/moment.min.js"></script>
+<script src="http://127.0.0.1:8000/style/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="{{url('style/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="{{url('style/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="{{url('style/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{url('style/dist/js/adminlte.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{url('style/dist/js/pages/dashboard.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{url('style/dist/js/demo.js')}}"></script>
-<script src="{{url('style/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{url('style/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{url('style/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{url('style/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/dist/js/demo.js"></script>
+<script src="http://127.0.0.1:8000/style/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="http://127.0.0.1:8000/style/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="http://127.0.0.1:8000/style/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="http://127.0.0.1:8000/style/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- SweetAlert2 -->
-<script src="{{url('style/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
-<script src="{{url('style/plugins/toastr/toastr.min.js')}}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/toastr/toastr.min.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -486,14 +500,13 @@
 
 </script>
 <!-- Summernote -->
-<script src="{{ url('style/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="http://127.0.0.1:8000/style/plugins/summernote/summernote-bs4.min.js"></script>
 <script>
   $(function () {
     // Summernote
     $('.textarea').summernote()
   })
 </script>
-@yield('script')
  
 </body>
 </html>
