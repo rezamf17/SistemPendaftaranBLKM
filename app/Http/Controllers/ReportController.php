@@ -48,4 +48,25 @@ class ReportController extends Controller
         return $pdf->download('Daftar-Hadir-'.$peminatan.'-'.$tahun.$tempat->cities->name.'.pdf');
 
     }
+
+    public function ViewAbsensiUndangan(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewDaftarHadirUndangan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat'));
+    }
+    public function LaporanAbsensiUndangan(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanDaftarHadirUndangan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat'));
+        $pdf = PDF::loadview('admin.laporan.LaporanDaftarHadirUndangan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat'));
+        return $pdf->download('Daftar-Hadir-Undangan'.$tanggal.'-'.$tempat->cities->name.'.pdf');
+    }
 }

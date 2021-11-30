@@ -208,7 +208,7 @@ Laporan
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
+          <form action="{{ url('ViewAbsensiUndangan') }}" method="post" accept-charset="utf-8">
             @csrf
             <div class="modal-body">
                <label>Hari/Tanggal</label>
@@ -235,7 +235,44 @@ Laporan
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    @include('sweetalert::alert')
+  </div>
+
+   <div class="modal fade" id="modal-daftar-hadir-undangan">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Tanda Terima Sertifikat</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="{{ url('ViewAbsensiUndangan') }}" method="post" accept-charset="utf-8">
+            @csrf
+            <div class="modal-body">
+               <label>Hari/Tanggal</label>
+                <input type="text" name="hari" class="form-control d-inline">
+                <input type="date" name="tanggal" class="form-control d-inline">
+                <label>Tahun</label>
+              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
+              <label>Kota/Kabupaten</label>
+              <select name="cities" class="form-control" id="kota" onchange="change()">
+              <option value="" >-Pilih Kota/Kabupaten-</option>
+              @foreach ($kota as $element)
+              <option value="{{$element->id}}">{{$element->name}}</option>
+              @endforeach
+            </select>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Lihat Print</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
   </div>
   @include('sweetalert::alert')
   @endsection

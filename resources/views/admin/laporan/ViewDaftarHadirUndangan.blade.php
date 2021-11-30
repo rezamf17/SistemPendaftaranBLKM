@@ -26,7 +26,7 @@ View Daftar Hadir Undangan
     <div class="card-header">View Daftar Hadir Undangan</div>
     <div class="card-body">
       <div class="form-group">
-        <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
+        <form action="{{ url('LaporanAbsensiUndangan') }}" method="post" accept-charset="utf-8">
           @csrf
         <input type="" name="cities" value="{{$cities}}" style="display: none;">
         <input type="" name="tahun" value="{{$tahun}}" style="display: none;">
@@ -36,28 +36,38 @@ View Daftar Hadir Undangan
         <input type="text" name="tanggal" value="{{$tanggal}}" class="form-control">
         <label>Tempat :</label>
         <input type="text" name="tempat" value="{{$tempat->cities->name}}" class="form-control" >
-        <label>Peminatan :</label>
-        <input type="text" name="peminatan" value="{{$peminatan}}" class="form-control" >
       </div>
-      <table class="table">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>No</th>
             <th>Nama</th>
-            <th>Alamat</th>
+            <th>Jabatan</th>
+            <th colspan="2">Tanda Tangan</th>
           </tr>
         </thead>
         <tbody>
-          @foreach ($formulir as $element)
-            <tr>
-              <td>{{$loop->iteration}}</td>
-              <td>{{$element->nama}}</td>
-              <td>{{$element->alamat}}, 
-                Desa/Kelurahan :{{$element->villages->name}},
-                Kecamatan :{{$element->districts->name}},
-                Kota/Kabupaten :{{$element->cities->name}}</td>
-            </tr>
-          @endforeach
+          @for ($i = 1; $i <=20 ; $i++)
+           <tr>
+             <td>{{$i}}</td>
+             <td></td>
+             <td></td>
+             <td>
+               @if ($i % 2 == 0)
+                 
+                 @else
+                 {{$i}}
+               @endif
+             </td>
+             <td>
+               @if ($i % 2 == 1)
+                 
+                 @else
+                 {{$i}}
+               @endif
+             </td>
+           </tr>
+          @endfor
         </tbody>
       </table>
       <div class="card-footer">
