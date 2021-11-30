@@ -157,14 +157,14 @@ Laporan
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
+          <form action="{{ url('ViewAbsensi') }}" method="post" accept-charset="utf-8">
             @csrf
             <div class="modal-body">
               <label>Hari/Tanggal</label>
               <input type="text" name="hari" class="form-control d-inline">
               <input type="date" name="tanggal" class="form-control d-inline">
               <label>Tahun</label>
-              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control">
+              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
               <label>Peminatan</label>
               <select name="peminatan" class="form-control" required>
                   <option value="">-Silahkan Pilih Peminatan-</option>
@@ -179,14 +179,12 @@ Laporan
                   <option value="Start Up">Start Up</option>
                   <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
                 </select>
-            </div>
-            <div class="modal-body">
               <label>Kota/Kabupaten</label>
-              <select name="cities" class="form-control" id="kota" onchange="change()">
-              <option value="" >-Pilih Kota/Kabupaten-</option>
-              @foreach ($kota as $element)
-              <option value="{{$element->id}}">{{$element->name}}</option>
-              @endforeach
+                <select name="cities" class="form-control" id="kota">
+                <option value="" >-Pilih Kota/Kabupaten-</option>
+                @foreach ($kota as $element)
+                <option value="{{$element->id}}">{{$element->name}}</option>
+                @endforeach
             </select>
             </div>
             <div class="modal-footer justify-content-between">
@@ -213,22 +211,11 @@ Laporan
           <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
             @csrf
             <div class="modal-body">
-              <label>Peminatan</label>
-              <select name="peminatan" class="form-control" required>
-                  <option value="">-Silahkan Pilih Peminatan-</option>
-                  <option value="Tata Boga">Tata Boga</option>
-                  <option value="Las Listrik">Las Listrik</option>
-                  <option value="Tata Rias Wajah dan Hijab">Tata Rias Wajah dan Hijab</option>
-                  <option value="Financial Life Skill">Financial Life Skill</option>
-                  <option value="Barista">Barista</option>
-                  <option value="Catering">Catering</option>
-                  <option value="Otomotif Service Sepeda Motor Ringan">Otomotif Service Sepeda Motor Ringan</option>
-                  <option value="Bakery">Bakery</option>
-                  <option value="Start Up">Start Up</option>
-                  <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
-                </select>
-            </div>
-            <div class="modal-body">
+               <label>Hari/Tanggal</label>
+                <input type="text" name="hari" class="form-control d-inline">
+                <input type="date" name="tanggal" class="form-control d-inline">
+                <label>Tahun</label>
+              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
               <label>Kota/Kabupaten</label>
               <select name="cities" class="form-control" id="kota" onchange="change()">
               <option value="" >-Pilih Kota/Kabupaten-</option>

@@ -33,6 +33,10 @@ Isi Formulir
                 <input type="text" class="form-control" value="{{Auth::user()->name}}" name="nama" required> 
             </div>
             <div class="form-group">
+                <label>Umur</label>
+                <input type="number" class="form-control" name="umur" required> 
+            </div>
+            <div class="form-group">
                 <label>Tempat, Tanggal Lahir</label>
                 <input type="text" class="form-control" name="ttl" required>
                 <i>*Contoh : Bandung, 18 April 1987</i>
@@ -86,6 +90,25 @@ Isi Formulir
                 <input type="text" class="form-control" name="pekerjaan" required> 
             </div>
             <div class="form-group">
+                <label>Pendidikan</label>
+                <select name="pendidikan" class="form-control" required>
+                     <option value="">-Pilih Pendidikan-</option>
+                     <option value="SD">SD</option>
+                     <option value="SMP">SMP</option>
+                     <option value="SMA/SMK">SMA/SMK</option>
+                     <option value="S1">S1</option>
+                     <option value="S2">S2</option>
+                     <option value="S3">S3</option>
+                     <option value="Paket A">Paket A</option>
+                     <option value="Paket B">Paket B</option>
+                     <option value="Paket C">Paket C</option>
+                 </select> 
+            </div>
+            <div class="form-group">
+                <label>Angkatan</label>
+                <input type="number" class="form-control" name="angkatan" value="2021" required> 
+            </div>
+            <div class="form-group">
                 <label>Nomor Handphone</label>
                 <input type="text" class="form-control" name="no_hp" value="{{Auth::user()->phone}}"> 
             </div>
@@ -113,6 +136,10 @@ Isi Formulir
                   <option value="Start Up">Start Up</option>
                   <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Foto/Scan KTP</label>
+                <input type="file" name="foto_ktp" class="form-control">
             </div>
             <div class="card-footer">
               <input type="submit" class="btn btn-primary" value="Simpan" name="">

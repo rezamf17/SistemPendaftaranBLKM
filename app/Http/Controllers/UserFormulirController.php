@@ -45,10 +45,13 @@ class UserFormulirController extends Controller
         $formulir->id_districts = $request->kecamatan;
         $formulir->id_villages = $request->desa;
         $formulir->nama = $request->nama;
+        $formulir->umur = $request->umur;
         $formulir->ttl = $request->ttl;
         $formulir->alamat = $request->alamat;
         $formulir->jenis_kelamin = $request->jenis_kelamin;
         $formulir->pekerjaan = $request->pekerjaan;
+        $formulir->pendidikan = $request->pendidikan;
+        $formulir->angkatan = $request->angkatan;
         $formulir->no_hp = $request->no_hp;
         $formulir->peminatan = $request->peminatan;
         $formulir->save();

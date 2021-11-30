@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 @section('title')
-View Daftar Hadir
+View Daftar Hadir Undangan
 @endsection
 @section('breadcrumb')
 <div class="content-wrapper">
@@ -9,12 +9,12 @@ View Daftar Hadir
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">View Daftar Hadir</h1>
+          <h1 class="m-0 text-dark">View Daftar Hadir Undangan</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">View Daftar Hadir</li>
+            <li class="breadcrumb-item active">View Daftar Hadir Undangan</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,7 +23,7 @@ View Daftar Hadir
   @endsection
   @section('content')
   <div class="card">
-    <div class="card-header">View Daftar Hadir</div>
+    <div class="card-header">View Daftar Hadir Undangan</div>
     <div class="card-body">
       <div class="form-group">
         <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">

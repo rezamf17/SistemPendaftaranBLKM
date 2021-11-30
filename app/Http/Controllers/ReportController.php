@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Seleksi;
 use App\Models\Formulir;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Dompdf\Dompdf;
+use PDF;
 
 class ReportController extends Controller
 {
@@ -15,36 +17,35 @@ class ReportController extends Controller
         return view('admin.laporan.Laporan', compact('kota'));
     }
 
-    public function LaporanAbsensi(Request $request)
+    public function ViewAbsensi(Request $request)
     {
         $cities = $request->cities;
         $peminatan = $request->peminatan;
         $hari = $request->hari;
         $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
         $formulir = Formulir::where('id_cities', $cities)
         ->where('peminatan', $peminatan)->get();
-        return view ('admin.laporan.LaporanAbsensi', compact('formulir'));
+        $tempat = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->first();
+        // dd($request->all());
+        return view ('admin.laporan.ViewAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities', 'tahun'));
     }
 
-    public function LaporanAbsensiReport(Request $request)
+    public function LaporanAbsensi(Request $request)
     {
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
         $cities = $request->cities;
         $peminatan = $request->peminatan;
-        // $formulir = Formulir::where('id_cities', $cities)
-        // ->where('peminatan', $peminatan)->get();
-        // $formulir = Formulir::all();
-        $report = new TemplateProcessor('word-template/DataAbsensi.docx');
-        $formulir = $report->getVariables();
-        
-        // $report->setValue('loop', $loop->iteration);
-        foreach ($formulir as $key) {
-            // code...
-        $report->setValue($key, 'loop');
-        $report->setValue($key, 'alamat');
-        }
-        
-        $fileName = 'tes';
-        $report->saveAs($fileName. '.docx');
-        return response()->download($fileName. '.docx')->deleteFileAfterSend(true);
+        $tahun = $request->tahun;
+        $tempat = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->first();
+        $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        // return view ('admin.laporan.LaporanAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities'));
+        $pdf = PDF::loadview('admin.laporan.LaporanAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities', 'tahun'));
+        return $pdf->download('Daftar-Hadir-'.$peminatan.'-'.$tahun.$tempat->cities->name.'.pdf');
+
     }
 }

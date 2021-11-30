@@ -37,9 +37,12 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::resource('Formulir', FormulirController::class);
     Route::resource('Pengumuman', PengumumanController::class);
     Route::resource('Seleksi', SeleksiController::class);
+    // Report
     Route::get('Formulir/exports/{id}', [FormulirController::class, 'DataUserReport']);
+    Route::post('ViewAbsensi', [ReportController::class, 'ViewAbsensi']);
     Route::post('LaporanAbsensi', [ReportController::class, 'LaporanAbsensi']);
-    Route::get('LaporanAbsensi', [ReportController::class, 'LaporanAbsensiReport']);
+    // Route::post('LaporanDaftarHadir', [ReportController::class, 'LaporanDaftarHadir']);
+    // End Report
     Route::get('Survey', [HasilSurveyController::class, 'index']);
     Route::get('JawabanSurvey/{id}', [HasilSurveyController::class, 'jawabanSurvey']);
     Route::get('Laporan', [ReportController::class, 'index']);
