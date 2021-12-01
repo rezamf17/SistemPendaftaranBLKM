@@ -14,16 +14,16 @@
 			border-collapse: collapse;
       padding:  6px;
 		}
-    h2, h3 {
+    h4, h3 {
       text-align: center;
     }
 	</style>
 </head>
 <body>
-	<h2>DAFTAR HADIR</h2>
-  <h3>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI <br> 
-    TAHUN {{$tempat->angkatan}}</h3>
-    <h3>DI {{$tempat->cities->name}}</h3>  
+	<h3>DAFTAR HADIR</h3>
+  <h4>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI <br> 
+    TAHUN {{$tempat->angkatan}}</h4>
+    <h4>DI {{$tempat->cities->name}}</h4>  
     <hr>
 	<label>Hari :</label> {{$hari}}/{{$tanggal}} <br>
     <label>Tempat :</label>{{$tempat->cities->name}} <br>

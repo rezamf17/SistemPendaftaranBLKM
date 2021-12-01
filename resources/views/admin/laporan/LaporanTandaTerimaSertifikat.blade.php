@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Laporan Daftar Hadir</title>
+	<title>Laporan Tanda Terima Sertifikat</title>
 	<link rel="stylesheet" href="">
 	<style type="text/css" media="screen">
 		body{
@@ -12,6 +12,12 @@
 		table, th, td{
 			border: 1px solid black;
 			border-collapse: collapse;
+			padding:  3px;
+			font-size: 15px;
+		}
+		label{
+			font-size: 15px;
+			text-align: left;
 		}
     h4, h3 {
       text-align: center;
@@ -19,20 +25,20 @@
 	</style>
 </head>
 <body>
-	<h3>DAFTAR HADIR</h3>
+	<h3>TANDA TERIMA SERTIFIKAT</h3>
   <h4>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI <br> 
-    TAHUN {{$tempat->angkatan}} <br>
-    DI {{$tempat->cities->name}}</h4>  
+    TAHUN {{$tahun}} <br> DI {{$tempat->cities->name}}</h4>  
     <hr>
-	<label>Hari :</label> {{$hari}}/{{$tanggal}} <br>
-    <label>Tempat :</label>{{$tempat->cities->name}} <br>
-    <label>Peminatan :</label>{{$peminatan}}
-	<table>
+	<label>Hari : {{$hari}}/{{$tanggal}}</label>  <br>
+    <label>Tempat : {{$tempat->cities->name}}</label> <br>
+    <label>Peminatan : {{$peminatan}}</label>
+    <table>
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th style="width: 340px;">Alamat</th>
+            <th>Nama Peserta</th>
+            <th style="width: 340px;">Alamat Asal</th>
+            <th>Sertifikat</th>
             <th colspan="2">Tanda Tangan</th>
           </tr>
         </thead>
@@ -45,18 +51,17 @@
                 Desa/Kelurahan :{{$element->villages->name}},
                 Kecamatan :{{$element->districts->name}},
                 Kota/Kabupaten :{{$element->cities->name}}</td>
-              <td>
-                @if ($loop->iteration % 2 == 0)
-                  
+              <td>1 Paket</td>
+              <td style="width: 70px;">
+                @if ($loop->even)
                 @else
-                  {{$loop->iteration}}.
+                {{$loop->iteration}}.
                 @endif
-            </td>
-              <td>
-                @if ($loop->iteration % 2 == 1)
-                  
+              </td>
+              <td style="width: 70px;">
+                @if ($loop->odd)
                 @else
-                  {{$loop->iteration}}.
+                {{$loop->iteration}}.
                 @endif
               </td>
             </tr>

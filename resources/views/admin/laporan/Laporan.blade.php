@@ -58,7 +58,7 @@ Laporan
                 <td>3</td>
                 <td>Tanda Terima Sertifikat</td>
                 <th>
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-daftar-hadir-undangan">
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-tanda-terima-sertifikat">
                     <i class="fa fa-print"></i>Buat Laporan
                   </button>
                 </th>
@@ -237,7 +237,7 @@ Laporan
     <!-- /.modal -->
   </div>
 
-   <div class="modal fade" id="modal-daftar-hadir-undangan">
+   <div class="modal fade" id="modal-tanda-terima-sertifikat">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -246,20 +246,34 @@ Laporan
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="{{ url('ViewAbsensiUndangan') }}" method="post" accept-charset="utf-8">
+          <form action="{{ url('ViewTandaTerimaSertifikat') }}" method="post" accept-charset="utf-8">
             @csrf
             <div class="modal-body">
-               <label>Hari/Tanggal</label>
-                <input type="text" name="hari" class="form-control d-inline">
-                <input type="date" name="tanggal" class="form-control d-inline">
-                <label>Tahun</label>
+                <label>Hari/Tanggal</label>
+              <input type="text" name="hari" class="form-control d-inline">
+              <input type="date" name="tanggal" class="form-control d-inline">
+              <label>Tahun</label>
               <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
+              <label>Peminatan</label>
+              <select name="peminatan" class="form-control" required>
+                  <option value="">-Silahkan Pilih Peminatan-</option>
+                  <option value="Tata Boga">Tata Boga</option>
+                  <option value="Las Listrik">Las Listrik</option>
+                  <option value="Tata Rias Wajah dan Hijab">Tata Rias Wajah dan Hijab</option>
+                  <option value="Financial Life Skill">Financial Life Skill</option>
+                  <option value="Barista">Barista</option>
+                  <option value="Catering">Catering</option>
+                  <option value="Otomotif Service Sepeda Motor Ringan">Otomotif Service Sepeda Motor Ringan</option>
+                  <option value="Bakery">Bakery</option>
+                  <option value="Start Up">Start Up</option>
+                  <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
+                </select>
               <label>Kota/Kabupaten</label>
-              <select name="cities" class="form-control" id="kota" onchange="change()">
-              <option value="" >-Pilih Kota/Kabupaten-</option>
-              @foreach ($kota as $element)
-              <option value="{{$element->id}}">{{$element->name}}</option>
-              @endforeach
+                <select name="cities" class="form-control" id="kota">
+                <option value="" >-Pilih Kota/Kabupaten-</option>
+                @foreach ($kota as $element)
+                <option value="{{$element->id}}">{{$element->name}}</option>
+                @endforeach
             </select>
             </div>
             <div class="modal-footer justify-content-between">

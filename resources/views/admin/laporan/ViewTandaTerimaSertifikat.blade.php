@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 @section('title')
-View Daftar Hadir
+View Tanda Terima Sertifikat
 @endsection
 @section('breadcrumb')
 <div class="content-wrapper">
@@ -9,12 +9,12 @@ View Daftar Hadir
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">View Daftar Hadir</h1>
+          <h1 class="m-0 text-dark">View Tanda Terima Sertifikat</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">View Daftar Hadir</li>
+            <li class="breadcrumb-item active">View Tanda Terima Sertifikat</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -23,10 +23,10 @@ View Daftar Hadir
   @endsection
   @section('content')
   <div class="card">
-    <div class="card-header">View Daftar Hadir</div>
+    <div class="card-header">View Tanda Terima Sertifikat</div>
     <div class="card-body">
       <div class="form-group">
-        <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
+        <form action="{{ url('LaporanTandaTerimaSertifikat') }}" method="post" accept-charset="utf-8">
           @csrf
         <input type="" name="cities" value="{{$cities}}" style="display: none;">
         <input type="" name="tahun" value="{{$tahun}}" style="display: none;">
@@ -43,8 +43,10 @@ View Daftar Hadir
         <thead>
           <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>Alamat</th>
+            <th>Nama Peserta</th>
+            <th>Alamat Asal</th>
+            <th>Sertifikat</th>
+            <th colspan="2">Tanda Tangan</th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +58,19 @@ View Daftar Hadir
                 Desa/Kelurahan :{{$element->villages->name}},
                 Kecamatan :{{$element->districts->name}},
                 Kota/Kabupaten :{{$element->cities->name}}</td>
+              <td>1 Paket</td>
+              <td>
+                @if ($loop->even)
+                @else
+                {{$loop->iteration}}.
+                @endif
+              </td>
+              <td>
+                @if ($loop->odd)
+                @else
+                {{$loop->iteration}}.
+                @endif
+              </td>
             </tr>
           @endforeach
         </tbody>

@@ -69,4 +69,32 @@ class ReportController extends Controller
         $pdf = PDF::loadview('admin.laporan.LaporanDaftarHadirUndangan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat'));
         return $pdf->download('Daftar-Hadir-Undangan'.$tanggal.'-'.$tempat->cities->name.'.pdf');
     }
+
+    public function ViewTandaTerimaSertifikat(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+    }
+
+    public function LaporanTandaTerimaSertifikat(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        return $pdf->download('TandaTerimaSertifikat-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
 }

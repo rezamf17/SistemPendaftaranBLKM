@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::post('LaporanAbsensi', [ReportController::class, 'LaporanAbsensi']);
     Route::post('ViewAbsensiUndangan', [ReportController::class, 'ViewAbsensiUndangan']);
     Route::post('LaporanAbsensiUndangan', [ReportController::class, 'LaporanAbsensiUndangan']);
+    Route::post('ViewTandaTerimaSertifikat', [ReportController::class, 'ViewTandaTerimaSertifikat']);
+    Route::post('LaporanTandaTerimaSertifikat', [ReportController::class, 'LaporanTandaTerimaSertifikat']);
     // Route::post('LaporanDaftarHadir', [ReportController::class, 'LaporanDaftarHadir']);
     // End Report
     Route::get('Survey', [HasilSurveyController::class, 'index']);
