@@ -97,4 +97,76 @@ class ReportController extends Controller
         $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         return $pdf->download('TandaTerimaSertifikat-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
+
+    public function ViewTandaTerimaPerlengkapan(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+        $perlengkapan_1 = $request->perlengkapan_1;
+        $perlengkapan_2 = $request->perlengkapan_2;
+        $perlengkapan_3 = $request->perlengkapan_3;
+        $perlengkapan_4 = $request->perlengkapan_4;
+        $perlengkapan_5 = $request->perlengkapan_5;
+        $perlengkapan_6 = $request->perlengkapan_6;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewTandaTerimaPerlengkapan', compact(
+            'hari', 
+            'tanggal', 
+            'cities', 
+            'tahun', 
+            'tempat', 
+            'peminatan', 
+            'formulir',
+            'perlengkapan_1',
+            'perlengkapan_2',
+            'perlengkapan_3',
+            'perlengkapan_4',
+            'perlengkapan_5',
+            'perlengkapan_6',));
+    }
+
+    public function LaporanTandaTerimaPerlengkapan(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+        $perlengkapan_1 = $request->perlengkapan_1;
+        $perlengkapan_2 = $request->perlengkapan_2;
+        $perlengkapan_3 = $request->perlengkapan_3;
+        $perlengkapan_4 = $request->perlengkapan_4;
+        $perlengkapan_5 = $request->perlengkapan_5;
+        $perlengkapan_6 = $request->perlengkapan_6;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanTandaTerimaPerlengkapan', compact(
+        //     'hari', 
+        //     'tanggal', 
+        //     'cities', 
+        //     'tahun', 
+        //     'tempat', 
+        //     'peminatan', 
+        //     'formulir',
+        //     'perlengkapan_1',
+        //     'perlengkapan_2',
+        //     'perlengkapan_3',
+        //     'perlengkapan_4',
+        //     'perlengkapan_5',
+        //     'perlengkapan_6',
+        // ));
+        $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaPerlengkapan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir', 'perlengkapan_1',
+            'perlengkapan_2',
+            'perlengkapan_3',
+            'perlengkapan_4',
+            'perlengkapan_5',
+            'perlengkapan_6',));
+        return $pdf->download('TandaTerimaPerlengkapan-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
 }

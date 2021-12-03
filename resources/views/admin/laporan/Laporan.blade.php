@@ -67,7 +67,7 @@ Laporan
                 <td>4</td>
                   <td>Tanda Terima Perlengkapan</td>
                   <th>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-daftar-hadir-undangan">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-tanda-terima-perlengkapan">
                       <i class="fa fa-print"></i>Buat Laporan
                     </button>
                   </th>
@@ -275,6 +275,70 @@ Laporan
                 <option value="{{$element->id}}">{{$element->name}}</option>
                 @endforeach
             </select>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Lihat Print</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+  </div>
+
+  <div class="modal fade" id="modal-tanda-terima-perlengkapan">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Tanda Terima Perlengkapan</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="{{ url('ViewTandaTerimaPerlengkapan') }}" method="post" accept-charset="utf-8">
+            @csrf
+            <div class="modal-body" style="max-height: calc(100vh - 210px);">
+                <label>Hari/Tanggal</label>
+              <input type="text" name="hari" class="form-control d-inline">
+              <input type="date" name="tanggal" class="form-control d-inline">
+              <label>Tahun</label>
+              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
+              <label>Peminatan</label>
+              <select name="peminatan" class="form-control" required>
+                  <option value="">-Silahkan Pilih Peminatan-</option>
+                  <option value="Tata Boga">Tata Boga</option>
+                  <option value="Las Listrik">Las Listrik</option>
+                  <option value="Tata Rias Wajah dan Hijab">Tata Rias Wajah dan Hijab</option>
+                  <option value="Financial Life Skill">Financial Life Skill</option>
+                  <option value="Barista">Barista</option>
+                  <option value="Catering">Catering</option>
+                  <option value="Otomotif Service Sepeda Motor Ringan">Otomotif Service Sepeda Motor Ringan</option>
+                  <option value="Bakery">Bakery</option>
+                  <option value="Start Up">Start Up</option>
+                  <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
+                </select>
+              <label>Kota/Kabupaten</label>
+                <select name="cities" class="form-control" id="kota">
+                <option value="" >-Pilih Kota/Kabupaten-</option>
+                @foreach ($kota as $element)
+                <option value="{{$element->id}}">{{$element->name}}</option>
+                @endforeach
+            </select>
+            <label>Perlengkapan 1</label>
+              <input type="text" name="perlengkapan_1" class="form-control">
+            <label>Perlengkapan 2</label>
+              <input type="text" name="perlengkapan_2" class="form-control">
+            <label>Perlengkapan 3</label>
+              <input type="text" name="perlengkapan_3" class="form-control">
+            <label>Perlengkapan 4</label>
+              <input type="text" name="perlengkapan_4" class="form-control">
+            <label>Perlengkapan 5</label>
+              <input type="text" name="perlengkapan_5" class="form-control">
+            <label>Perlengkapan 6</label>
+              <input type="text" name="perlengkapan_6" class="form-control">
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

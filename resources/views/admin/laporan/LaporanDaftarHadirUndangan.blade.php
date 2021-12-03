@@ -17,6 +17,18 @@
     h4, h3 {
       text-align: center;
     }
+    .ttd1{
+      margin-top: 15px;
+      text-align: center;
+      margin-right: 60%;
+      font-size: 12px;
+    }
+    .ttd2{
+      margin-top: -36px;
+      margin-left: 55%;
+      text-align: center;
+      font-size: 12px;
+    }
 	</style>
 </head>
 <body>
@@ -60,5 +72,14 @@
           @endfor
         </tbody>
       </table>
+      <div class="ttd1">
+      Mengetahui : <br>
+      Kepala Seksi Penyelenggaraan Pelatihan,
+    </div>
+
+    <div class="ttd2">
+      Bandung, ............... {{$tahun}}<br>
+      Urusan Administrasi,
+    </div>
 </body>
 </html>
