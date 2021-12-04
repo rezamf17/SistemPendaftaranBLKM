@@ -169,4 +169,34 @@ class ReportController extends Controller
             'perlengkapan_6',));
         return $pdf->download('TandaTerimaPerlengkapan-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
+
+    public function ViewTandaTerimaHasilPraktik(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+        $bahan_praktik = $request->bahan_praktik;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewTandaTerimaHasilPraktik', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir', 'bahan_praktik'));
+    }
+
+    public function LaporanTandaTerimaHasilPraktik(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+        $bahan_praktik = $request->bahan_praktik;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanTandaTerimaHasilPraktik', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir', 'bahan_praktik'));
+        $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaHasilPraktik', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir', 'bahan_praktik'));
+        return $pdf->download('TandaTerimaHasilPraktik-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
 }
