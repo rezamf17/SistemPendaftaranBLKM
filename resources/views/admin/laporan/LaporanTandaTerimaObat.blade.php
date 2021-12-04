@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Laporan Tanda Terima Perlengkapan</title>
+	<title>Laporan Tanda Terima Obat-obatan</title>
 	<link rel="stylesheet" href="">
 	<style type="text/css" media="screen">
 		body{
@@ -37,7 +37,7 @@
   </style>
 </head>
 <body>
-	<h3>TANDA TERIMA PERLENGKAPAN</h3>
+	<h3>TANDA TERIMA OBAT-OBATAN</h3>
   <h4>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI <br> 
     TAHUN {{$tahun}} <br> DI {{$tempat->cities->name}}</h4>  
     <hr>
@@ -55,14 +55,13 @@
         </tr>
         <tr>
           <th style="font-size: 11px; text-align: left;">
-            1.{{$perlengkapan_1}} <br>
-            2.{{$perlengkapan_2}} <br>
-            3.{{$perlengkapan_3}} 
+            1. Fatigon <br>
+            2. Paramex <br>
+            3. Diapet 
           </th>
           <th style="font-size: 11px; text-align: left;">
-            4.{{$perlengkapan_4}} <br>
-            5.{{$perlengkapan_5}} <br>
-            6.{{$perlengkapan_6}}
+            4. Antangin <br>
+            5. Promaag
           </th>
         </tr>
       </thead>
@@ -75,7 +74,7 @@
           Desa/Kelurahan :{{$element->villages->name}},
           Kecamatan :{{$element->districts->name}},
           Kota/Kabupaten :{{$element->cities->name}}</td>
-          <td colspan="2">1 Set</td>
+          <td colspan="2">1 Paket</td>
           <td style="width: 70px;">
             @if ($loop->even)
             @else

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Laporan Tanda Terima Sertifikat</title>
+	<title>Laporan Tanda Terima Hasil Praktik</title>
 	<link rel="stylesheet" href="">
 	<style type="text/css" media="screen">
 		body{
