@@ -227,4 +227,32 @@ class ReportController extends Controller
         $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaObat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         return $pdf->download('TandaTerimaHasilObat-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
+
+    public function ViewTandaTerimaBahan(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+    }
+
+    public function LaporanTandaTerimaBahan(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        return $pdf->download('TandaTerimaHasilBahan-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
 }

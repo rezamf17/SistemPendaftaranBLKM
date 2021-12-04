@@ -51,6 +51,16 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::post('LaporanTandaTerimaHasilPraktik', [ReportController::class, 'LaporanTandaTerimaHasilPraktik']);
     Route::post('ViewTandaTerimaObat', [ReportController::class, 'ViewTandaTerimaObat']);
     Route::post('LaporanTandaTerimaObat', [ReportController::class, 'LaporanTandaTerimaObat']);
+     Route::post('ViewTandaTerimaBahan', [ReportController::class, 'ViewTandaTerimaBahan']);
+    Route::post('LaporanTandaTerimaBahan', [ReportController::class, 'LaporanTandaTerimaBahan']);
+     Route::post('ViewTandaTerimaBahanMateri', [ReportController::class, 'ViewTandaTerimaBahanMateri']);
+    Route::post('LaporanTandaTerimaBahanMateri', [ReportController::class, 'LaporanTandaTerimaBahanMateri']);
+     Route::post('ViewDaftarHadirPermakanan', [ReportController::class, 'ViewDaftarHadirPermakanan']);
+    Route::post('LaporanDaftarHadirPermakanan', [ReportController::class, 'LaporanDaftarHadirPermakanan']);
+     Route::post('ViewDaftarHadirPelajaran', [ReportController::class, 'ViewDaftarHadirPelajaran']);
+    Route::post('LaporanDaftarHadirPelajaran', [ReportController::class, 'LaporanDaftarHadirPelajaran']);
+     Route::post('ViewDaftarNominatif', [ReportController::class, 'ViewDaftarNominatif']);
+    Route::post('LaporanDaftarNominatif', [ReportController::class, 'LaporanDaftarNominatif']);
     // Route::post('LaporanDaftarHadir', [ReportController::class, 'LaporanDaftarHadir']);
     // End Report
     Route::get('Survey', [HasilSurveyController::class, 'index']);
