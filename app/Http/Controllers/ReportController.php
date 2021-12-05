@@ -255,4 +255,95 @@ class ReportController extends Controller
         $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         return $pdf->download('TandaTerimaHasilBahan-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
+
+    public function ViewTandaTerimaBahanMateri(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewTandaTerimaBahanMateri', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+    }
+
+    public function LaporanTandaTerimaBahanMateri(Request $request)
+    {
+        $cities = $request->cities;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanTandaTerimaBahanMateri', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaBahanMateri', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        return $pdf->download('TandaTerimaHasilBahanMateri-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
+
+    public function ViewDaftarHadirPermakanan(Request $request)
+    {
+        $hari1 = $request->hari_1;
+        $tanggal1 = $request->tanggal_1;
+        $hari2 = $request->hari_2;
+        $tanggal2 = $request->tanggal_2;
+        $hari3 = $request->hari_3;
+        $tanggal3 = $request->tanggal_3;
+        $cities = $request->cities;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewDaftarHadirPermakanan', compact(
+            'hari1', 
+            'tanggal1',
+            'hari2', 
+            'tanggal2', 
+            'hari3', 
+            'tanggal3', 
+            'cities', 
+            'tahun', 
+            'tempat', 
+            'peminatan', 
+            'formulir'));
+    }
+    public function LaporanDaftarHadirPermakanan(Request $request)
+    {
+        $hari1 = $request->hari_1;
+        $tanggal1 = $request->tanggal_1;
+        $hari2 = $request->hari_2;
+        $tanggal2 = $request->tanggal_2;
+        $hari3 = $request->hari_3;
+        $tanggal3 = $request->tanggal_3;
+        $cities = $request->cities;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanDaftarHadirPermakanan', compact(
+        //     'hari1', 
+        //     'tanggal1',
+        //     'hari2', 
+        //     'tanggal2', 
+        //     'hari3', 
+        //     'tanggal3', 
+        //     'cities', 
+        //     'tahun', 
+        //     'tempat', 
+        //     'peminatan', 
+        //     'formulir'));
+        $pdf = PDF::loadview('admin.laporan.LaporanDaftarHadirPermakanan', compact(
+            'hari1', 
+            'tanggal1',
+            'hari2', 
+            'tanggal2', 
+            'hari3', 
+            'tanggal3', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'))->setPaper('a4', 'landscape');
+        return $pdf->download('DaftarHadirPermakanan-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
 }
