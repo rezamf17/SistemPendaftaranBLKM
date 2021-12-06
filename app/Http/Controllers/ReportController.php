@@ -311,6 +311,7 @@ class ReportController extends Controller
             'peminatan', 
             'formulir'));
     }
+
     public function LaporanDaftarHadirPermakanan(Request $request)
     {
         $hari1 = $request->hari_1;
@@ -345,5 +346,137 @@ class ReportController extends Controller
             'hari3', 
             'tanggal3', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'))->setPaper('a4', 'landscape');
         return $pdf->download('DaftarHadirPermakanan-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
+
+    public function ViewDaftarHadirPelajaran(Request $request)
+    {
+        $jam_awal_1 = $request->jam_awal_1;
+        $jam_akhir_1 = $request->jam_akhir_1;
+        $jam_awal_2 = $request->jam_awal_2;
+        $jam_akhir_2 = $request->jam_akhir_2;
+        $jam_awal_3 = $request->jam_awal_3;
+        $jam_akhir_3 = $request->jam_akhir_3;
+        $jam_awal_4 = $request->jam_awal_4;
+        $jam_akhir_4 = $request->jam_akhir_4;
+        $jam_awal_5 = $request->jam_awal_5;
+        $jam_akhir_5 = $request->jam_akhir_5;
+        $jam_awal_6 = $request->jam_awal_6;
+        $jam_akhir_6 = $request->jam_akhir_6;
+        $nama_pertemuan_1 = $request->nama_pertemuan_1;
+        $nama_pertemuan_2 = $request->nama_pertemuan_2;
+        $nama_pertemuan_3 = $request->nama_pertemuan_3;
+        $nama_pertemuan_4 = $request->nama_pertemuan_4;
+        $nama_pertemuan_5 = $request->nama_pertemuan_5;
+        $nama_pertemuan_6 = $request->nama_pertemuan_6;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $cities = $request->cities;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        return view ('admin.laporan.ViewDaftarHadirPelajaran', compact(
+            'jam_awal_1', 
+            'jam_awal_2', 
+            'jam_awal_3', 
+            'jam_awal_4', 
+            'jam_awal_5', 
+            'jam_awal_6',
+            'jam_akhir_1', 
+            'jam_akhir_2', 
+            'jam_akhir_3', 
+            'jam_akhir_4', 
+            'jam_akhir_5', 
+            'jam_akhir_6',
+            'nama_pertemuan_1', 
+            'nama_pertemuan_2', 
+            'nama_pertemuan_3', 
+            'nama_pertemuan_4', 
+            'nama_pertemuan_5', 
+            'nama_pertemuan_6', 
+            'cities',
+            'hari',
+            'tanggal', 
+            'tahun', 
+            'tempat', 
+            'peminatan', 
+            'formulir'));
+    }
+
+    public function LaporanDaftarHadirPelajaran(Request $request)
+    {
+        $jam_awal_1 = $request->jam_awal_1;
+        $jam_akhir_1 = $request->jam_akhir_1;
+        $jam_awal_2 = $request->jam_awal_2;
+        $jam_akhir_2 = $request->jam_akhir_2;
+        $jam_awal_3 = $request->jam_awal_3;
+        $jam_akhir_3 = $request->jam_akhir_3;
+        $jam_awal_4 = $request->jam_awal_4;
+        $jam_akhir_4 = $request->jam_akhir_4;
+        $jam_awal_5 = $request->jam_awal_5;
+        $jam_akhir_5 = $request->jam_akhir_5;
+        $jam_awal_6 = $request->jam_awal_6;
+        $jam_akhir_6 = $request->jam_akhir_6;
+        $nama_pertemuan_1 = $request->nama_pertemuan_1;
+        $nama_pertemuan_2 = $request->nama_pertemuan_2;
+        $nama_pertemuan_3 = $request->nama_pertemuan_3;
+        $nama_pertemuan_4 = $request->nama_pertemuan_4;
+        $nama_pertemuan_5 = $request->nama_pertemuan_5;
+        $nama_pertemuan_6 = $request->nama_pertemuan_6;
+        $hari = $request->hari;
+        $tanggal = $request->tanggal;
+        $cities = $request->cities;
+        $tahun = $request->tahun;
+        $peminatan = $request->peminatan;
+         $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.LaporanDaftarHadirPelajaran', compact(
+        //     'jam_awal_1', 
+        //     'jam_awal_2', 
+        //     'jam_awal_3', 
+        //     'jam_awal_4', 
+        //     'jam_awal_5', 
+        //     'jam_awal_6',
+        //     'jam_akhir_1', 
+        //     'jam_akhir_2', 
+        //     'jam_akhir_3', 
+        //     'jam_akhir_4', 
+        //     'jam_akhir_5', 
+        //     'jam_akhir_6',
+        //     'nama_pertemuan_1', 
+        //     'nama_pertemuan_2', 
+        //     'nama_pertemuan_3', 
+        //     'nama_pertemuan_4', 
+        //     'nama_pertemuan_5', 
+        //     'nama_pertemuan_6', 
+        //     'cities',
+        //     'hari',
+        //     'tanggal', 
+        //     'tahun', 
+        //     'tempat', 
+        //     'peminatan', 
+        //     'formulir'));
+        $pdf = PDF::loadview('admin.laporan.LaporanDaftarHadirPelajaran', compact(
+            'jam_awal_1', 
+            'jam_awal_2', 
+            'jam_awal_3', 
+            'jam_awal_4', 
+            'jam_awal_5', 
+            'jam_awal_6',
+            'jam_akhir_1', 
+            'jam_akhir_2', 
+            'jam_akhir_3', 
+            'jam_akhir_4', 
+            'jam_akhir_5', 
+            'jam_akhir_6',
+            'nama_pertemuan_1', 
+            'nama_pertemuan_2', 
+            'nama_pertemuan_3', 
+            'nama_pertemuan_4', 
+            'nama_pertemuan_5', 
+            'nama_pertemuan_6', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir', 'hari', 'tanggal'))->setPaper('a4', 'landscape');
+        return $pdf->download('DaftarHadirPelajaran-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
 }

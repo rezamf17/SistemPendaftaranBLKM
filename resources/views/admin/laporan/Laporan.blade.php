@@ -121,7 +121,7 @@ Laporan
                 <td>10</td>
                   <td>Daftar Hadir Pelajaran</td>
                   <th>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-daftar-hadir-undangan">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-daftar-hadir-pelajaran">
                       <i class="fa fa-print"></i>Buat Laporan
                     </button>
                   </th>
@@ -588,6 +588,80 @@ Laporan
               </div>
               <label>Tahun</label>
               <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
+              <label>Peminatan</label>
+              <select name="peminatan" class="form-control" required>
+                  <option value="">-Silahkan Pilih Peminatan-</option>
+                  <option value="Tata Boga">Tata Boga</option>
+                  <option value="Las Listrik">Las Listrik</option>
+                  <option value="Tata Rias Wajah dan Hijab">Tata Rias Wajah dan Hijab</option>
+                  <option value="Financial Life Skill">Financial Life Skill</option>
+                  <option value="Barista">Barista</option>
+                  <option value="Catering">Catering</option>
+                  <option value="Otomotif Service Sepeda Motor Ringan">Otomotif Service Sepeda Motor Ringan</option>
+                  <option value="Bakery">Bakery</option>
+                  <option value="Start Up">Start Up</option>
+                  <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
+                </select>
+              <label>Kota/Kabupaten</label>
+                <select name="cities" class="form-control" id="kota">
+                <option value="" >-Pilih Kota/Kabupaten-</option>
+                @foreach ($kota as $element)
+                <option value="{{$element->id}}">{{$element->name}}</option>
+                @endforeach
+            </select>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Lihat Print</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="modal fade" id="modal-daftar-hadir-pelajaran">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Daftar Hadir Pelajaran</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="{{ url('ViewDaftarHadirPelajaran') }}" method="post" accept-charset="utf-8">
+            @csrf
+            <div class="modal-body" style="max-height: calc(100vh - 210px);">
+              <label>Hari/Tanggal</label>
+                <input type="text" name="hari" class="form-control d-inline">
+                <input type="date" name="tanggal" class="form-control d-inline">
+              <label>Jam & Pertemuan 1</label>
+                <input class="timepicker" type="text" name="jam_awal_1" placeholder="Jam Awal"> s/d
+                <input class="timepicker" type="text" name="jam_akhir_1" placeholder="Jam Akhir">
+                <input type="text" name="nama_pertemuan_1" class="form-control" placeholder="Nama Pertemuan">
+              <label>Jam & Pertemuan 2</label>
+                <input class="timepicker" type="text" name="jam_awal_2" placeholder="Jam Awal"> s/d
+                <input class="timepicker" type="text" name="jam_akhir_2" placeholder="Jam Akhir">
+                <input type="text" name="nama_pertemuan_2" class="form-control" placeholder="Nama Pertemuan">
+                <label>Jam & Pertemuan 3</label>
+                <input class="timepicker" type="text" name="jam_awal_3" placeholder="Jam Awal"> s/d
+                <input class="timepicker" type="text" name="jam_akhir_3" placeholder="Jam Akhir">
+                <input type="text" name="nama_pertemuan_3" class="form-control" placeholder="Nama Pertemuan">
+                <label>Jam & Pertemuan 4</label>
+                <input class="timepicker" type="text" name="jam_awal_4" placeholder="Jam Awal"> s/d
+                <input class="timepicker" type="text" name="jam_akhir_4" placeholder="Jam Akhir">
+                <input type="text" name="nama_pertemuan_4" class="form-control" placeholder="Nama Pertemuan">
+                <label>Jam & Pertemuan 5</label>
+                <input class="timepicker" type="text" name="jam_awal_5" placeholder="Jam Awal"> s/d
+                <input class="timepicker" type="text" name="jam_akhir_5" placeholder="Jam Akhir">
+                <input type="text" name="nama_pertemuan_5" placeholder="Nama Pertemuan" class="form-control">
+                <label>Jam & Pertemuan 6</label>
+                <input class="timepicker" type="text" name="jam_awal_6" placeholder="Jam Awal"> s/d
+                <input class="timepicker" type="text" name="jam_akhir_6" placeholder="Jam Akhir">
+                <input type="text" name="nama_pertemuan_6" placeholder="Nama Pertemuan" class="form-control">
+              <label>Tahun</label>
+              <input type="number" min="1900" max="2099" value="2021" step="1" name="tahun" class="form-control">
               <label>Peminatan</label>
               <select name="peminatan" class="form-control" required>
                   <option value="">-Silahkan Pilih Peminatan-</option>

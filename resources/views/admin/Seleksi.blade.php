@@ -22,6 +22,12 @@ Seleksi Data
   </div>
   @endsection
   @section('content')
+  <style type="text/css">
+    .bootstrap-timepicker-meridian, .meridian-column
+    {
+        display: none;
+    }
+</style>
   <div class="container">
     <div class="card">
       <div class="card-header">Pilih Data Yang Ingin Di Seleksi</div>
@@ -50,6 +56,7 @@ Seleksi Data
               <option value="Start Up">Start Up</option>
               <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
             </select>
+            
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Seleksi</button>
             </div>
@@ -59,7 +66,7 @@ Seleksi Data
     </div>
   </div>
 </div>
-</script>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
   function onChangeSelect(url, id, name) {
