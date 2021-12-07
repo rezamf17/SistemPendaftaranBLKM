@@ -479,4 +479,33 @@ class ReportController extends Controller
             'nama_pertemuan_6', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir', 'hari', 'tanggal'))->setPaper('a4', 'landscape');
         return $pdf->download('DaftarHadirPelajaran-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
+
+    public function ViewDaftarNominatif(Request $request)
+    {
+        $cities = $request->cities;
+        $peminatan = $request->peminatan;
+        $tahun = $request->tahun;
+        $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->first();
+        // dd($request->all());
+        return view ('admin.laporan.ViewDaftarNominatif', compact('formulir', 'peminatan', 'tempat', 'cities', 'tahun'));
+    }
+
+    public function LaporanDaftarNominatif(Request $request)
+    {
+        $cities = $request->cities;
+        $peminatan = $request->peminatan;
+        $tahun = $request->tahun;
+        $formulir = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->get();
+        $tempat = Formulir::where('id_cities', $cities)
+        ->where('peminatan', $peminatan)->first();
+        // dd($request->all());
+        // return view ('admin.laporan.LaporanDaftarNominatif', compact('formulir', 'peminatan', 'tempat', 'cities', 'tahun'));
+        $pdf = PDF::loadview('admin.laporan.LaporanDaftarNominatif', compact(
+         'cities', 'tahun', 'peminatan', 'formulir', 'tempat'));
+        return $pdf->download('DaftarNominatif-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
+    }
 }
