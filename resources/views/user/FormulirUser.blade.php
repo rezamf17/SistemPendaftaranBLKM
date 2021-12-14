@@ -26,7 +26,7 @@ Isi Formulir
   <div class="card">
     <div class="card-header">Isi Formulir</div>
     <div class="card-body">
-      <form action="{{ url('UserFormulir') }}" method="POST">
+      <form action="{{ url('UserFormulir') }}" method="POST" enctype="multipart/form-data">
       @csrf
             <div class="form-group">
                 <label>Nama</label>
@@ -139,7 +139,8 @@ Isi Formulir
             </div>
             <div class="form-group">
                 <label>Foto/Scan KTP</label>
-                <input type="file" name="foto_ktp" class="form-control">
+                <input type="file" name="foto_ktp" class="form-control-file" required>
+                {{-- <input type="text" name="foto_ktp" class="form-control" required> --}}
             </div>
             <div class="card-footer">
               <input type="submit" class="btn btn-primary" value="Simpan" name="">

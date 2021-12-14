@@ -10,22 +10,23 @@ class Formulir extends Model
 {
     use HasFactory;
     protected $table = 'formulir';
-    // protected $guarded = [];
-    protected $fillable = [
-        'id_user',
-        'nama',
-        'ttl',
-        'alamat',
-        'kota',
-        'no_kk',
-        'no_ktp',
-        'jenis_kelamin',
-        'pekerjaan',
-        'no_hp',
-        'no_rek',
-        'bank',
-        'peminatan'
-    ];
+    protected $guarded = [];
+    // protected $fillable = [
+    //     'id_user',
+    //     'nama',
+    //     'ttl',
+    //     'alamat',
+    //     'kota',
+    //     'no_kk',
+    //     'no_ktp',
+    //     'jenis_kelamin',
+    //     'pekerjaan',
+    //     'no_hp',
+    //     'no_rek',
+    //     'bank',
+    //     'peminatan',
+    //     'foto_ktp'
+    // ];
 
     public function form()
     {

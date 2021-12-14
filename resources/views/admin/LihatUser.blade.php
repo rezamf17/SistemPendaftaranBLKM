@@ -108,7 +108,7 @@ Lihat User
             </tr>
             <tr>
               <th>Foto KTP</th>
-              <td>{{$formulir->foto_ktp}}</td>
+              <td><img width="150px" src="{{ url('/data_file/'.$formulir->foto_ktp) }}"></td>
             </tr>
         </table>
         </div>
@@ -120,8 +120,11 @@ Lihat User
             <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Hapus</button>
           </form>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
-                  <i class="fa fa-random"></i>Ganti Status
-                </button>
+            <i class="fa fa-random"></i>Ganti Status
+          </button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-cetak-sertifikat">
+            <i class="fa fa-print"></i>Cetak Sertifikat
+          </button>
           <a href="{{ url('Formulir/exports/'.$formulir->id) }}" class="btn btn-danger"><i class="fa fa-print"></i>Buat Laporan</a>
           <a href="{{ url('Formulir') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
 
@@ -153,6 +156,40 @@ Lihat User
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Ganti</button>
+            </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+      <div class="modal fade" id="modal-cetak-sertifikat">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Cetak Sertifikat</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="{{ url('ViewSertifikat/'.$formulir->id) }}" method="post" accept-charset="utf-8">
+              @csrf
+            <div class="modal-body">
+              <label>Nomor Sertifikat</label>
+              <input type="text" name="nomor" class="form-control">
+              <label>Tahun</label>
+              <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
+              <label>Tempat Pelatihan</label>
+              <input type="text" name="tempat" class="form-control">
+              <label>Tanggal Mulai Pelatihan</label>
+              <input type="text" name="mulai" class="form-control">
+              <label>Tanggal Selesai Pelatihan</label>
+              <input type="text" name="selesai" class="form-control">
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Lihat Print</button>
             </div>
             </form>
           </div>

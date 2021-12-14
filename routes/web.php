@@ -25,7 +25,7 @@ use App\Http\Controllers\DependentDropdownController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 Route::get('/catchAPI', [HomeController::class, 'catch'])->name('catch');
 Route::post('/catchAPI', [HomeController::class, 'catchRequest'])->name('catch');
@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::post('LaporanDaftarHadirPelajaran', [ReportController::class, 'LaporanDaftarHadirPelajaran']);
      Route::post('ViewDaftarNominatif', [ReportController::class, 'ViewDaftarNominatif']);
     Route::post('LaporanDaftarNominatif', [ReportController::class, 'LaporanDaftarNominatif']);
+    Route::post('ViewSertifikat/{id}', [ReportController::class, 'ViewSertifikat']);
+    Route::post('LaporanSertifikat/{id}', [ReportController::class, 'LaporanSertifikat']);
     // Route::post('LaporanDaftarHadir', [ReportController::class, 'LaporanDaftarHadir']);
     // End Report
     Route::get('Survey', [HasilSurveyController::class, 'index']);

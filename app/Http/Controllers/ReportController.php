@@ -508,4 +508,29 @@ class ReportController extends Controller
          'cities', 'tahun', 'peminatan', 'formulir', 'tempat'));
         return $pdf->download('DaftarNominatif-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
+
+    public function ViewSertifikat(Request $request, $id)
+    {
+        $nomor = $request->nomor;
+        $tahun = $request->tahun;
+        $mulai = $request->mulai;
+        $selesai = $request->selesai;
+        $tempat = $request->tempat;
+        $formulir = Formulir::where('id', $id)->first();
+        return view ('admin.laporan.ViewSertifikat', compact('tempat', 'tahun', 'nomor', 'mulai', 'selesai', 'formulir'));
+    }
+
+    public function LaporanSertifikat(Request $request, $id)
+    {
+        $nomor = $request->nomor;
+        $tahun = $request->tahun;
+        $mulai = $request->mulai;
+        $selesai = $request->selesai;
+        $tempat = $request->tempat;
+        $formulir = Formulir::where('id', $id)->first();
+        // return view ('admin.laporan.LaporanSertifikat', compact('tempat', 'tahun', 'nomor', 'mulai', 'selesai', 'formulir'));
+        $pdf = PDF::loadview('admin.laporan.LaporanSertifikat', compact(
+         'tempat', 'tahun', 'nomor', 'mulai', 'selesai', 'formulir'))->setPaper('a4', 'landscape');;
+        return $pdf->download('Sertifikat-'.$formulir->nama.'.pdf');
+    }
 }

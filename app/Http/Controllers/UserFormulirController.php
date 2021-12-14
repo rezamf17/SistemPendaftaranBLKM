@@ -38,7 +38,15 @@ class UserFormulirController extends Controller
      */
     public function store(Request $request)
     {
+        $fileName = Auth::user()->name;
+
         $formulir = new Formulir;
+        if ($request->file('foto_ktp')) {
+            $foto_ktp = $request->file('foto_ktp');
+            $nama_file = $fileName.$foto_ktp->getClientOriginalName();
+            $foto_ktp->move(public_path().'/data_file', $nama_file);
+            $formulir->foto_ktp = $nama_file;
+        }
         $formulir->id_user = Auth::user()->id;
         $formulir->id_provinces = $request->provinsi;
         $formulir->id_cities = $request->kota;
@@ -54,9 +62,10 @@ class UserFormulirController extends Controller
         $formulir->angkatan = $request->angkatan;
         $formulir->no_hp = $request->no_hp;
         $formulir->peminatan = $request->peminatan;
+        // $formulir->foto_ktp = $request->foto_ktp;
+        
         $formulir->save();
-
-        // dd($request->all());
+        // dd($request->file('foto_ktp'));
         return redirect('user')->with('success', 'Pengisian Formulir Berhasil!');
     }
 

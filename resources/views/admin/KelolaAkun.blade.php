@@ -95,54 +95,29 @@ Kelola Akun
               <div class="form-group">
                 @csrf
                 <label>Nama Lengkap</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap" required>
-                @error('nama_barang')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
+                <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required>
               </div>
               <div class="form-group">
                 <label>Nomor HP</label>
-                <input type="number" name="phone" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="Nomor HP" required>
-                @error('jumlah')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
+                <input type="number" name="phone" class="form-control" placeholder="Nomor HP" required>
               </div>
               <div class="form-group">
                 <label>Level</label>
-                <select name="role" class="form-control" id="main_menu" required>
+                <select name="role" class="form-control" required>
                   <option value="">--Pilih Level--</option>
                   <option value="1">Admin</option>
                   <option value="2">User</option>
                 </select>
-                @error('jumlah')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
               </div>
 
               </select>
               <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Password" required>
-                @error('jumlah')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
+                <input type="password" name="password" class="form-control"  placeholder="Password" required>
               </div>
               <div class="form-group">
                 <label>Konfirmasi Password</label>
-                <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror"  placeholder="Konfirmasi Password" required>
-                @error('jumlah')
-                <div class="invalid-feedback">
-                  {{$message}}
-                </div>
-                @enderror
+                <input type="password" name="password_confirmation" class="form-control"  placeholder="Konfirmasi Password" required>
               </div>
             </div>
             <div class="modal-footer justify-content-between">

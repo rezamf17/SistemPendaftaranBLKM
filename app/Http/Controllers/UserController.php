@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Alert;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -46,7 +47,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-        return back()->with('errors', $validator->messages()->all()[0])->withInput();
+         return redirect('KelolaAkun')->with('warning', 'Data Akun Gagal Ditambahkan!');
         }
 
         if ($request->role == 1) {
@@ -104,6 +105,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'phone' => 'required|unique:users,phone',
+        'role' => 'required',
+        'password' => 'min:6|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+         return redirect('KelolaAkun')->with('warning', 'Data Akun Gagal Diedit!');
+        }
+
         if ($request->password == null) {
             $users = User::find($id);
             $users->name = $request->name;
