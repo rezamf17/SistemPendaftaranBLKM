@@ -54,7 +54,7 @@ class FormulirController extends Controller
      */
     public function show($id)
     {
-        $formulir = Formulir::where('id', $id)->first();
+        $formulir = Formulir::where('id_user', $id)->first();
         return view ('admin.LihatUser', compact('formulir'));
     }
 
@@ -78,28 +78,45 @@ class FormulirController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+        'nama' => 'required',
+        'ttl' => 'required',
+        'alamat' => 'required',
+        'jenis_kelamin' => 'required',
+        'pekerjaan' => 'required',
+        'pendidikan' => 'required',
+        'no_hp' => 'required',
+        'peminatan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+         return redirect('Formulir')->with('warning', 'Edit Formulir Gagal Dilakukan!');
+        }
+
         $formulir = Formulir::find($id);
+        $formulir->no_kk = $request->no_kk;
+        $formulir->no_ktp = $request->no_ktp;
+        $formulir->no_rek = $request->no_rek;
+        $formulir->bank = $request->bank;
+        $formulir->atas_nama = $request->atas_nama;
         $formulir->id_user = Auth::user()->id;
         $formulir->id_provinces = $request->provinsi;
         $formulir->id_cities = $request->kota;
         $formulir->id_districts = $request->kecamatan;
         $formulir->id_villages = $request->desa;
         $formulir->nama = $request->nama;
+        $formulir->umur = $request->umur;
         $formulir->ttl = $request->ttl;
         $formulir->alamat = $request->alamat;
-        $formulir->kota = $request->kota;
-        $formulir->no_kk = $request->no_kk;
-        $formulir->no_ktp = $request->no_ktp;
         $formulir->jenis_kelamin = $request->jenis_kelamin;
         $formulir->pekerjaan = $request->pekerjaan;
+        $formulir->pendidikan = $request->pendidikan;
+        $formulir->angkatan = $request->angkatan;
         $formulir->no_hp = $request->no_hp;
-        $formulir->no_rek = $request->no_rek;
-        $formulir->bank = $request->bank;
-        $formulir->atas_nama = $request->atas_nama;
         $formulir->peminatan = $request->peminatan;
         $formulir->save();
         // dd($request->all());
-        return redirect('Formulir/'.$id)->with('success', 'Data Formulir User Berhasil Di Update!');
+        return redirect('Formulir')->with('success', 'Data Formulir User Berhasil Di Update!');
     }
 
     /**
@@ -122,7 +139,7 @@ class FormulirController extends Controller
         $status->status = $request->status;
         $status->save();
 
-        return redirect('Formulir/'.$id)->with('success', 'Status Berhasil Di Ganti!');
+        return redirect('Formulir')->with('success', 'Status Berhasil Di Ganti!');
     }
 
     public function DataUserReport($id)

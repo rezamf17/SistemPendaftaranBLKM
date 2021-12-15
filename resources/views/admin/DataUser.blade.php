@@ -74,7 +74,7 @@ Data User
                     <i class="fa fa-trash"></i>Hapus
                   </button>
                 </form> --}}
-                <a href="{{ url('Formulir/'.$item->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i>Lihat</a>
+                <a href="{{ url('Formulir/'.$item->id_user) }}" class="btn btn-primary"><i class="fa fa-eye"></i>Lihat</a>
               </th>     
             </tr>
             @endforeach

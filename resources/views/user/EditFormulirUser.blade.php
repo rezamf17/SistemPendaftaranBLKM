@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 @section('title')
-Lengkapi Data
+Ganti Formulir
 @endsection
 @section('breadcrumb')
 <div class="content-wrapper">
@@ -9,12 +9,12 @@ Lengkapi Data
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Lengkapi Data</h1>
+          <h1 class="m-0 text-dark">Ganti Formulir</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Lengkapi Data</li>
+            <li class="breadcrumb-item active">Ganti Formulir</li>
         </ol>
     </div><!-- /.col -->
 </div><!-- /.row -->
@@ -24,44 +24,48 @@ Lengkapi Data
 @section('content')
 <div class="container">
   <div class="card">
-    <div class="card-header">Lengkapi Data</div>
+    <div class="card-header">Ganti Formulir</div>
     <div class="card-body">
-      <form action="{{ url('UserFormulir/lengkapi/'.$formulir->id) }}" method="POST">
+      <form action="{{ url('UserFormulir/'.$formulir->id) }}" method="POST">
           @csrf
           @method('put')
           <div class="form-group">
             <label>Nama</label>
-            <input type="text" class="form-control" value="{{$formulir->nama}}" name="nama" disabled> 
+            <input type="text" class="form-control" value="{{$formulir->nama}}" name="nama" > 
+        </div>
+        <div class="form-group">
+            <label>Umur</label>
+            <input type="text" class="form-control" name="umur" value="{{$formulir->umur}}" >
         </div>
         <div class="form-group">
             <label>Tempat, Tanggal Lahir</label>
-            <input type="text" class="form-control" name="ttl" value="{{$formulir->ttl}}" disabled>
+            <input type="text" class="form-control" name="ttl" value="{{$formulir->ttl}}" >
             <i>*Contoh : Bandung, 18 April 1987</i>
         </div>
         <div class="form-group">
             <label>Alamat</label>
-            <textarea name="alamat" class="form-control" disabled>{{$formulir->alamat}}</textarea>
+            <textarea name="alamat" class="form-control" >{{$formulir->alamat}}</textarea>
             <label>Provinsi</label>
             @php
             $provinces = new App\Http\Controllers\DependentDropdownController;
             $provinces= $provinces->provinces();
             @endphp
-            <select class="form-control" name="provinsi" id="provinsi" disabled>
+            <select class="form-control" name="provinsi" id="provinsi" >
                 <option>Pilih Provinsi</option>
                 @foreach ($provinces as $item)
                 <option value="{{ $item->id ?? '' }}" {{$formulir->id_provinces == $item->id ? 'selected' : ''}}>{{ $item->name ?? '' }}</option>
                 @endforeach
             </select>
              <label>Kota/Kabupaten</label>
-            <select class="form-control" name="kota" id="kota" disabled>
+            <select class="form-control" name="kota" id="kota" >
               <option value="{{$formulir->id_cities}}">{{$formulir->cities->name}}</option>
             </select>
             <label>Kecamatan</label>
-            <select class="form-control" name="kecamatan" id="kecamatan" disabled>
+            <select class="form-control" name="kecamatan" id="kecamatan" >
               <option value="{{$formulir->id_districts}}">{{$formulir->districts->name}}</option>
             </select>
             <label>Desa/Keluharan</label>
-            <select class="form-control" name="desa" id="desa" disabled>
+            <select class="form-control" name="desa" id="desa" >
               <option value="{{$formulir->id_villages}}">{{$formulir->villages->name}}</option>
             </select>
         </div>
@@ -75,7 +79,7 @@ Lengkapi Data
         </div>
         <div class="form-group">
             <label>Jenis Kelamin</label>
-            <select name="jenis_kelamin" class="form-control" disabled>
+            <select name="jenis_kelamin" class="form-control" >
               <option value="">-Silahkan Pilih Jenis Kelamin-</option>
              <option value="Laki-laki" {{$formulir->jenis_kelamin == 'Laki-laki'? 'selected' : ''}}>Laki-laki</option>
               <option value="Perempuan" {{$formulir->jenis_kelamin == 'Perempuan'? 'selected' : ''}}>Perempuan</option>
@@ -83,11 +87,19 @@ Lengkapi Data
       </div>
       <div class="form-group">
         <label>Pekerjaan/Unit Usaha Saat Ini</label>
-        <input type="text" class="form-control" name="pekerjaan" value="{{$formulir->pekerjaan}}" disabled> 
+        <input type="text" class="form-control" name="pekerjaan" value="{{$formulir->pekerjaan}}" > 
+    </div>
+    <div class="form-group">
+        <label>Pendidikan</label>
+        <input type="text" class="form-control" name="pendidikan" value="{{$formulir->pendidikan}}" > 
+    </div>
+    <div class="form-group">
+        <label>Angkatan</label>
+        <input type="text" class="form-control" name="angkatan" value="{{$formulir->angkatan}}" > 
     </div>
     <div class="form-group">
         <label>Nomor Handphone</label>
-        <input type="text" class="form-control" name="no_hp" value="{{$formulir->no_hp}}" disabled> 
+        <input type="text" class="form-control" name="no_hp" value="{{$formulir->no_hp}}" > 
     </div>
     <div class="form-group">
         <label>Nomor Rekening</label>
@@ -99,7 +111,7 @@ Lengkapi Data
     </div>
     <div class="form-group">
         <label>Peminatan</label>
-        <select name="peminatan" class="form-control" disabled>
+        <select name="peminatan" class="form-control" >
           <option value="">-Silahkan Pilih Peminatan-</option>
           <option value="Tata Boga" {{$formulir->peminatan == 'Tata Boga'? 'selected' : ''}}>Tata Boga</option>
           <option value="Las Listrik" {{$formulir->peminatan == 'Las Listrik'? 'selected' : ''}}>Las Listrik</option>
@@ -114,7 +126,7 @@ Lengkapi Data
       </select>
   </div>
   <div class="card-footer">
-      <input type="submit" class="btn btn-primary" value="Simpan" name="">
+      <input type="submit" class="btn btn-success" value="Ganti" name="">
       <a href="{{ url('user') }}" class="btn btn-default">Batal</a>
   </div>
 </form>

@@ -59,7 +59,7 @@ Dashboard Admin
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>
               </div>
-              <a href="{{ url('UserFormulir/'.Auth::user()->id.'/edit') }}" class="small-box-footer">Lengkapi Data <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('UserFormulir/lengkapi/'.Auth::user()->id) }}" class="small-box-footer">Lengkapi Data <i class="fas fa-arrow-circle-right"></i></a>
               @else
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>

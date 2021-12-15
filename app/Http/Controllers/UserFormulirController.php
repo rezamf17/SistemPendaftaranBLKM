@@ -7,6 +7,7 @@ use App\Models\Formulir;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class UserFormulirController extends Controller
 {
@@ -38,8 +39,22 @@ class UserFormulirController extends Controller
      */
     public function store(Request $request)
     {
-        $fileName = Auth::user()->name;
+        $validator = Validator::make($request->all(), [
+        'nama' => 'required',
+        'ttl' => 'required',
+        'alamat' => 'required',
+        'jenis_kelamin' => 'required',
+        'pekerjaan' => 'required',
+        'pendidikan' => 'required',
+        'no_hp' => 'required',
+        'peminatan' => 'required',
+        ]);
 
+        if ($validator->fails()) {
+         return redirect('user')->with('warning', 'Isi Formulir Gagal Dilakukan!');
+        }
+
+        $fileName = Auth::user()->name;
         $formulir = new Formulir;
         if ($request->file('foto_ktp')) {
             $foto_ktp = $request->file('foto_ktp');
@@ -62,7 +77,6 @@ class UserFormulirController extends Controller
         $formulir->angkatan = $request->angkatan;
         $formulir->no_hp = $request->no_hp;
         $formulir->peminatan = $request->peminatan;
-        // $formulir->foto_ktp = $request->foto_ktp;
         
         $formulir->save();
         // dd($request->file('foto_ktp'));
@@ -90,7 +104,7 @@ class UserFormulirController extends Controller
     public function edit($id)
     {
         $formulir = Formulir::where('id_user', $id)->first();
-        return view('user.LengkapiData', compact('formulir'));
+        return view('user.EditFormulirUser', compact('formulir'));
     }
 
     /**
@@ -102,15 +116,46 @@ class UserFormulirController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+        'nama' => 'required',
+        'ttl' => 'required',
+        'alamat' => 'required',
+        'jenis_kelamin' => 'required',
+        'pekerjaan' => 'required',
+        'pendidikan' => 'required',
+        'no_hp' => 'required',
+        'peminatan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+         return redirect('user')->with('warning', 'Ganti Formulir Gagal Dilakukan!');
+        }
+
         $formulir = Formulir::find($id);
         $formulir->no_kk = $request->no_kk;
         $formulir->no_ktp = $request->no_ktp;
         $formulir->no_rek = $request->no_rek;
         $formulir->bank = $request->bank;
         $formulir->atas_nama = $request->atas_nama;
+        $formulir->id_user = Auth::user()->id;
+        $formulir->id_provinces = $request->provinsi;
+        $formulir->id_cities = $request->kota;
+        $formulir->id_districts = $request->kecamatan;
+        $formulir->id_villages = $request->desa;
+        $formulir->nama = $request->nama;
+        $formulir->umur = $request->umur;
+        $formulir->ttl = $request->ttl;
+        $formulir->alamat = $request->alamat;
+        $formulir->jenis_kelamin = $request->jenis_kelamin;
+        $formulir->pekerjaan = $request->pekerjaan;
+        $formulir->pendidikan = $request->pendidikan;
+        $formulir->angkatan = $request->angkatan;
+        $formulir->no_hp = $request->no_hp;
+        $formulir->peminatan = $request->peminatan;
+        
         $formulir->save();
 
-        return redirect('user')->with('success', 'Formulir Berhasil Dilengkapi!');
+         return redirect('UserFormulir/'.$formulir->id_user)->with('success', 'Formulir Berhasil Diganti!');
     }
 
     /**
@@ -122,6 +167,37 @@ class UserFormulirController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function lengkapi($id)
+    {
+        $formulir = Formulir::where('id_user', $id)->first();
+        return view('user.LengkapiData', compact('formulir'));
+    }
+
+    public function UpdateLengkapi(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+        'no_kk' => 'required',
+        'no_ktp' => 'required',
+        'no_rek' => 'required',
+        'bank' => 'required',
+        'atas_nama' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+         return redirect('user')->with('warning', 'Lengkapi Formulir Gagal Dilakukan!');
+        }
+
+        $formulir = Formulir::find($id);
+        $formulir->no_kk = $request->no_kk;
+        $formulir->no_ktp = $request->no_ktp;
+        $formulir->no_rek = $request->no_rek;
+        $formulir->bank = $request->bank;
+        $formulir->atas_nama = $request->atas_nama;
+        $formulir->save();
+
+        return redirect('user')->with('success', 'Formulir Berhasil Dilengkapi!');
     }
 
 }

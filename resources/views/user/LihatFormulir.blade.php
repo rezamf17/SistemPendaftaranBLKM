@@ -93,49 +93,18 @@ Lihat Formulir
               <td>{{$formulir->peminatan}}</td>
             </tr>
             <tr>
-              <th>Status</th>
-              <td>{{$formulir->status}}</td>
+              <th>Foto KTP</th>
+              <td><img width="150px" src="{{ url('/data_file/'.$formulir->foto_ktp) }}"></td>
             </tr>
         </table>
         </div>
         <div class="card-footer">
-          <a href="{{ url('Formulir/'.$formulir->id.'/edit') }}" class="btn btn-success"><i class="fa fa-edit"></i>Ganti Data</a>
+          <a href="{{ url('UserFormulir/'.$formulir->id_user.'/edit') }}" class="btn btn-success"><i class="fa fa-edit"></i>Ganti Data</a>
           <a href="{{ url('user') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="modal-sm">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Ganti Status</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form action="{{ url('Formulir/GantiStatus/'.$formulir->id) }}" method="post" accept-charset="utf-8">
-              @csrf
-              @method('put')
-            <div class="modal-body">
-              <select name="status" class="form-control" required>
-                <option value="">-Pilih Status Baru-</option>
-                <option value="Calon Peserta">Calon Peserta</option>
-                <option value="Peserta">Peserta</option>
-                <option value="Alumni">Alumni</option>
-              </select>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Ganti</button>
-            </div>
-            </form>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
       @include('sweetalert::alert')
       @endsection

@@ -142,7 +142,7 @@ Lihat User
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="{{ url('Formulir/GantiStatus/'.$formulir->id) }}" method="post" accept-charset="utf-8">
+            <form action="{{ url('Formulir/GantiStatus/'.$formulir->id_user) }}" method="post" accept-charset="utf-8">
               @csrf
               @method('put')
             <div class="modal-body">

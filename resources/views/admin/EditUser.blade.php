@@ -34,6 +34,10 @@ Edit User
             <input type="text" class="form-control" value="{{$formulir->nama}}" name="nama" required> 
           </div>
           <div class="form-group">
+            <label>Umur</label>
+            <input type="text" class="form-control" value="{{$formulir->umur}}" name="umur" required> 
+          </div>
+          <div class="form-group">
             <label>Tempat, Tanggal Lahir</label>
             <input type="text" class="form-control" name="ttl" required value="{{$formulir->ttl}}">
             <i>*Contoh : Bandung, 18 April 1987</i>
@@ -86,8 +90,16 @@ Edit User
             <input type="text" class="form-control" name="pekerjaan" value="{{$formulir->pekerjaan}}"> 
           </div>
           <div class="form-group">
+            <label>Pendidikan</label>
+            <input type="text" class="form-control" name="pendidikan" value="{{$formulir->pendidikan}}">
+          </div>
+          <div class="form-group">
+            <label>Angkatan</label>
+            <input type="text" class="form-control" name="angkatan" value="{{$formulir->angkatan}}">
+          </div>
+          <div class="form-group">
             <label>Nomor Handphone</label>
-            <input type="text" class="form-control" name="no_hp" value="{{$formulir->no_hp}}"> 
+            <input type="text" class="form-control" name="no_hp" value="{{$formulir->no_hp}}">
           </div>
           <div class="form-group">
             <label>Nomor Rekening</label>

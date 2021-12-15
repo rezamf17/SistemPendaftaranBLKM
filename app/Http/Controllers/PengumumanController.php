@@ -7,6 +7,12 @@ use App\Models\Pengumuman;
 
 class PengumumanController extends Controller
 {
+
+    public function utama()
+    {
+        $pengumuman = Pengumuman::all();
+        return view ('pengumuman', compact('pengumuman'));
+    }
     /**
      * Display a listing of the resource.
      *

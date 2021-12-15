@@ -27,8 +27,10 @@ use App\Http\Controllers\DependentDropdownController;
 Route::get('/', function () {
     return view('main');
 });
-Route::get('/catchAPI', [HomeController::class, 'catch'])->name('catch');
-Route::post('/catchAPI', [HomeController::class, 'catchRequest'])->name('catch');
+Route::get('/prasyarat', function () {
+    return view('prasyarat');
+});
+Route::get('/berita', [PengumumanController::class, 'utama']);
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'role:1']], function() {
@@ -69,11 +71,14 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::get('JawabanSurvey/{id}', [HasilSurveyController::class, 'jawabanSurvey']);
     Route::get('Laporan', [ReportController::class, 'index']);
     Route::post('SeleksiData', [SeleksiController::class, 'seleksi']);
-    Route::put('Formulir/GantiStatus/{id}', [FormulirController::class, 'gantiStatus']);
+    Route::put('Formulir/GantiStatus/{id_user}', [FormulirController::class, 'gantiStatus']);
 });
 
 Route::group(['middleware' => ['auth', 'role:2']], function() {
     Route::get('/user', [HomeController::class, 'user'])->name('user');
+    Route::resource('UserFormulir', UserFormulirController::class);
+    Route::get('UserFormulir/lengkapi/{id}', [UserFormulirController::class, 'lengkapi']);
+    Route::put('UserFormulir/lengkapi/{id}', [UserFormulirController::class, 'UpdateLengkapi']);
     Route::resource('UserFormulir', UserFormulirController::class);
     Route::resource('Kuesioner', KuesionerController::class);
 });

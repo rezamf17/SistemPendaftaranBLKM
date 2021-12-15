@@ -38,7 +38,7 @@ class UserFormulirSeeder extends Seeder
                 'peminatan' => 'Otomotif Service Sepeda Motor Ringan'
             ],
             [
-                'id_user' => 1,
+                'id_user' => 3,
                 'id_provinces' => 12,
                 'id_cities' => 185,
                 'id_districts' => 2558,
