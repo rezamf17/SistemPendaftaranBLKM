@@ -37,7 +37,7 @@
 				<ul class="nav navbar-nav pull-right">
 					<li class="active"><a href="{{url('/')}}">Home</a></li>
 					<li><a href="http://balatrans.disnakertrans.jabarprov.go.id/">About</a></li><li><a href="{{ url('prasyarat') }}">Prasyarat</a></li>
-					<li><a href="#">Pengumuman</a></li>
+					<li><a href="{{url('berita'))}}">Pengumuman</a></li>
 					<li><a class="btn" href="{{url('login')}}">Login</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
