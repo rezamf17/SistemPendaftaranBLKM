@@ -7,6 +7,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('style/timepicker.css') }}">
   <link rel="icon" href="{{asset('style/images/LogoJabar.png')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{url('style/plugins/fontawesome-free/css/all.min.css')}}">
@@ -32,6 +33,8 @@
   <link rel="stylesheet" href="{{asset('style/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="{{url('style/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css" />
+{{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" /> --}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
@@ -54,9 +57,9 @@
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item">
-              <!-- Message Start -->
+               Message Start -->
               <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="{{ asset('style/dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -72,7 +75,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <img src="{{ asset('style/dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -160,6 +163,46 @@
               </p>
             </a>
           </li>
+           <li class="nav-item has-treeview">
+            <a href="{{url('Formulir')}}" class="nav-link">
+              <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Data User
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Pengumuman')}}" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
+              <p>
+                Pengumuman
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Seleksi')}}" class="nav-link">
+              <i class="nav-icon fas fa-filter"></i>
+              <p>
+                Seleksi
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Survey')}}" class="nav-link">
+              <i class="nav-icon fas fa-question"></i>
+              <p>
+                Hasil Survey
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Laporan')}}" class="nav-link">
+              <i class="nav-icon fas fa-print"></i>
+              <p>
+                Laporan
+              </p>
+            </a>
+          </li>
             @endif
            @if(auth()->user()->role == 2)
            <li class="nav-item has-treeview">
@@ -171,10 +214,26 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{url('Formulir')}}" class="nav-link">
+            <a href="{{url('UserFormulir')}}" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Formulir
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('UserFormulir/'.Auth::user()->id)}}" class="nav-link">
+              <i class="nav-icon fas fa-eye"></i>
+              <p>
+                Lihat Formulir
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{url('Kuesioner')}}" class="nav-link">
+              <i class="nav-icon fas fa-question"></i>
+              <p>
+                Survey Kepuasan
               </p>
             </a>
           </li>
@@ -437,6 +496,29 @@
     $('.textarea').summernote()
   })
 </script>
+{{-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#timepicker').timepicker({
+            showMeridian: false,
+            showInputs: true
+        });
+    });
+    $(function () {
+        $('#timepicker2').timepicker({
+            showMeridian: false,
+            showInputs: true
+        });
+    });
+  $(function () {
+          $('.timepicker').timepicker({
+              showMeridian: false,
+              showInputs: true
+          });
+      });
+</script> --}}
+
 </body>
 </html>
 

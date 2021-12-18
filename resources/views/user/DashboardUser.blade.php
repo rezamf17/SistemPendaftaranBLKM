@@ -30,14 +30,17 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
-
-                <p>Data Akun</p>
+                <h4>Formulir</h4>
+                <p>Isi Formulir Data Peserta Pelatihan Disini</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              @if (DB::table('formulir')->where('id_user', Auth::user()->id)->exists())
+                <a href="#" class="small-box-footer">Kamu Sudah Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @else
+              <a href="{{ url('UserFormulir') }}" class="small-box-footer">Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @endif
             </div>
           </div>
           <!-- ./col -->
@@ -45,14 +48,24 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Data Pengumuman</p>
+                <h4>Lengkapi Data</h4>
+                @if (Auth::user()->status != "Peserta")
+                <p>Lengkapi Data Jika Sudah Menjadi Peserta</p>
+                @elseif (Auth::user()->status == "Peserta")
+                <p>Anda Sudah Jadi Peserta, Silahkan Lengkapi data</p>
+                @endif
               </div>
+              @if (Auth::user()->status == "Peserta")
               <div class="icon">
                 <i class="ion ion-speakerphone"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('UserFormulir/lengkapi/'.Auth::user()->id) }}" class="small-box-footer">Lengkapi Data <i class="fas fa-arrow-circle-right"></i></a>
+              @else
+              <div class="icon">
+                <i class="ion ion-speakerphone"></i>
+              </div>
+             <a class="small-box-footer">Maaf, Anda Belum Menjadi Peserta<i class="fas fa-arrow-circle-right"></i></a>
+              @endif
             </div>
           </div>
           <!-- ./col -->
@@ -60,14 +73,14 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h4>Lihat Formulir</h4>
 
-                <p>User Registrations</p>
+                <p>Lihat Formulir Anda, Yang Sebelumnya Sudah Diisi</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{ url('UserFormulir/'.Auth::user()->id) }}" class="small-box-footer">Lihat Formulir <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -75,18 +88,24 @@ Dashboard Admin
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h4>Survey</h4>
 
-                <p>Unique Visitors</p>
+                <p>Survey Kepuasan Pengguna Kepada Alumni</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              @if (Auth::user()->status == "Alumni")
+              <a href="{{ url('Kuesioner') }}" class="small-box-footer">Isi Survey <i class="fas fa-arrow-circle-right"></i></a>
+              @else
+              <a href="#" class="small-box-footer">Maaf, Kamu Bukan Alumni <i class="fas fa-arrow-circle-right"></i></a>
+              @endif
+
             </div>
           </div>
           <!-- ./col -->
         </div>
+        Status : {{ Auth::user()->status }}
 </div>
 @include('sweetalert::alert')
 @endsection

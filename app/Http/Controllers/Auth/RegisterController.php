@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'phone' => ['required', 'string', 'max:255', 'unique:users,phone'],
             // 'role' => ['required'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'status' => ['string']
         ]);
     }
 
@@ -70,8 +71,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'role' => 2,
             'password' => Hash::make($data['password']),
+            'status' => "Calon Peserta"
         ]);
-
-        return redirect('peserta');
     }
 }

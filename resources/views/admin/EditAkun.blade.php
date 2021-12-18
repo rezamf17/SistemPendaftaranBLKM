@@ -60,11 +60,19 @@ Edit Akun
                 </div>
                 @enderror
               </div>
-
+              <div class="form-group">
+                <label>Status</label>
+                <select name="status" class="form-control">
+                  <option value="">-Pilih Status-</option>
+                  <option value="Calon Peserta" @if($users->status == 'Calon Peserta') selected @endif>Calon Peserta</option>
+                  <option value="Peserta" @if($users->status == 'Peserta') selected @endif>Peserta</option>
+                  <option value="Alumni" @if($users->status == 'Alumni') selected @endif>Alumni</option>
+                </select>
+              </div>
               </select>
               <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Password" required>
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Password">
                 @error('jumlah')
                 <div class="invalid-feedback">
                   {{$message}}
@@ -74,7 +82,7 @@ Edit Akun
               </div>
               <div class="form-group">
                 <label>Konfirmasi Password</label>
-                <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror"  placeholder="Konfirmasi Password" required>
+                <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror"  placeholder="Konfirmasi Password">
                 @error('jumlah')
                 <div class="invalid-feedback">
                   {{$message}}

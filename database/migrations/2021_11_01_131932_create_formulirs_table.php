@@ -16,18 +16,26 @@ class CreateFormulirsTable extends Migration
         Schema::create('formulir', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_provinces')->constrained('indonesia_provinces')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_cities')->constrained('indonesia_cities')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_districts')->constrained('indonesia_districts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_villages')->constrained('indonesia_villages')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama');
+            $table->string('umur');
             $table->string('ttl');
             $table->text('alamat');
-            $table->string('kota');
             $table->string('no_kk')->nullable();
-            $table->string('no_ktp');
+            $table->string('no_ktp')->nullable();
             $table->string('jenis_kelamin');
             $table->string('pekerjaan');
+            $table->string('pendidikan');
+            $table->string('angkatan');
             $table->string('no_hp');
             $table->string('no_rek')->nullable();
             $table->string('bank')->nullable();
+            $table->string('atas_nama')->nullable();
             $table->string('peminatan');
+            $table->string('foto_ktp')->nullable();
             $table->timestamps();
         });
     }
