@@ -122,4 +122,5 @@ class SeleksiController extends Controller
         // $seleksi = DB::table('formulir')->where('id_cities', $id_cities)->get();
         return view('admin.LihatSeleksi', compact( 'seleksi','seleksis', 'id_cities'));
     }
+    
 }
