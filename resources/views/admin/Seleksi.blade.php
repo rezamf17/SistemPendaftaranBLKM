@@ -36,14 +36,14 @@ Seleksi Data
           <form action="{{ url('SeleksiData') }}" method="post" accept-charset="utf-8">
             @csrf
             <label>Pilih Kota/Kabupaten</label>
-            <select name="id_cities" class="form-control" id="kota" onchange="change()">
+            <select name="id_cities" class="form-control" id="kota" onchange="change()" required>
               <option value="" >-Pilih Kota/Kabupaten-</option>
               @foreach ($kota as $element)
               <option value="{{$element->id}}">{{$element->name}}</option>
               @endforeach
             </select>
             <label>Peminatan</label>
-            <select name="peminatan" class="form-control">
+            <select name="peminatan" class="form-control" required>
               <option value="">-Silahkan Pilih Peminatan-</option>
               <option value="Tata Boga">Tata Boga</option>
               <option value="Las Listrik">Las Listrik</option>

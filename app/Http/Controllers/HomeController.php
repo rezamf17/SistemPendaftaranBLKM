@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Formulir;
 use App\Models\User;
 use App\Models\Kuesioner;
+use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $user = User::all()->count();
         $formulir = Formulir::all()->count();
         $kuesioner = Kuesioner::all()->count();
+        $pengumuman = Pengumuman::all()->count();
         $tataBoga = Formulir::where('peminatan', 'Tata Boga')->count();
         $lasListrik = Formulir::where('peminatan', 'Las Listrik')->count();
         $tataRias = Formulir::where('peminatan', 'Tata Rias Wajah dan Hijab')->count();
@@ -54,7 +56,8 @@ class HomeController extends Controller
             'bakery',
             'startUp',
             'teknikCukur',
-            'kuesioner'
+            'kuesioner',
+            'pengumuman'
         ));
     }
 

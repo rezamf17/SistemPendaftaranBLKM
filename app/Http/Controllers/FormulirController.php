@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Exports\UserFormulirExport;
 use PhpOffice\PhpWord\TemplateProcessor;
+use Illuminate\Support\Facades\Validator;
 use Dompdf\Dompdf;
 use PDF;
 

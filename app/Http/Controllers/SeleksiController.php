@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Seleksi;
 use App\Models\Formulir;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class SeleksiController extends Controller
 {
@@ -101,6 +102,15 @@ class SeleksiController extends Controller
 
     public function seleksi(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+        'id_cities' => 'required|exists:formulir,created_at',
+        'peminatan' => 'required|exists:formulir,created_at',
+        ]);
+
+        if ($validator->fails()) {
+        return back()->with('warning', $validator->messages()->all()[0])->withInput();
+        }
+
         $id_cities = $request->id_cities;
         $peminatan = $request->peminatan;
         $seleksi = Formulir::where('id_cities', $id_cities)

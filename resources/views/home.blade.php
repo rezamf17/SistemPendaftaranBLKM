@@ -45,14 +45,14 @@ Dashboard Admin
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{$pengumuman}}</h3>
 
               <p>Data Pengumuman</p>
             </div>
             <div class="icon">
               <i class="ion ion-speakerphone"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ url('Pengumuman') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
