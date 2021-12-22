@@ -55,7 +55,7 @@ class FormulirController extends Controller
      */
     public function show($id)
     {
-        $formulir = Formulir::where('id_user', $id)->first();
+        $formulir = Formulir::where('id', $id)->first();
         return view ('admin.LihatUser', compact('formulir'));
     }
 

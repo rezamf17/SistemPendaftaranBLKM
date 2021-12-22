@@ -107,9 +107,10 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
         'name' => 'required',
-        'phone' => 'required|unique:users,phone',
+        'phone' => 'required',
         'role' => 'required',
-        'password' => 'min:6|confirmed'
+        'status' => 'required',
+        'password' => 'confirmed'
         ]);
 
         if ($validator->fails()) {
@@ -132,6 +133,7 @@ class UserController extends Controller
             $users->password = Hash::make($request->password);
         }
         $users->save();
+        // return $users;
 
         return redirect('KelolaAkun')->with('success', 'Data Akun Berhasil Update!');
 

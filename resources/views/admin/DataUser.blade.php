@@ -13,7 +13,7 @@ Data User
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item active">Data User</li>
           </ol>
         </div><!-- /.col -->
@@ -74,7 +74,7 @@ Data User
                     <i class="fa fa-trash"></i>Hapus
                   </button>
                 </form> --}}
-                <a href="{{ url('Formulir/'.$item->id_user) }}" class="btn btn-primary"><i class="fa fa-eye"></i>Lihat</a>
+                <a href="{{ url('Formulir/'.$item->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i>Lihat</a>
               </th>     
             </tr>
             @endforeach

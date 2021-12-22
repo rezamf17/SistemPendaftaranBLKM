@@ -13,7 +13,7 @@ Daftar Hadir Permakanan
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item active">Daftar Hadir Permakanan</li>
           </ol>
         </div><!-- /.col -->
