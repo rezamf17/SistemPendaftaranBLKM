@@ -44,7 +44,7 @@ class ReportController extends Controller
         $formulir = Formulir::where('id_cities', $cities)
         ->where('peminatan', $peminatan)->get();
         // return view ('admin.laporan.LaporanAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities'));
-        $pdf = PDF::loadview('admin.laporan.LaporanAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities', 'tahun'));
+        $pdf = PDF::loadview('admin.laporan.LaporanAbsensi', compact('formulir','peminatan','hari', 'tanggal', 'tempat', 'cities', 'tahun'));
         return $pdf->download('Daftar-Hadir-'.$peminatan.'-'.$tahun.$tempat->cities->name.'.pdf');
 
     }
