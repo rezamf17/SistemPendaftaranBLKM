@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'status' => ['string']
         ]);
+
     }
 
     /**
@@ -73,5 +75,30 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'status' => "Calon Peserta"
         ]);
+
+    }
+
+    public function daftar(Request $request)
+    {
+         $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'phone' => 'required|unique:users,phone',
+        'password' => 'required|min:6|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+         return redirect('register')->with('warning', 'Pendaftaran Akun Gagal!');
+        }
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->password = Hash::make($request->password);
+        $user->role = 2;
+        $user->status = 'Calon Peserta';
+        // $user->save();
+
+        // return redirect()->route('user');
+        return $redirectTo;
     }
 }

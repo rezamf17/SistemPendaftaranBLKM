@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormulirController;
 use App\Http\Controllers\UserFormulirController;
@@ -31,6 +32,7 @@ Route::get('/prasyarat', function () {
     return view('prasyarat');
 });
 Route::get('/berita', [PengumumanController::class, 'utama']);
+Route::post('/daftar', [RegisterController::class, 'daftar'])->name('daftar');
 Auth::routes();
 
 Route::group(['middleware' => ['auth', 'role:1']], function() {

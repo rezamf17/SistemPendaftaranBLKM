@@ -26,12 +26,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="number" class="form-control @error('email') is-invalid @enderror" name="phone" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
 
-                                @error('email')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -75,7 +75,7 @@
     </div>
 </div>
 @endsection
- --}}
+--}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +99,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="text-center">
-            
+
             <img src="{{asset('style/images/LogoJabar.jpg')}}"  class="brand-image img-circle elevation-3" style="width: 20%;">
         </div>
         <div class="login-logo">
@@ -113,8 +113,13 @@
               <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="input-group mb-3">
-                  <input type="text" name="name" class="form-control" placeholder="Nama Lengkap">
-                  <div class="input-group-append">
+                  <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required placeholder="Nama Lengkap">
+                  @error('name')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="fas fa-user"></span>
                   </div>
@@ -126,21 +131,26 @@
             @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="number" name="phone" class="form-control" placeholder="Nomor HP">
-          <div class="input-group-append">
+          <input type="number" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Nomor HP">
+        <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-phone"></span>
           </div>
       </div>
-      @error('no_hp')
+          @error('phone')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      {{-- @error('no_hp')
       <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
     </span>
-    @enderror
+    @enderror --}}
 </div>
 <div class="input-group mb-3">
-  <input type="password" class="form-control" name="password" placeholder="Password">
-  <div class="input-group-append">
+  <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
+<div class="input-group-append">
     <div class="input-group-text">
       <span class="fas fa-lock"></span>
   </div>
@@ -174,7 +184,7 @@
 <!-- /.login-card-body -->
 </div>
 </div>
-
+@include('sweetalert::alert')
 <!-- /.login-box -->
 
 <!-- jQuery -->

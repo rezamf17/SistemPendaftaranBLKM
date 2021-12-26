@@ -9,6 +9,7 @@ use App\Models\Kuesioner;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Auth;
 
+
 class HomeController extends Controller
 {
     /**
@@ -82,4 +83,6 @@ class HomeController extends Controller
     {
       return view('dd'); 
     }
+
+    
 }

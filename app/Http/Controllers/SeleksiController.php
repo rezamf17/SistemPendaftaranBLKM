@@ -103,8 +103,8 @@ class SeleksiController extends Controller
     public function seleksi(Request $request)
     {
         $validator = Validator::make($request->all(), [
-        'id_cities' => 'required|exists:formulir,created_at',
-        'peminatan' => 'required|exists:formulir,created_at',
+        'id_cities' => 'required|exists:formulir',
+        'peminatan' => 'required|exists:formulir',
         ]);
 
         if ($validator->fails()) {
