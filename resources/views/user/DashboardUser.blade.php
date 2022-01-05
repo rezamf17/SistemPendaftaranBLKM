@@ -80,7 +80,11 @@ Dashboard Admin
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="{{ url('UserFormulir/'.Auth::user()->id) }}" class="small-box-footer">Lihat Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @if (DB::table('formulir')->where('id_user', Auth::user()->id)->exists())
+                <a href="{{ url('UserFormulir/'.Auth::user()->id) }}" class="small-box-footer">Lihat Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @else
+                <a href="#" class="small-box-footer">Kamu Belum Isi Formulir <i class="fas fa-arrow-circle-right"></i></a>
+              @endif
             </div>
           </div>
           <!-- ./col -->

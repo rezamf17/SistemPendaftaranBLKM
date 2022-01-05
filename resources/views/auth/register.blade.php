@@ -142,11 +142,6 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-      {{-- @error('no_hp')
-      <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-    @enderror --}}
 </div>
 <div class="input-group mb-3">
   <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
