@@ -38,7 +38,14 @@
 					<li class="active"><a href="{{url('/')}}">Home</a></li>
 					<li><a href="http://balatrans.disnakertrans.jabarprov.go.id/">About</a></li><li><a href="{{ url('prasyarat') }}">Prasyarat</a></li>
 					<li><a href="{{url('berita')}}">Pengumuman</a></li>
-					<li><a class="btn" href="{{url('login')}}">Login</a></li>
+					{{-- {{Auth::user()}} --}}
+					@if (Auth::user() == null)
+						<li><a class="btn" href="{{url('login')}}">Login</a></li>
+					@elseif(Auth::user()->role == 1)
+						<li><a class="btn" href="{{url('home')}}">Login</a></li>
+					@elseif(Auth::user()->role == 2)
+						<li><a class="btn" href="{{url('user')}}">Login</a></li>
+					@endif
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
