@@ -149,6 +149,13 @@ Laporan
                     <a href="{{ url('Formulir') }}" class="btn btn-danger"><i class="fa fa-print"></i>Buat Laporan</a>
                   </th>
               </tr>
+              <tr>
+                <td>14</td>
+                  <td>Seleksi Peserta</td>
+                  <th>
+                    <a href="{{ url('Seleksi') }}" class="btn btn-danger"><i class="fa fa-print"></i>Buat Laporan</a>
+                  </th>
+              </tr>
             </tbody>
           </table>
         </div>

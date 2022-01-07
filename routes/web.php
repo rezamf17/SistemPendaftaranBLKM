@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::post('LaporanDaftarNominatif', [ReportController::class, 'LaporanDaftarNominatif']);
     Route::post('ViewSertifikat/{id}', [ReportController::class, 'ViewSertifikat']);
     Route::post('LaporanSertifikat/{id}', [ReportController::class, 'LaporanSertifikat']);
+    Route::post('LaporanSeleksi', [ReportController::class, 'LaporanSeleksi']);
     // Route::post('LaporanDaftarHadir', [ReportController::class, 'LaporanDaftarHadir']);
     // End Report
     Route::get('Survey', [HasilSurveyController::class, 'index']);

@@ -530,7 +530,20 @@ class ReportController extends Controller
         $formulir = Formulir::where('id', $id)->first();
         // return view ('admin.laporan.LaporanSertifikat', compact('tempat', 'tahun', 'nomor', 'mulai', 'selesai', 'formulir'));
         $pdf = PDF::loadview('admin.laporan.LaporanSertifikat', compact(
-         'tempat', 'tahun', 'nomor', 'mulai', 'selesai', 'formulir'))->setPaper('a4', 'landscape');;
+         'tempat', 'tahun', 'nomor', 'mulai', 'selesai', 'formulir'))->setPaper('a4', 'landscape');
         return $pdf->download('Sertifikat-'.$formulir->nama.'.pdf');
+    }
+
+    public function LaporanSeleksi(Request $request)
+    {
+        $id_cities = $request->id_cities;
+        $kota = $request->kota;
+        $peminatan = $request->peminatan;
+        $seleksi = Formulir::where('id_cities', $id_cities)->where('peminatan', $peminatan)->get();
+        $seleksis = Formulir::where('id_cities', $id_cities)->first();
+        // $seleksi = DB::table('formulir')->where('id_cities', $id_cities)->get();
+        // return view('admin.Laporan.LaporanSeleksi', compact( 'seleksi','seleksis', 'id_cities', 'peminatan', 'kota'));
+        $pdf = PDF::loadview('admin.laporan.LaporanSeleksi', compact('seleksi','seleksis', 'id_cities', 'peminatan', 'kota'));
+        return $pdf->download('LaporanSeleksiPeserta-'.$kota.'-'.$peminatan.'.pdf');
     }
 }

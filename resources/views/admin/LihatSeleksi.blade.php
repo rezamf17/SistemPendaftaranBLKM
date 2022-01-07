@@ -25,11 +25,29 @@ Hasil Seleksi Data
   
   <div class="card">
     <div class="card-header">
-      Hasil Seleksi Data Peserta Di {{$seleksis->cities->name}} Dengan Peminatan {{$seleksis->peminatan}}
+      Hasil Seleksi Data Peserta
       <div class="float-right"><a href="" title=""></a></div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
+      <form action="{{ url('LaporanSeleksi') }}" method="post" accept-charset="utf-8">
+      @csrf
+      @if ($seleksis == null)
+      Maaf Data Tidak Ada
+       @else 
+      <div class="form-group">
+        Tempat
+        <input type="text" name="kota" value="{{$seleksis->cities->name}}" class="form-control">
+        <input type="text" name="id_cities" value="{{$seleksis->id_cities}}" style="display: none;">
+      </div>
+      <div class="form-group">
+        Peminatan
+        <input type="text" name="peminatan" value="{{$seleksis->peminatan}}" class="form-control">
+        <br>
+         <button type="submit" class="btn btn-danger"><i class="fa fa-file"></i>Buat Laporan</button>
+      @endif
+      </form>
+      </div>
       <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
