@@ -40,7 +40,8 @@
   <h3>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI</h3>
     <hr>
     Tempat : {{$kota}} <br>
-    Peminatan : {{$peminatan}}
+    Peminatan : {{$peminatan}} <br>
+    Nama Hasil Seleksi : {{$nama}}
     <table>
         <thead>
           <tr>

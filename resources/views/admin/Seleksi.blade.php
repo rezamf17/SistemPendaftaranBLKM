@@ -56,7 +56,15 @@ Seleksi Data
               <option value="Start Up">Start Up</option>
               <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
             </select>
-            
+            <label>Status</label>
+            <select name="status" class="form-control">
+              <option value="">-Silahkan Pilih Status-</option>
+              <option value="Calon Peserta">Calon Peserta</option>
+              <option value="Peserta">Peserta</option>
+              <option value="Alumni">Alumni</option>
+            </select>
+            <label>Nama Hasil Seleksi</label>
+            <input type="text" class="form-control" name="nama">
             <div class="card-footer">
               <button type="submit" class="btn btn-primary">Seleksi</button>
             </div>

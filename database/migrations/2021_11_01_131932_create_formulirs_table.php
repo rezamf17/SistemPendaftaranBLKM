@@ -36,6 +36,7 @@ class CreateFormulirsTable extends Migration
             $table->string('atas_nama')->nullable();
             $table->string('peminatan');
             $table->string('foto_ktp')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

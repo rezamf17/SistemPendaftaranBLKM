@@ -539,10 +539,13 @@ class ReportController extends Controller
         $id_cities = $request->id_cities;
         $kota = $request->kota;
         $peminatan = $request->peminatan;
+        $status = $request->stats;
+        $nama = $request->nama;
         $seleksi = Formulir::where('id_cities', $id_cities)->where('peminatan', $peminatan)->get();
         $seleksis = Formulir::where('id_cities', $id_cities)->first();
         // $seleksi = DB::table('formulir')->where('id_cities', $id_cities)->get();
-        // return view('admin.Laporan.LaporanSeleksi', compact( 'seleksi','seleksis', 'id_cities', 'peminatan', 'kota'));
+        // return view('admin.Laporan.LaporanSeleksi', compact( 'seleksi','seleksis', 'id_cities', 'peminatan', 'kota', 'status'
+        // , 'nama'));
         $pdf = PDF::loadview('admin.laporan.LaporanSeleksi', compact('seleksi','seleksis', 'id_cities', 'peminatan', 'kota'));
         return $pdf->download('LaporanSeleksiPeserta-'.$kota.'-'.$peminatan.'.pdf');
     }

@@ -32,19 +32,33 @@ Hasil Seleksi Data
     <div class="card-body">
       <form action="{{ url('LaporanSeleksi') }}" method="post" accept-charset="utf-8">
       @csrf
-      @if ($seleksis == null)
+      @if ($seleksiPeminatan == null)
       Maaf Data Tidak Ada
        @else 
       <div class="form-group">
         Tempat
-        <input type="text" name="kota" value="{{$seleksis->cities->name}}" class="form-control">
-        <input type="text" name="id_cities" value="{{$seleksis->id_cities}}" style="display: none;">
+        <input type="text" name="kota" value="{{$seleksiPeminatan->cities->name}}" class="form-control">
+        <input type="text" name="id_cities" value="{{$seleksiPeminatan->id_cities}}" style="display: none;">
       </div>
       <div class="form-group">
         Peminatan
-        <input type="text" name="peminatan" value="{{$seleksis->peminatan}}" class="form-control">
+        <input type="text" name="peminatan" value="{{$seleksiPeminatan->peminatan}}" class="form-control">
+        <br>
+        Status
+        <select name="stats" class="form-control" id="main_menu" aria-readonly="true" required>
+          <option value="">--Pilih Status--</option>
+          <option value="Calon Peserta" @if($seleksiPeminatan->status == "Calon Peserta") selected @endif>Calon Peserta</option>
+          <option value="Peserta" @if($seleksiPeminatan->status == "Peserta") selected @endif>Peserta</option>
+          <option value="Alumni" @if($seleksiPeminatan->status == "Alumni") selected @endif>Alumni</option>
+        </select>
+        <br>
+        Nama Hasil Seleksi
+        <input type="text" class="form-control" name="nama" value="{{$nama}}">
         <br>
          <button type="submit" class="btn btn-danger"><i class="fa fa-file"></i>Buat Laporan</button>
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
+          <i class="fa fa-random"></i>Ganti Semua Status
+        </button>
       @endif
       </form>
       </div>
@@ -59,6 +73,7 @@ Hasil Seleksi Data
             <th>Jenis Kelamin</th>
             <th>No HP</th>
             <th>Peminatan</th>
+            <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -69,10 +84,11 @@ Hasil Seleksi Data
               <td>{{$element->nama}}</td>
               <td>{{$element->ttl}}</td>
               <td>{{$element->alamat}}</td>
-              <td>{{$element->kota}}</td>
+              <td>{{$seleksiPeminatan->cities->name}}</td>
               <td>{{$element->jenis_kelamin}}</td>
               <td>{{$element->no_hp}}</td>
               <td>{{$element->peminatan}}</td>
+              <td>{{$element->status}}</td>
               <th>
              {{--  <a href="{{url('KelolaAkun/'.$element->id.'/edit')}}" title="" class="btn btn-success"> 
                 <i class="fa fa-edit"></i>Edit</a>
@@ -92,6 +108,42 @@ Hasil Seleksi Data
     </div>
     <!-- /.card-body -->
   </div>
+  </div>
+  <div class="modal fade" id="modal-sm">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Ganti Status</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ url('gantiSemuaStatus/'.$seleksiPeminatan->id) }}" method="post" accept-charset="utf-8">
+          @csrf
+          @method('patch')
+        <div class="modal-body">
+          <input type="text" name="kota" value="{{$seleksiPeminatan->cities->name}}" class="form-control" style="display: none;">
+          <input type="text" name="id_cities" value="{{$seleksiPeminatan->id_cities}}" style="display: none;">
+          <input type="text" name="peminatan" value="{{$seleksiPeminatan->peminatan}}" class="form-control" style="display: none;">
+          @foreach ($seleksi as $item)
+          <input type="text" name="id[]" value="{{$item->id_user}}" style="display: none;">
+          @endforeach
+          <select name="status" class="form-control" id="main_menu" aria-readonly="true" required>
+            <option value="">--Pilih Status--</option>
+            <option value="Calon Peserta" @if($seleksiPeminatan->status == "Calon Peserta") selected @endif>Calon Peserta</option>
+            <option value="Peserta" @if($seleksiPeminatan->status == "Peserta") selected @endif>Peserta</option>
+            <option value="Alumni" @if($seleksiPeminatan->status == "Alumni") selected @endif>Alumni</option>
+          </select>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Ganti</button>
+        </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
    <script>

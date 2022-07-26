@@ -46,6 +46,8 @@ class SeleksiController extends Controller
         $seleksi = new Formulir;
         $seleksi->id_cities = $request->id_cities;
         $seleksi->id_districts = $request->id_districts;
+        $seleksi->status = $request->status;
+        $seleksi->nama = $request->nama;
         // dd($request->all());
         // return $request;
         // return redirect('Seleksi/'.$request->id_cities);
@@ -63,7 +65,8 @@ class SeleksiController extends Controller
         $seleksi = Formulir::where('id_cities', $id_cities)->get();
         $seleksis = Formulir::where('id_cities', $id_cities)->first();
         // $seleksi = DB::table('formulir')->where('id_cities', $id_cities)->get();
-        return view('admin.LihatSeleksi', compact( 'seleksi','seleksis', 'id_cities'));
+        return $seleksi;
+        // return view('admin.LihatSeleksi', compact( 'seleksi','seleksis', 'id_cities'));
     }
 
     /**
@@ -105,6 +108,7 @@ class SeleksiController extends Controller
         $validator = Validator::make($request->all(), [
         'id_cities' => 'required|exists:formulir',
         'peminatan' => 'required|exists:formulir',
+        'status' => 'required|exists:formulir',
         ]);
 
         if ($validator->fails()) {
@@ -113,13 +117,39 @@ class SeleksiController extends Controller
 
         $id_cities = $request->id_cities;
         $peminatan = $request->peminatan;
+        $status = $request->status;
+        $nama = $request->nama;
         $seleksi = Formulir::where('id_cities', $id_cities)
-        ->where('peminatan', $peminatan)
+        ->where('peminatan', $peminatan)->where('status', $status)
         ->get();
-        $seleksis = Formulir::where('id_cities', $id_cities)
+        $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
         ->where('peminatan', $peminatan)
         ->first();
+
+        // return $seleksiP;
         // $seleksi = DB::table('formulir')->where('id_cities', $id_cities)->get();
-        return view('admin.LihatSeleksi', compact( 'seleksi','seleksis', 'id_cities'));
+        return view('admin.LihatSeleksi', compact( 'seleksi','seleksiPeminatan', 'id_cities', 'nama'));
+    }
+
+    public function gantiSemuaStatus(Request $request, $id)
+    {
+        // $status = Formulir::find($id);
+        // $status->status = $request->status;
+        // $status = Formulir::whereIn('id', $id)->update($request->all());
+        $id_cities = $request->id_cities;
+        $peminatan = $request->peminatan;
+        $status = $request->status;
+        $ids = $request->id;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get('id');
+        DB::table('users')
+        ->whereIn('id', $ids)
+        ->update(['status' => $request->status]);
+        DB::table('formulir')
+        ->whereIn('id_user', $ids)
+        ->update(['status' => $request->status]);
+
+        return redirect('Seleksi')->with('success', 'Status Berhasil Di Ganti!');
     }
 }

@@ -35,7 +35,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Otomotif Service Sepeda Motor Ringan'
+                'peminatan' => 'Otomotif Service Sepeda Motor Ringan',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 3,
@@ -57,7 +58,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Otomotif Service Sepeda Motor Ringan'
+                'peminatan' => 'Otomotif Service Sepeda Motor Ringan',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 4,
@@ -79,7 +81,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Otomotif Service Sepeda Motor Ringan'
+                'peminatan' => 'Otomotif Service Sepeda Motor Ringan',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 5,
@@ -101,7 +104,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Teknik Cukur Dasar'
+                'peminatan' => 'Teknik Cukur Dasar',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 6,
@@ -123,7 +127,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Teknik Cukur Dasar'
+                'peminatan' => 'Teknik Cukur Dasar',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 7,
@@ -145,7 +150,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Otomotif Service Sepeda Motor Ringan'
+                'peminatan' => 'Otomotif Service Sepeda Motor Ringan',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 2,
@@ -167,7 +173,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Teknik Cukur Dasar'
+                'peminatan' => 'Teknik Cukur Dasar',
+                'status' => 'Calon Peserta'
             ],
             [
                 'id_user' => 8,
@@ -189,7 +196,8 @@ class UserFormulirSeeder extends Seeder
                 'no_rek' => '',
                 'bank' => '',
                 'atas_nama' => '',
-                'peminatan' => 'Teknik Cukur Dasar'
+                'peminatan' => 'Teknik Cukur Dasar',
+                'status' => 'Calon Peserta'
             ]
 
         ]);

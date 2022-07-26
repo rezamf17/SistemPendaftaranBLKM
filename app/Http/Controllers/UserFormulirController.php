@@ -77,6 +77,7 @@ class UserFormulirController extends Controller
         $formulir->angkatan = $request->angkatan;
         $formulir->no_hp = $request->no_hp;
         $formulir->peminatan = $request->peminatan;
+        $formulir->status = 'Calon Peserta';
         
         $formulir->save();
         // dd($request->file('foto_ktp'));
