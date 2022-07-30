@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::get('JawabanSurvey/{id}', [HasilSurveyController::class, 'jawabanSurvey']);
     Route::get('Laporan', [ReportController::class, 'index']);
     Route::post('SeleksiData', [SeleksiController::class, 'seleksi']);
+    Route::post('SeleksiData', [SeleksiController::class, 'simpanSeleksi']);
     Route::patch('gantiSemuaStatus/{id}', [SeleksiController::class, 'gantiSemuaStatus']);
     Route::put('Formulir/GantiStatus/{id_user}', [FormulirController::class, 'gantiStatus']);
 });

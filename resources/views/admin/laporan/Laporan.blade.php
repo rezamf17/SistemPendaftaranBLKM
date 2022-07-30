@@ -196,10 +196,11 @@ Laporan
               <label>Kota/Kabupaten</label>
                 <select name="cities" class="form-control" id="kota">
                 <option value="" >-Pilih Kota/Kabupaten-</option>
-                @foreach ($kota as $element)
-                <option value="{{$element->id}}">{{$element->name}}</option>
-                @endforeach
-            </select>
+                  @foreach ($kota as $element)
+                  <option value="{{$element->id}}">{{$element->name}}</option>
+                  @endforeach
+              </select>
+              {{-- <input type="text" class="form-control" name="cities"> --}}
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

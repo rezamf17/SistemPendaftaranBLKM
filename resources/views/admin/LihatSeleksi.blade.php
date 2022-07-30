@@ -59,6 +59,9 @@ Hasil Seleksi Data
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
           <i class="fa fa-random"></i>Ganti Semua Status
         </button>
+         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-save">
+          <i class="fa fa-save"></i>Simpan Seleksi Pelatihan
+        </button>
       @endif
       </form>
       </div>
@@ -113,7 +116,7 @@ Hasil Seleksi Data
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Ganti Status</h4>
+          <h4 class="modal-title">Ganti Status<h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -138,6 +141,38 @@ Hasil Seleksi Data
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Ganti</button>
+        </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <div class="modal fade" id="modal-save">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Simpan Data ?</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ url('SeleksiData') }}" method="post" accept-charset="utf-8">
+          @csrf
+          @method('post')
+        <div class="modal-body">
+          <h5>Anda Yakin Ingin Menyimpan Data?</h5>
+          <div style="display: none;">
+            <input type="text" value="{{$seleksiPeminatan->id_cities}}" name="id_cities">
+            <input type="text" value="{{$seleksiPeminatan->peminatan}}" name="peminatan">
+            <input type="text" value="{{$seleksiPeminatan->status}}" name="stats">
+            <input type="text" value="{{$nama}}" name="nama">
+
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
         </div>
         </form>
       </div>

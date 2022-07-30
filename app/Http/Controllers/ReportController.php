@@ -546,7 +546,7 @@ class ReportController extends Controller
         // $seleksi = DB::table('formulir')->where('id_cities', $id_cities)->get();
         // return view('admin.Laporan.LaporanSeleksi', compact( 'seleksi','seleksis', 'id_cities', 'peminatan', 'kota', 'status'
         // , 'nama'));
-        $pdf = PDF::loadview('admin.laporan.LaporanSeleksi', compact('seleksi','seleksis', 'id_cities', 'peminatan', 'kota'));
+        $pdf = PDF::loadview('admin.laporan.LaporanSeleksi', compact('seleksi','seleksis', 'id_cities', 'peminatan', 'kota', 'nama'));
         return $pdf->download('LaporanSeleksiPeserta-'.$kota.'-'.$peminatan.'.pdf');
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Seleksi;
+use App\Models\Cities;
 use App\Models\Formulir;
+use App\Models\Seleksi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,7 +20,7 @@ class SeleksiController extends Controller
     {
         $id_cities = $request->id_cities;
         $id_disctricts = $request->id_districts;
-        $kota = Seleksi::where('province_code', '32')->get();
+        $kota = Cities::where('province_code', '32')->get();
         $seleksi = Formulir::where('id_cities', $id_cities);
         $all = Formulir::all();
         return view('admin.Seleksi', compact('kota', 'seleksi', 'all'));
@@ -51,6 +52,7 @@ class SeleksiController extends Controller
         // dd($request->all());
         // return $request;
         // return redirect('Seleksi/'.$request->id_cities);
+        
     }
 
     /**
@@ -143,7 +145,7 @@ class SeleksiController extends Controller
         $seleksi = Formulir::where('id_cities', $id_cities)
         ->where('peminatan', $peminatan)->where('status', $status)
         ->get('id');
-        DB::table('users')
+        DB::table('users')->where('peminatan', $peminatan)
         ->whereIn('id', $ids)
         ->update(['status' => $request->status]);
         DB::table('formulir')
@@ -151,5 +153,16 @@ class SeleksiController extends Controller
         ->update(['status' => $request->status]);
 
         return redirect('Seleksi')->with('success', 'Status Berhasil Di Ganti!');
+    }
+
+    public function simpanSeleksi(Request $request)
+    {
+        $seleksi = new Seleksi;
+        $seleksi->id_cities = $request->id_cities;
+        $seleksi->peminatan = $request->peminatan;
+        $seleksi->status = $request->stats;
+        $seleksi->nama_pelatihan = $request->nama;
+        $seleksi->save();
+        return redirect('Seleksi')->with('success', 'Seleksi Pelatihan Berhasil Disimpan!');
     }
 }
