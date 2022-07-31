@@ -17,6 +17,7 @@ class UserFormulirSeeder extends Seeder
         DB::table('formulir')->insert([
             [
                 'id_user' => 2,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 181,
                 'id_districts' => 2558,
@@ -40,6 +41,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 3,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 185,
                 'id_districts' => 2558,
@@ -63,6 +65,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 4,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 181,
                 'id_districts' => 2558,
@@ -86,6 +89,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 5,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 185,
                 'id_districts' => 2063,
@@ -109,6 +113,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 6,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 181,
                 'id_districts' => 2558,
@@ -132,6 +137,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 7,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 185,
                 'id_districts' => 2063,
@@ -155,6 +161,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 2,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 181,
                 'id_districts' => 2558,
@@ -178,6 +185,7 @@ class UserFormulirSeeder extends Seeder
             ],
             [
                 'id_user' => 8,
+                'id_seleksi' => 1,
                 'id_provinces' => 12,
                 'id_cities' => 181,
                 'id_districts' => 2558,

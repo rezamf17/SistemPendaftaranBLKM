@@ -9,4 +9,10 @@ class Seleksi extends Model
 {
     use HasFactory;
     protected $table = 'seleksi';
+
+
+    public function cities()
+    {
+         return $this->belongsTo('Laravolt\Indonesia\Models\Kabupaten', 'id_cities');
+    }
 }

@@ -179,28 +179,13 @@ Laporan
               <input type="date" name="tanggal" class="form-control d-inline">
               <label>Tahun</label>
               <input type="number" min="1900" max="2099" value="2021" step="1" class="form-control" name="tahun">
-              <label>Peminatan</label>
-              <select name="peminatan" class="form-control" required>
-                  <option value="">-Silahkan Pilih Peminatan-</option>
-                  <option value="Tata Boga">Tata Boga</option>
-                  <option value="Las Listrik">Las Listrik</option>
-                  <option value="Tata Rias Wajah dan Hijab">Tata Rias Wajah dan Hijab</option>
-                  <option value="Financial Life Skill">Financial Life Skill</option>
-                  <option value="Barista">Barista</option>
-                  <option value="Catering">Catering</option>
-                  <option value="Otomotif Service Sepeda Motor Ringan">Otomotif Service Sepeda Motor Ringan</option>
-                  <option value="Bakery">Bakery</option>
-                  <option value="Start Up">Start Up</option>
-                  <option value="Teknik Cukur Dasar">Teknik Cukur Dasar</option>
-                </select>
-              <label>Kota/Kabupaten</label>
-                <select name="cities" class="form-control" id="kota">
-                <option value="" >-Pilih Kota/Kabupaten-</option>
-                  @foreach ($kota as $element)
-                  <option value="{{$element->id}}">{{$element->name}}</option>
+              <label>Nama Seleksi</label>
+                <select name="seleksi" class="form-control" id="seleksi">
+                <option value="" >-Pilih Nama Seleksi-</option>
+                  @foreach ($seleksi as $element)
+                  <option value="{{$element->id}}">{{$element->nama_pelatihan}}</option>
                   @endforeach
-              </select>
-              {{-- <input type="text" class="form-control" name="cities"> --}}
+              </select> 
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

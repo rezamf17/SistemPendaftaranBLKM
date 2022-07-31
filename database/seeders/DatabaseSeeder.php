@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Database\Seeders\UserFormulirSeeder;
 use Database\Seeders\SurveySeeder;
+use Database\Seeders\SeleksiSeeder;
 use Laravolt\Indonesia\Seeds\CitiesSeeder;
 use Laravolt\Indonesia\Seeds\VillagesSeeder;
 use Laravolt\Indonesia\Seeds\DistrictsSeeder;
@@ -99,8 +100,9 @@ class DatabaseSeeder extends Seeder
             CitiesSeeder::class,
             DistrictsSeeder::class,
             VillagesSeeder::class,
+            SeleksiSeeder::class,
             UserFormulirSeeder::class,
-            SurveySeeder::class
+            SurveySeeder::class,
         ]);
     }
 }

@@ -36,7 +36,7 @@
     TAHUN {{$tempat->angkatan}} <br>
     DI {{$tempat->cities->name}}</h4>  
     <hr>
-	<label>Hari :</label> {{$hari}}/{{$tanggal}} <br>
+	<label>Hari :</label>{{$tanggal}} <br>
     <label>Tempat :</label>{{$tempat->cities->name}} <br>
     <label>Peminatan :</label>{{$peminatan}}
 	<table>

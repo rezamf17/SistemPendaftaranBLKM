@@ -23,7 +23,8 @@ class SeleksiController extends Controller
         $kota = Cities::where('province_code', '32')->get();
         $seleksi = Formulir::where('id_cities', $id_cities);
         $all = Formulir::all();
-        return view('admin.Seleksi', compact('kota', 'seleksi', 'all'));
+        $namaSeleksi = Seleksi::all();
+        return view('admin.Seleksi', compact('kota', 'seleksi', 'all', 'namaSeleksi'));
     }
 
     /**
@@ -164,5 +165,22 @@ class SeleksiController extends Controller
         $seleksi->nama_pelatihan = $request->nama;
         $seleksi->save();
         return redirect('Seleksi')->with('success', 'Seleksi Pelatihan Berhasil Disimpan!');
+    }
+
+    public function lihatSimpanSeleksi($id)
+    {
+        $seleksiData = Seleksi::find($id);
+        $id_cities = $seleksiData->id_cities;
+        $peminatan = $seleksiData->peminatan;
+        $status = $seleksiData->status;
+        $nama = $seleksiData->nama_pelatihan;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get();
+        $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)
+        ->first();
+        // return $seleksiData;
+        return view('admin.LihatSimpanSeleksi', compact('seleksiData', 'seleksi','seleksiPeminatan', 'id_cities', 'nama'));
     }
 }

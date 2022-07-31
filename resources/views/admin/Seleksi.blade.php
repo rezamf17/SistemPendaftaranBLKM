@@ -73,6 +73,40 @@ Seleksi Data
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-header">Daftar Nama Seleksi</div>
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Kota</th>
+            <th>Peminatan</th>
+            <th>Status</th>
+            <th>Nama Pelatihan</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($namaSeleksi as $element)
+          <tr>
+              <td>{{$loop->iteration}}</td>
+              <td>{{$element->cities->name}}</td>
+              <td>{{$element->peminatan}}</td>
+              <td>{{$element->status}}</td>
+              <td>{{$element->nama_pelatihan}}</td>
+              <th>
+                <form action="{{ url('lihatSeleksiData/'.$element->id) }}" method="post">
+                  @csrf
+                  <button type="submit" class="btn btn-primary">Seleksi Data</button>
+                </form>
+              </th>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

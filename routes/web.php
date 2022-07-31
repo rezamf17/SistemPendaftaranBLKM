@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::resource('Seleksi', SeleksiController::class);
     // Report
     Route::get('Formulir/exports/{id}', [FormulirController::class, 'DataUserReport']);
-    Route::post('ViewAbsensi', [ReportController::class, 'ViewAbsensi']);
+    Route::post('ViewAbsensi/{id}', [ReportController::class, 'ViewAbsensi']);
     Route::post('LaporanAbsensi', [ReportController::class, 'LaporanAbsensi']);
     Route::post('ViewAbsensiUndangan', [ReportController::class, 'ViewAbsensiUndangan']);
     Route::post('LaporanAbsensiUndangan', [ReportController::class, 'LaporanAbsensiUndangan']);
@@ -74,7 +74,8 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::get('JawabanSurvey/{id}', [HasilSurveyController::class, 'jawabanSurvey']);
     Route::get('Laporan', [ReportController::class, 'index']);
     Route::post('SeleksiData', [SeleksiController::class, 'seleksi']);
-    Route::post('SeleksiData', [SeleksiController::class, 'simpanSeleksi']);
+    Route::post('simpanSeleksiData', [SeleksiController::class, 'simpanSeleksi']);
+    Route::post('lihatSeleksiData/{id}', [SeleksiController::class, 'lihatSimpanSeleksi']);
     Route::patch('gantiSemuaStatus/{id}', [SeleksiController::class, 'gantiSemuaStatus']);
     Route::put('Formulir/GantiStatus/{id_user}', [FormulirController::class, 'gantiStatus']);
 });

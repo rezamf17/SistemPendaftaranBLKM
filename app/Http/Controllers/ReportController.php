@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Seleksi;
+use App\Models\Cities;
 use App\Models\Formulir;
+use App\Models\Seleksi;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Dompdf\Dompdf;
 use PDF;
@@ -13,23 +14,37 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $kota = Seleksi::where('province_code', '32')->get();
-        return view('admin.laporan.Laporan', compact('kota'));
+        $kota = Cities::where('province_code', '32')->get();
+        $seleksi = Seleksi::all();
+        return view('admin.laporan.Laporan', compact('kota', 'seleksi'));
     }
 
-    public function ViewAbsensi(Request $request)
+    public function ViewAbsensi(Request $request, $id)
     {
-        $cities = $request->cities;
-        $peminatan = $request->peminatan;
-        $hari = $request->hari;
-        $tanggal = $request->tanggal;
-        $tahun = $request->tahun;
-        $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
-        $tempat = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->first();
-        // dd($request->all());
-        return view ('admin.laporan.ViewAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities', 'tahun'));
+        // $cities = $request->cities;
+        // $peminatan = $request->peminatan;
+        // $hari = $request->hari;
+        // $tanggal = $request->tanggal;
+        // $tahun = $request->tahun;
+        // $formulir = Formulir::where('id_cities', $cities)
+        // ->where('peminatan', $peminatan)->get();
+        // ->where('peminatan', $peminatan)->first();
+        // dd($request-all());
+        $seleksiData = Seleksi::find($id);
+        // return $seleksiData;
+        $id_cities = $seleksiData->id_cities;
+        $tempat = Formulir::where('id_cities', $id_cities)->first();
+        $peminatan = $seleksiData->peminatan;
+        $status = $seleksiData->status;
+        $nama = $seleksiData->nama_pelatihan;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get();
+        $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)
+        ->first();
+        return view ('admin.laporan.ViewAbsensi', 
+        compact('id_cities', 'peminatan', 'tempat', 'seleksi'));
     }
 
     public function LaporanAbsensi(Request $request)

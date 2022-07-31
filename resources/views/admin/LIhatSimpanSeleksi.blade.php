@@ -22,7 +22,6 @@ Hasil Seleksi Data
   </div>
   @endsection
   @section('content')
-  
   <div class="card">
     <div class="card-header">
       Hasil Seleksi Data Peserta
@@ -55,7 +54,8 @@ Hasil Seleksi Data
         Nama Hasil Seleksi
         <input type="text" class="form-control" name="nama" value="{{$nama}}">
         <br>
-         <button type="submit" class="btn btn-danger"><i class="fa fa-file"></i>Buat Laporan</button>
+         {{-- <button type="submit" class="btn btn-danger"><i class="fa fa-file"></i>Buat Laporan</button> --}}
+         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-report"><i class="fa fa-file"></i>Buat Laporan</button>
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
           <i class="fa fa-random"></i>Ganti Semua Status
         </button>
@@ -173,6 +173,118 @@ Hasil Seleksi Data
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <div class="modal fade" id="modal-report">
+    <div class="modal-dialog modal-lg" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Buat Laporan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ url('ViewAbsensi/'.$seleksiData->id) }}" method="post" accept-charset="utf-8">
+          @csrf
+          @method('post')
+        <div class="modal-body">
+          <div style="display:;">
+              <table class="table bordered">
+                <tr>
+                  <th>Daftar Hadir</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Daftar Hadir Undangan</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Sertifikat</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Perlengkapan</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Hasil Praktik</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Obat-Obatan</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Bahan/Alat Praktik</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Bahan Materi</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tanda Terima Permakanan</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Daftar Hadir Pelajaran</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Daftar Nominatif</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Biodata Peserta</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Sertifikat</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Seleksi Peserta</th>
+                  <td>
+                    <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </td>
+                </tr>
+              </table>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          {{-- <button type="submit" class="btn btn-success">Simpan</button> --}}
         </div>
         </form>
       </div>

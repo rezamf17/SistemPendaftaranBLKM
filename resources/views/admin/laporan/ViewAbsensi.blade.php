@@ -28,16 +28,15 @@ View Daftar Hadir
       <div class="form-group">
         <form action="{{ url('LaporanAbsensi') }}" method="post" accept-charset="utf-8">
           @csrf
-        <input type="" name="cities" value="{{$cities}}" style="display: none;">
-        <input type="" name="tahun" value="{{$tahun}}" style="display: none;">
-        <label>Hari :</label>
-        <input type="text" name="hari" value="{{$hari}}" class="form-control">
+        <input type="" name="cities" value="{{$id_cities}}" style="display: none;">
+        <input type="" name="tahun" value="2022" style="display: none;">
+
         <label>Tanggal :</label>
-        <input type="text" name="tanggal" value="{{$tanggal}}" class="form-control">
+        <input type="text" name="tanggal" value="{{date("Y/m/d")}}" class="form-control">
         <label>Tempat :</label>
         <input type="text" name="tempat" value="{{$tempat->cities->name}}" class="form-control" >
         <label>Peminatan :</label>
-        <input type="text" name="peminatan" value="{{$peminatan}}" class="form-control" >
+        <input type="text" name="peminatan" value="{{$peminatan}}" class="form-control" > 
       </div>
       <table class="table table-bordered">
         <thead>
@@ -48,7 +47,7 @@ View Daftar Hadir
           </tr>
         </thead>
         <tbody>
-          @foreach ($formulir as $element)
+          @foreach ($seleksi as $element)
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{$element->nama}}</td>
