@@ -77,6 +77,7 @@ Hasil Seleksi Data
             <th>No HP</th>
             <th>Peminatan</th>
             <th>Status</th>
+            <th>Tanggal Daftar</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -92,6 +93,7 @@ Hasil Seleksi Data
               <td>{{$element->no_hp}}</td>
               <td>{{$element->peminatan}}</td>
               <td>{{$element->status}}</td>
+              <td>{{$element->created_at}}</td>
               <th>
              {{--  <a href="{{url('KelolaAkun/'.$element->id.'/edit')}}" title="" class="btn btn-success"> 
                 <i class="fa fa-edit"></i>Edit</a>

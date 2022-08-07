@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::post('simpanSeleksiData', [SeleksiController::class, 'simpanSeleksi']);
     Route::post('lihatSeleksiData/{id}', [SeleksiController::class, 'lihatSimpanSeleksi']);
     Route::patch('gantiSemuaStatus/{id}', [SeleksiController::class, 'gantiSemuaStatus']);
+    Route::patch('gantiSemuaHasilStatus/{id}', [SeleksiController::class, 'gantiSemuaHasilStatus']);
+    Route::patch('deleteSeleksi/{id}', [SeleksiController::class, 'destroy']);
     Route::put('Formulir/GantiStatus/{id_user}', [FormulirController::class, 'gantiStatus']);
 });
 

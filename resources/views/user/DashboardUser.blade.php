@@ -109,7 +109,14 @@ Dashboard Admin
           </div>
           <!-- ./col -->
         </div>
-        <h5>Status : {{ Auth::user()->status }}</h5>
+        <h5>Status : @if(Auth::user()->status === 'Calon Peserta')
+          Calon Peserta - Belum Diterima
+          @elseif(Auth::user()->status === 'Peserta')
+          Peserta - Sudah Diterima
+          @else
+          Alumni - Pelatihan Sudah Selesai
+          @endif
+        </h5>
 </div>
 @include('sweetalert::alert')
 @endsection

@@ -82,14 +82,168 @@ class DatabaseSeeder extends Seeder
             ],
             [
                'name' => 'asep',
-               'phone' => '08327',
+               'phone' => '0831227',
                'role' => 2,
                'password' => Hash::make('123456'),
                'status' => "Calon Peserta"
             ],
             [
                'name' => 'hidayat',
-               'phone' => '08328',
+               'phone' => '03248328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0832118',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '085672328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0832348',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '08341328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '08312228',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0823328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0836728',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0845328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0846328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0834328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0832428',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '08334628',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '08327678',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0832128',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0832238',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '0833428',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '03458328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '08546328',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '454',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '122',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '2332',
+               'role' => 2,
+               'password' => Hash::make('123456'),
+               'status' => "Calon Peserta"
+            ],
+            [
+               'name' => 'hidayat',
+               'phone' => '45',
                'role' => 2,
                'password' => Hash::make('123456'),
                'status' => "Calon Peserta"

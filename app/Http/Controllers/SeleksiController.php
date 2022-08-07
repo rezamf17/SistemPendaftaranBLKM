@@ -18,6 +18,7 @@ class SeleksiController extends Controller
      */
     public function index(Request $request)
     {
+        // return now();
         $id_cities = $request->id_cities;
         $id_disctricts = $request->id_districts;
         $kota = Cities::where('province_code', '32')->get();
@@ -125,8 +126,8 @@ class SeleksiController extends Controller
         $peminatan = $request->peminatan;
         $status = $request->status;
         $nama = $request->nama;
-        $seleksi = Formulir::where('id_cities', $id_cities)
-        ->where('peminatan', $peminatan)->where('status', $status)
+        $seleksi = Formulir::orderBy('created_at', 'ASC')->where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)->take(20)
         ->get();
         $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
         ->where('peminatan', $peminatan)
@@ -158,6 +159,30 @@ class SeleksiController extends Controller
 
         return redirect('Seleksi')->with('success', 'Status Berhasil Di Ganti!');
     }
+    public function gantiSemuaHasilStatus(Request $request, $id)
+    {
+        // $status = Formulir::find($id);
+        // $status->status = $request->status;
+        // $status = Formulir::whereIn('id', $id)->update($request->all());
+        $id_cities = $request->id_cities;
+        $peminatan = $request->peminatan;
+        $status = $request->status;
+        $ids = $request->id;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get('id');
+        DB::table('users')
+        ->whereIn('id', $ids)
+        ->update(['status' => $request->status]);
+        DB::table('formulir')
+        ->whereIn('id_user', $ids)
+        ->update(['status' => $request->status]);
+        DB::table('seleksi')
+        // ->whereIn('id_user', $ids)
+        ->update(['status' => $request->status]);
+
+        return redirect('Seleksi')->with('success', 'Status Berhasil Di Ganti!');
+    }
 
     public function simpanSeleksi(Request $request)
     {
@@ -177,8 +202,8 @@ class SeleksiController extends Controller
         $peminatan = $seleksiData->peminatan;
         $status = $seleksiData->status;
         $nama = $seleksiData->nama_pelatihan;
-        $seleksi = Formulir::where('id_cities', $id_cities)
-        ->where('peminatan', $peminatan)->where('status', $status)
+        $seleksi = Formulir::orderBy('created_at', 'ASC')->where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)->take(20)
         ->get();
         $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
         ->where('peminatan', $peminatan)

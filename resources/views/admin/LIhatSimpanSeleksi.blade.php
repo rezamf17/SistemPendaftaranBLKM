@@ -59,9 +59,9 @@ Hasil Seleksi Data
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
           <i class="fa fa-random"></i>Ganti Semua Status
         </button>
-         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-save">
+         {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-save">
           <i class="fa fa-save"></i>Simpan Seleksi Pelatihan
-        </button>
+        </button> --}}
       @endif
       </form>
       </div>
@@ -77,6 +77,7 @@ Hasil Seleksi Data
             <th>No HP</th>
             <th>Peminatan</th>
             <th>Status</th>
+            <th>Tanggal Daftar</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -92,6 +93,7 @@ Hasil Seleksi Data
               <td>{{$element->no_hp}}</td>
               <td>{{$element->peminatan}}</td>
               <td>{{$element->status}}</td>
+              <td>{{$element->created_at}}</td>
               <th>
              {{--  <a href="{{url('KelolaAkun/'.$element->id.'/edit')}}" title="" class="btn btn-success"> 
                 <i class="fa fa-edit"></i>Edit</a>
@@ -121,7 +123,7 @@ Hasil Seleksi Data
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ url('gantiSemuaStatus/'.$seleksiPeminatan->id) }}" method="post" accept-charset="utf-8">
+        <form action="{{ url('gantiSemuaHasilStatus/'.$seleksiPeminatan->id) }}" method="post" accept-charset="utf-8">
           @csrf
           @method('patch')
         <div class="modal-body">

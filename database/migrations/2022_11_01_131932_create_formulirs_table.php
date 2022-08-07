@@ -16,7 +16,7 @@ class CreateFormulirsTable extends Migration
         Schema::create('formulir', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('id_seleksi')->constrained('seleksi')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreignId('id_seleksi')->constrained('seleksi')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('id_provinces')->constrained('indonesia_provinces')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('id_cities')->constrained('indonesia_cities')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('id_districts')->constrained('indonesia_districts')->onUpdate('cascade')->onDelete('cascade');

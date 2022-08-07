@@ -96,10 +96,17 @@ Seleksi Data
               <td>{{$element->status}}</td>
               <td>{{$element->nama_pelatihan}}</td>
               <th>
-                <form action="{{ url('lihatSeleksiData/'.$element->id) }}" method="post">
+                <div class="d-inline">
+                  <form action="{{ url('lihatSeleksiData/'.$element->id) }}" method="post">
                   @csrf
                   <button type="submit" class="btn btn-primary">Seleksi Data</button>
                 </form>
+                <form action="{{ url('deleteSeleksi/'.$element->id) }}" method="post" onsubmit="return confirm('Yakin hapus data?')">
+                  @csrf
+                  @method('patch')
+                  <button type="submit" class="btn btn-danger">Hapus Data</button>
+                </form>
+                </div>
               </th>
           </tr>
           @endforeach
