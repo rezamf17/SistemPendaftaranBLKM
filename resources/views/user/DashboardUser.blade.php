@@ -9,7 +9,7 @@ Dashboard Admin
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard Admin</h1>
+                    <h1 class="m-0 text-dark">Dashboard User</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -109,7 +109,7 @@ Dashboard Admin
           </div>
           <!-- ./col -->
         </div>
-        Status : {{ Auth::user()->status }}
+        <h5>Status : {{ Auth::user()->status }}</h5>
 </div>
 @include('sweetalert::alert')
 @endsection

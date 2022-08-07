@@ -17,6 +17,7 @@ class SeleksiSeeder extends Seeder
         DB::table('seleksi')->insert([
             [
                 'id_cities' => 181,
+                // 'id_formulir' => 2,
                 'peminatan' => 'Otomotif Service Sepeda Motor Ringan',
                 'status' => 'Calon Peserta',
                 'nama_pelatihan' => 'pelatihan sepeda motor bandung',

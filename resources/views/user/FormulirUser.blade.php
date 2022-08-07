@@ -152,7 +152,7 @@ Isi Formulir
     </div>
   </div>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>
         function onChangeSelect(url, id, name) {
             // send ajax request to get the cities of the selected province and append to the select tag

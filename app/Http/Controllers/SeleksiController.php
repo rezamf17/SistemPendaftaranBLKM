@@ -103,7 +103,10 @@ class SeleksiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $seleksi = Seleksi::find($id);
+        $seleksi->delete();
+
+        return redirect('Seleksi')->with('success', 'Data Seleksi Berhasil Dihapus!');
     }
 
     public function seleksi(Request $request)
@@ -146,7 +149,7 @@ class SeleksiController extends Controller
         $seleksi = Formulir::where('id_cities', $id_cities)
         ->where('peminatan', $peminatan)->where('status', $status)
         ->get('id');
-        DB::table('users')->where('peminatan', $peminatan)
+        DB::table('users')
         ->whereIn('id', $ids)
         ->update(['status' => $request->status]);
         DB::table('formulir')
