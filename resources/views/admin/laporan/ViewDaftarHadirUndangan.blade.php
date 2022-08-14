@@ -28,10 +28,10 @@ View Daftar Hadir Undangan
       <div class="form-group">
         <form action="{{ url('LaporanAbsensiUndangan') }}" method="post" accept-charset="utf-8">
           @csrf
-        <input type="" name="cities" value="{{$cities}}" style="display: none;">
-        <input type="" name="tahun" value="{{$tahun}}" style="display: none;">
-        <label>Hari :</label>
-        <input type="text" name="hari" value="{{$hari}}" class="form-control">
+        <input type="" name="cities" value="{{$id_cities}}" style="display: none;">
+        <input type="" name="tahun" value="2022" style="display: none;">
+        {{-- <label>Hari :</label> --}}
+        {{-- <input type="text" name="hari" value="{{$hari}}" class="form-control"> --}}
         <label>Tanggal :</label>
         <input type="text" name="tanggal" value="{{$tanggal}}" class="form-control">
         <label>Tempat :</label>
@@ -73,7 +73,7 @@ View Daftar Hadir Undangan
       <div class="card-footer">
           <button type="submit" class="btn btn-danger"><i class="fa fa-print"></i>Print</button>
         </form>
-        <a href="{{ url('Laporan') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
+        <a href="{{ url('Seleksi') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
       </div>
     </div>
   </div>

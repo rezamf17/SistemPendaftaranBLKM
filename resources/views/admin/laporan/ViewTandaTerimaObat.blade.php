@@ -28,12 +28,12 @@ View Tanda Terima Obat
       <div class="form-group">
         <form action="{{ url('LaporanTandaTerimaObat') }}" method="post" accept-charset="utf-8">
           @csrf
-        <input type="" name="cities" value="{{$cities}}" style="display: none;">
-        <input type="" name="tahun" value="{{$tahun}}" style="display: none;">
-        <label>Hari :</label>
-        <input type="text" name="hari" value="{{$hari}}" class="form-control">
+        <input type="" name="cities" value="{{$id_cities}}" style="display: none;">
+        <input type="" name="tahun" value="2022" style="display: none;">
+        {{-- <label>Hari :</label> --}}
+        {{-- <input type="text" name="hari" value="{{$hari}}" class="form-control"> --}}
         <label>Tanggal :</label>
-        <input type="text" name="tanggal" value="{{$tanggal}}" class="form-control">
+        <input type="text" name="tanggal" value="{{date("Y/m/d")}}" class="form-control">
         <label>Tempat :</label>
         <input type="text" name="tempat" value="{{$tempat->cities->name}}" class="form-control" >
         <label>Peminatan :</label>
@@ -50,7 +50,7 @@ View Tanda Terima Obat
           </tr>
         </thead>
         <tbody>
-          @foreach ($formulir as $element)
+          @foreach ($seleksi as $element)
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{$element->nama}}</td>
@@ -78,7 +78,7 @@ View Tanda Terima Obat
       <div class="card-footer">
           <button type="submit" class="btn btn-danger"><i class="fa fa-print"></i>Print</button>
         </form>
-        <a href="{{ url('Laporan') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
+        <a href="{{ url('Seleksi') }}" class="btn btn-default"><i class="fa fa-repeat"></i>Batal</a>
       </div>
     </div>
   </div>

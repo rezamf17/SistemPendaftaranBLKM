@@ -191,29 +191,42 @@ Hasil Seleksi Data
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{ url('ViewAbsensi/'.$seleksiData->id) }}" method="post" accept-charset="utf-8">
-          @csrf
-          @method('post')
         <div class="modal-body">
           <div style="display:;">
               <table class="table bordered">
                 <tr>
                   <th>Daftar Hadir</th>
                   <td>
+                    <form action="{{ url('ViewAbsensi/'.$seleksiData->id) }}" method="post" accept-charset="utf-8">
+                      @csrf
+                      @method('post')
                     <button type="submit" class="btn btn-danger">Buat Laporan</button>
+                  </form>
                   </td>
                 </tr>
                 <tr>
+                  <form action="{{ url('ViewAbsensiUndangan') }}" method="post" accept-charset="utf-8">
+                    @csrf
                   <th>Daftar Hadir Undangan</th>
                   <td>
+                    <input type="text" value=" {{$seleksiData->id_cities}}" style="display: none" name="id_cities">
+                    <input type="text" value=" {{date("Y/m/d")}}" style="display:none;" name="tanggal">
+                    <input type="text" value="2022" style="display:none;" name="tahun">
                     <button type="submit" class="btn btn-danger">Buat Laporan</button>
                   </td>
+                </form>
                 </tr>
                 <tr>
+                  <form action="{{ url('ViewTandaTerimaSertifikat/'.$seleksiData->id) }}" method="post" accept-charset="utf-8">
+                    @csrf
                   <th>Tanda Terima Sertifikat</th>
                   <td>
+                    <input type="text" value=" {{$seleksiData->id_cities}}" style="display: none" name="id_cities">
+                    <input type="text" value=" {{date("Y/m/d")}}" style="display:none;" name="tanggal">
+                    <input type="text" value=" {{$seleksiData->status}}" style="display:none;" name="status">
                     <button type="submit" class="btn btn-danger">Buat Laporan</button>
                   </td>
+                  </form>
                 </tr>
                 <tr>
                   <th>Tanda Terima Perlengkapan</th>
@@ -228,16 +241,22 @@ Hasil Seleksi Data
                   </td>
                 </tr>
                 <tr>
+                  <form action="{{ url('ViewTandaTerimaObat/'.$seleksiData->id) }}" method="post" accept-charset="utf-8">
+                    @csrf
                   <th>Tanda Terima Obat-Obatan</th>
                   <td>
                     <button type="submit" class="btn btn-danger">Buat Laporan</button>
                   </td>
+                  </form>
                 </tr>
                 <tr>
+                  <form action="{{ url('ViewTandaTerimaBahan/'.$seleksiData->id) }}" method="post" accept-charset="utf-8">
+                    @csrf
                   <th>Tanda Terima Bahan/Alat Praktik</th>
                   <td>
                     <button type="submit" class="btn btn-danger">Buat Laporan</button>
                   </td>
+                  </form>
                 </tr>
                 <tr>
                   <th>Tanda Terima Bahan Materi</th>
@@ -288,7 +307,6 @@ Hasil Seleksi Data
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           {{-- <button type="submit" class="btn btn-success">Simpan</button> --}}
         </div>
-        </form>
       </div>
       <!-- /.modal-content -->
     </div>

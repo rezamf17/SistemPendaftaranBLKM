@@ -47,15 +47,15 @@ Route::group(['middleware' => ['auth', 'role:1']], function() {
     Route::post('LaporanAbsensi', [ReportController::class, 'LaporanAbsensi']);
     Route::post('ViewAbsensiUndangan', [ReportController::class, 'ViewAbsensiUndangan']);
     Route::post('LaporanAbsensiUndangan', [ReportController::class, 'LaporanAbsensiUndangan']);
-    Route::post('ViewTandaTerimaSertifikat', [ReportController::class, 'ViewTandaTerimaSertifikat']);
+    Route::post('ViewTandaTerimaSertifikat/{id}', [ReportController::class, 'ViewTandaTerimaSertifikat']);
     Route::post('LaporanTandaTerimaSertifikat', [ReportController::class, 'LaporanTandaTerimaSertifikat']);
     Route::post('ViewTandaTerimaPerlengkapan', [ReportController::class, 'ViewTandaTerimaPerlengkapan']);
     Route::post('LaporanTandaTerimaPerlengkapan', [ReportController::class, 'LaporanTandaTerimaPerlengkapan']);
     Route::post('ViewTandaTerimaHasilPraktik', [ReportController::class, 'ViewTandaTerimaHasilPraktik']);
     Route::post('LaporanTandaTerimaHasilPraktik', [ReportController::class, 'LaporanTandaTerimaHasilPraktik']);
-    Route::post('ViewTandaTerimaObat', [ReportController::class, 'ViewTandaTerimaObat']);
+    Route::post('ViewTandaTerimaObat/{id}', [ReportController::class, 'ViewTandaTerimaObat']);
     Route::post('LaporanTandaTerimaObat', [ReportController::class, 'LaporanTandaTerimaObat']);
-     Route::post('ViewTandaTerimaBahan', [ReportController::class, 'ViewTandaTerimaBahan']);
+     Route::post('ViewTandaTerimaBahan/{id}', [ReportController::class, 'ViewTandaTerimaBahan']);
     Route::post('LaporanTandaTerimaBahan', [ReportController::class, 'LaporanTandaTerimaBahan']);
      Route::post('ViewTandaTerimaBahanMateri', [ReportController::class, 'ViewTandaTerimaBahanMateri']);
     Route::post('LaporanTandaTerimaBahanMateri', [ReportController::class, 'LaporanTandaTerimaBahanMateri']);

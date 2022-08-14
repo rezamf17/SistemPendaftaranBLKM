@@ -57,7 +57,7 @@ class ReportController extends Controller
         $tempat = Formulir::where('id_cities', $cities)
         ->where('peminatan', $peminatan)->first();
         $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
+        ->where('peminatan', $peminatan)->take(20)->get();
         // return view ('admin.laporan.LaporanAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities'));
         $pdf = PDF::loadview('admin.laporan.LaporanAbsensi', compact('formulir', 'peminatan', 'hari', 'tanggal', 'tempat', 'cities', 'tahun'));
         return $pdf->download('Daftar-Hadir-'.$peminatan.'-'.$tahun.$tempat->cities->name.'.pdf');
@@ -66,12 +66,23 @@ class ReportController extends Controller
 
     public function ViewAbsensiUndangan(Request $request)
     {
-        $cities = $request->cities;
-        $hari = $request->hari;
+        // $cities = $request->cities;
+        // $hari = $request->hari;
+        // $tanggal = $request->tanggal;
+        // $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.ViewDaftarHadirUndangan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat'));
+        $id_cities = $request->id_cities;
+        $tempat = Formulir::where('id_cities', $id_cities)->first();
         $tanggal = $request->tanggal;
         $tahun = $request->tahun;
-        $tempat = Formulir::where('id_cities', $cities)->first();
-        return view ('admin.laporan.ViewDaftarHadirUndangan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat'));
+        // $seleksi = Formulir::where('id_cities', $id_cities)
+        // ->where('peminatan', $peminatan)->where('status', $status)
+        // ->get();
+        // $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
+        // ->where('peminatan', $peminatan)
+        // ->first();
+        return view ('admin.laporan.ViewDaftarHadirUndangan', 
+        compact('id_cities', 'tanggal', 'tempat'));
     }
     public function LaporanAbsensiUndangan(Request $request)
     {
@@ -85,28 +96,44 @@ class ReportController extends Controller
         return $pdf->download('Daftar-Hadir-Undangan'.$tanggal.'-'.$tempat->cities->name.'.pdf');
     }
 
-    public function ViewTandaTerimaSertifikat(Request $request)
+    public function ViewTandaTerimaSertifikat(Request $request, $id)
     {
-        $cities = $request->cities;
-        $hari = $request->hari;
-        $tanggal = $request->tanggal;
-        $tahun = $request->tahun;
-        $peminatan = $request->peminatan;
-         $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
-        $tempat = Formulir::where('id_cities', $cities)->first();
-        return view ('admin.laporan.ViewTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        // $id_cities = $request->id_cities;
+        // $hari = $request->hari;
+        // $tanggal = $request->tanggal;
+        // $tahun = $request->tahun;
+        // $peminatan = $request->peminatan;
+        // $status = $request->status;
+        //  $formulir = Formulir::where('id_cities', $cities)
+        // ->where('peminatan', $peminatan)->get();
+        // $tempat = Formulir::where('id_cities', $id_cities)->first();
+        // return view ('admin.laporan.ViewTandaTerimaSertifikat', compact('hari', 'tanggal', 'id_cities', 'tahun', 'tempat', 'peminatan', 'seleksi',
+        //  'seleksiPeminatan'));
+        $seleksiData = Seleksi::find($id);
+        // return $seleksiData;
+        $id_cities = $seleksiData->id_cities;
+        $tempat = Formulir::where('id_cities', $id_cities)->first();
+        $peminatan = $seleksiData->peminatan;
+        $status = $seleksiData->status;
+        $nama = $seleksiData->nama_pelatihan;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get();
+        $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)
+        ->first();
+        return view ('admin.laporan.ViewTandaTerimaSertifikat', 
+        compact('id_cities', 'peminatan', 'tempat', 'seleksi'));
     }
 
     public function LaporanTandaTerimaSertifikat(Request $request)
     {
         $cities = $request->cities;
         $hari = $request->hari;
-        $tanggal = $request->tanggal;
         $tahun = $request->tahun;
         $peminatan = $request->peminatan;
          $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
+        ->where('peminatan', $peminatan)->take(20)->get();
         $tempat = Formulir::where('id_cities', $cities)->first();
         // return view ('admin.laporan.LaporanTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaSertifikat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
@@ -215,17 +242,32 @@ class ReportController extends Controller
         return $pdf->download('TandaTerimaHasilPraktik-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
 
-    public function ViewTandaTerimaObat(Request $request)
+    public function ViewTandaTerimaObat(Request $request, $id)
     {
-        $cities = $request->cities;
-        $hari = $request->hari;
-        $tanggal = $request->tanggal;
-        $tahun = $request->tahun;
-        $peminatan = $request->peminatan;
-         $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
-        $tempat = Formulir::where('id_cities', $cities)->first();
-        return view ('admin.laporan.ViewTandaTerimaObat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        // $cities = $request->cities;
+        // $hari = $request->hari;
+        // $tanggal = $request->tanggal;
+        // $tahun = $request->tahun;
+        // $peminatan = $request->peminatan;
+        //  $formulir = Formulir::where('id_cities', $cities)
+        // ->where('peminatan', $peminatan)->get();
+        // $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.ViewTandaTerimaObat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        $seleksiData = Seleksi::find($id);
+        // return $seleksiData;
+        $id_cities = $seleksiData->id_cities;
+        $tempat = Formulir::where('id_cities', $id_cities)->first();
+        $peminatan = $seleksiData->peminatan;
+        $status = $seleksiData->status;
+        $nama = $seleksiData->nama_pelatihan;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get();
+        $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)
+        ->first();
+        return view ('admin.laporan.ViewTandaTerimaObat', 
+        compact('id_cities', 'peminatan', 'tempat', 'seleksi'));
     }
 
     public function LaporanTandaTerimaObat(Request $request)
@@ -236,24 +278,39 @@ class ReportController extends Controller
         $tahun = $request->tahun;
         $peminatan = $request->peminatan;
          $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
+        ->where('peminatan', $peminatan)->take(20)->get();
         $tempat = Formulir::where('id_cities', $cities)->first();
         // return view ('admin.laporan.LaporanTandaTerimaObat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaObat', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         return $pdf->download('TandaTerimaHasilObat-'.$peminatan.'-'.$tempat->cities->name.'-'.$tahun.'.pdf');
     }
 
-    public function ViewTandaTerimaBahan(Request $request)
+    public function ViewTandaTerimaBahan(Request $request, $id)
     {
-        $cities = $request->cities;
-        $hari = $request->hari;
-        $tanggal = $request->tanggal;
-        $tahun = $request->tahun;
-        $peminatan = $request->peminatan;
-         $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
-        $tempat = Formulir::where('id_cities', $cities)->first();
-        return view ('admin.laporan.ViewTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        // $cities = $request->cities;
+        // $hari = $request->hari;
+        // $tanggal = $request->tanggal;
+        // $tahun = $request->tahun;
+        // $peminatan = $request->peminatan;
+        //  $formulir = Formulir::where('id_cities', $cities)
+        // ->where('peminatan', $peminatan)->get();
+        // $tempat = Formulir::where('id_cities', $cities)->first();
+        // return view ('admin.laporan.ViewTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
+        $seleksiData = Seleksi::find($id);
+        // return $seleksiData;
+        $id_cities = $seleksiData->id_cities;
+        $tempat = Formulir::where('id_cities', $id_cities)->first();
+        $peminatan = $seleksiData->peminatan;
+        $status = $seleksiData->status;
+        $nama = $seleksiData->nama_pelatihan;
+        $seleksi = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)->where('status', $status)
+        ->get();
+        $seleksiPeminatan = Formulir::where('id_cities', $id_cities)
+        ->where('peminatan', $peminatan)
+        ->first();
+        return view ('admin.laporan.ViewTandaTerimaBahan', 
+        compact('id_cities', 'peminatan', 'tempat', 'seleksi'));
     }
 
     public function LaporanTandaTerimaBahan(Request $request)
@@ -264,7 +321,7 @@ class ReportController extends Controller
         $tahun = $request->tahun;
         $peminatan = $request->peminatan;
          $formulir = Formulir::where('id_cities', $cities)
-        ->where('peminatan', $peminatan)->get();
+        ->where('peminatan', $peminatan)->take(20)->get();
         $tempat = Formulir::where('id_cities', $cities)->first();
         // return view ('admin.laporan.LaporanTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
         $pdf = PDF::loadview('admin.laporan.LaporanTandaTerimaBahan', compact('hari', 'tanggal', 'cities', 'tahun', 'tempat', 'peminatan', 'formulir'));
