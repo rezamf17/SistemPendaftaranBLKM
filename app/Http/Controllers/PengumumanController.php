@@ -10,7 +10,8 @@ class PengumumanController extends Controller
 
     public function utama()
     {
-        $pengumuman = Pengumuman::all();
+        // $pengumuman = Pengumuman::all();
+        $pengumuman = Pengumuman::orderBy('id', 'DESC')->get();
         return view ('pengumuman', compact('pengumuman'));
     }
     /**
@@ -20,7 +21,8 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumuman = Pengumuman::all();
+        // $pengumuman = Pengumuman::all();
+        $pengumuman = Pengumuman::orderBy('id', 'DESC')->get();
         return view ('admin.Pengumuman', compact('pengumuman'));  
     }
 

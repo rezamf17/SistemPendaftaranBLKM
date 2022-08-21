@@ -28,9 +28,15 @@
       text-align: center;
       font-size: 12px;
     }
+    /* .logo{
+      width: 5em;
+      height: 5em;
+      position: absolute;
+    } */
 	</style>
 </head>
 <body>
+  <img src="{{asset('style/images/LogoJabar.jpg')}}" style=" width: 6em;height: 6em;position: absolute;padding-top:1em;">
 	<h3>DAFTAR HADIR</h3>
   <h4>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI <br> 
     TAHUN {{$tempat->angkatan}} <br>

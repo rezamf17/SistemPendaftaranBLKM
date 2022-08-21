@@ -37,6 +37,7 @@
   </style>
 </head>
 <body>
+  <img src="{{asset('style/images/LogoJabar.jpg')}}" style=" width: 6em;height: 6em;position: absolute;padding-top:1em;">
 	<h3>TANDA TERIMA OBAT-OBATAN</h3>
   <h4>PELATIHAN PENINGKATAN KETERAMPILAN KERJA MANDIRI <br> 
     TAHUN {{$tahun}} <br> DI {{$tempat->cities->name}}</h4>  
