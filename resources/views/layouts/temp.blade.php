@@ -128,7 +128,11 @@
           <img src="{{asset('style/dist/img/user.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          @if(Auth::user()->role === 1)
+          <a href="home" class="d-block">{{ Auth::user()->name }}</a>
+          @else
+          <a href="user" class="d-block">{{ Auth::user()->name }}</a>
+          @endif
         </div>
       </div>
 
